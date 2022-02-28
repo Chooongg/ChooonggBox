@@ -4,6 +4,8 @@ plugins {
     id 'maven-publish'
 }
 
+group = 'com.chooongg.utils'
+
 android {
     compileSdk rootProject.ext.compileSdk
 
