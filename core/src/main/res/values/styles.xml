@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ShapeAppearanceImage" />
+
+    <style name="ShapeAppearanceImage.Rounded" parent="ShapeAppearanceImage">
+        <item name="cornerFamily">rounded</item>
+    </style>
+
+    <style name="ShapeAppearanceImage.Circle" parent="ShapeAppearanceImage.Rounded">
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="ShapeAppearanceImage.Rounded.4dp" parent="ShapeAppearanceImage.Rounded">
+        <item name="cornerSize">4dp</item>
+    </style>
+
+    <style name="ShapeAppearanceImage.Rounded.8dp" parent="ShapeAppearanceImage.Rounded">
+        <item name="cornerSize">8dp</item>
+    </style>
+
+    <style name="ShapeAppearanceImage.Rounded.12dp" parent="ShapeAppearanceImage.Rounded">
+        <item name="cornerSize">12dp</item>
+    </style>
+
+    <style name="ShapeAppearanceImage.Rounded.16dp" parent="ShapeAppearanceImage.Rounded">
+        <item name="cornerSize">16dp</item>
+    </style>
+
+    <style name="ShapeAppearanceImage.Rounded.24dp" parent="ShapeAppearanceImage.Rounded">
+        <item name="cornerSize">24dp</item>
+    </style>
+
+
+    <style name="ShapeAppearanceImage.Cut" parent="ShapeAppearanceImage">
+        <item name="cornerFamily">cut</item>
+    </style>
+
+    <style name="ShapeAppearanceImage.DIAMOND" parent="ShapeAppearanceImage.Cut">
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="ShapeAppearanceImage.Cut.4dp" parent="ShapeAppearanceImage.Cut">
+        <item name="cornerSize">4dp</item>
+    </style>
+
+    <style name="ShapeAppearanceImage.Cut.8dp" parent="ShapeAppearanceImage.Cut">
+        <item name="cornerSize">8dp</item>
+    </style>
+
+    <style name="ShapeAppearanceImage.Cut.12dp" parent="ShapeAppearanceImage.Cut">
+        <item name="cornerSize">12dp</item>
+    </style>
+
+    <style name="ShapeAppearanceImage.Cut.16dp" parent="ShapeAppearanceImage.Cut">
+        <item name="cornerSize">16dp</item>
+    </style>
+
+</resources>

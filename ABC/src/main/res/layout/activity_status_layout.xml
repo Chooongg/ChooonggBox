@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.chooongg.statusLayout.StatusLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/status_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:background="?android:attr/colorBackground">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/contentLarge"
+        android:layout_marginEnd="@dimen/contentLarge"
+        android:text="Progress" />
+
+    <!--    <androidx.recyclerview.widget.RecyclerView-->
+    <!--        android:id="@+id/recycler_view"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent" />-->
+
+</com.chooongg.statusLayout.StatusLayout>

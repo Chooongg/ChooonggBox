@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="BoxTheme.Surface" parent="Base.BoxTheme">
+        <item name="android:statusBarColor">#11000000</item>
+        <item name="toolbarStyle">@style/BoxWidget.Toolbar.OnSurface</item>
+        <item name="appBarLayoutStyle">@style/BoxWidget.AppBarLayout.Surface</item>
+        <item name="collapsingToolbarLayoutMediumStyle">
+            @style/BoxWidget.CollapsingToolbar.Medium.Surface
+        </item>
+        <item name="collapsingToolbarLayoutLargeStyle">
+            @style/BoxWidget.CollapsingToolbar.Large.Surface
+        </item>
+    </style>
+
+    <style name="BoxTheme.Surface.CenterTitle" parent="BoxTheme.Surface">
+        <item name="toolbarStyle">@style/BoxWidget.Toolbar.OnSurface.Center</item>
+    </style>
+
+    <style name="BoxTheme.Primary" parent="Base.BoxTheme">
+        <item name="toolbarStyle">@style/BoxWidget.Toolbar.OnPrimary</item>
+        <item name="toolbarNavigationButtonStyle">
+            @style/BoxWidget.Toolbar.Button.Navigation.Primary
+        </item>
+        <item name="appBarLayoutStyle">@style/BoxWidget.AppBarLayout.Primary</item>
+        <item name="collapsingToolbarLayoutMediumStyle">
+            @style/BoxWidget.CollapsingToolbar.Medium.Primary
+        </item>
+        <item name="collapsingToolbarLayoutLargeStyle">
+            @style/BoxWidget.CollapsingToolbar.Large.Primary
+        </item>
+    </style>
+
+    <style name="BoxTheme.Primary.CenterTitle" parent="BoxTheme.Primary">
+        <item name="toolbarStyle">@style/BoxWidget.Toolbar.OnPrimary.Center</item>
+    </style>
+
+    <style name="BoxTheme.PrimarySurface" parent="Base.BoxTheme">
+        <item name="toolbarStyle">@style/BoxWidget.Toolbar.OnPrimary</item>
+        <item name="toolbarNavigationButtonStyle">
+            @style/BoxWidget.Toolbar.Button.Navigation.Primary
+        </item>
+        <item name="appBarLayoutStyle">@style/BoxWidget.AppBarLayout.Primary</item>
+        <item name="collapsingToolbarLayoutMediumStyle">
+            @style/BoxWidget.CollapsingToolbar.Medium.Primary
+        </item>
+        <item name="collapsingToolbarLayoutLargeStyle">
+            @style/BoxWidget.CollapsingToolbar.Large.Primary
+        </item>
+    </style>
+
+    <style name="BoxTheme.PrimarySurface.CenterTitle" parent="BoxTheme.PrimarySurface">
+        <item name="toolbarStyle">@style/BoxWidget.Toolbar.OnPrimary.Center</item>
+    </style>
+
+    <style name="Base.BoxTheme" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="dynamicColorThemeOverlay">@null</item>
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorOnPrimary">@color/onPrimary</item>
+        <item name="colorPrimaryContainer">@color/primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/onPrimaryContainer</item>
+        <item name="colorPrimaryInverse">@color/primaryInverse</item>
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorOnSecondary">@color/onSecondary</item>
+        <item name="colorSecondaryContainer">@color/secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/onSecondaryContainer</item>
+        <item name="colorTertiary">@color/tertiary</item>
+        <item name="colorOnTertiary">@color/onTertiary</item>
+        <item name="colorTertiaryContainer">@color/tertiaryContainer</item>
+        <item name="colorOnTertiaryContainer">@color/onTertiaryContainer</item>
+
+        <item name="colorError">@color/error</item>
+        <item name="colorOnError">@color/onError</item>
+        <item name="colorErrorContainer">@color/errorContainer</item>
+        <item name="colorOnErrorContainer">@color/onErrorContainer</item>
+        <item name="colorOutline">@color/outline</item>
+        <item name="android:colorBackground">@color/surface</item>
+        <item name="colorOnBackground">@color/onBackground</item>
+        <item name="colorSurface">@color/surface</item>
+        <item name="colorOnSurface">@color/onSurface</item>
+        <item name="colorSurfaceVariant">@color/surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/onSurfaceVariant</item>
+        <item name="colorSurfaceInverse">@color/surfaceInverse</item>
+        <item name="colorOnSurfaceInverse">@color/onSurfaceInverse</item>
+        <!-- 过渡动画 -->
+        <item name="android:windowAnimationStyle">@style/BoxWindowAnimation</item>
+        <item name="android:windowActivityTransitions">true</item>
+        <item name="windowActionModeOverlay">true</item>
+        <!-- 圆角设置 -->
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearanceImage.Rounded.8dp</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearanceImage.Rounded.16dp</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearanceImage.Rounded.24dp</item>
+        <!-- 工具栏配置 -->
+        <item name="statusBarScrim">@android:color/transparent</item>
+        <item name="toolbarStyle">@style/BoxWidget.Toolbar.Surface</item>
+        <item name="actionBarStyle">@style/BoxWidget.Toolbar.Surface</item>
+        <item name="actionBarSize">@dimen/d48</item>
+        <item name="titleCentered">false</item>
+        <item name="subtitleCentered">false</item>
+        <!-- Dialog -->
+        <item name="materialAlertDialogTheme">
+            @style/ThemeOverlay.Material3.MaterialAlertDialog.FillWidth
+        </item>
+    </style>
+
+    <style name="BoxWindowAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/parallax_horizontal_open_enter</item>
+        <item name="android:activityOpenExitAnimation">@anim/parallax_horizontal_open_exit</item>
+        <item name="android:activityCloseExitAnimation">@anim/parallax_horizontal_close_exit</item>
+        <item name="android:activityCloseEnterAnimation">@anim/parallax_horizontal_close_enter
+        </item>
+    </style>
+
+    <style name="ThemeOverlay.Material3.MaterialAlertDialog.FillWidth" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="buttonBarPositiveButtonStyle">
+            @style/Widget.Material3.Button.TextButton.Dialog.FillWidth
+        </item>
+        <item name="buttonBarNegativeButtonStyle">
+            @style/Widget.Material3.Button.TextButton.Dialog.FillWidth
+        </item>
+        <item name="buttonBarNeutralButtonStyle">
+            @style/Widget.Material3.Button.TextButton.Dialog.FillWidth
+        </item>
+    </style>
+
+    <style name="Widget.Material3.Button.TextButton.Dialog.FillWidth" parent="Widget.Material3.Button.TextButton.Dialog">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:maxWidth">@null</item>
+    </style>
+</resources>

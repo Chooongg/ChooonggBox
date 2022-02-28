@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="primary" type="color">#ffd0bcff</item>
+    <item name="onPrimary" type="color">#ff381e72</item>
+    <item name="primaryContainer" type="color">#ff4f378b</item>
+    <item name="onPrimaryContainer" type="color">#ffeaddff</item>
+    <item name="primaryInverse" type="color">#ff6750a4</item>
+    <item name="secondary" type="color">#ffccc2dc</item>
+    <item name="onSecondary" type="color">#ff332d41</item>
+    <item name="secondaryContainer" type="color">#ff4a4458</item>
+    <item name="onSecondaryContainer" type="color">#ffe8def8</item>
+    <item name="tertiary" type="color">#ffefb8c8</item>
+    <item name="onTertiary" type="color">#ff492532</item>
+    <item name="tertiaryContainer" type="color">#ff633b48</item>
+    <item name="onTertiaryContainer" type="color">#ffffd8e4</item>
+
+    <item name="error" type="color">#fff2b8b5</item>
+    <item name="onError" type="color">#ff601410</item>
+    <item name="errorContainer" type="color">#ff8c1d18</item>
+    <item name="onErrorContainer" type="color">#fff2b8b5</item>
+    <item name="background" type="color">#ff1c1b1f</item>
+    <item name="onBackground" type="color">#ffe6e1e5</item>
+    <item name="surface" type="color">#ff1c1b1f</item>
+    <item name="onSurface" type="color">#ffe6e1e5</item>
+    <item name="surfaceVariant" type="color">#ff49454f</item>
+    <item name="onSurfaceVariant" type="color">#ffcac4d0</item>
+    <item name="surfaceInverse" type="color">#ffe6e1e5</item>
+    <item name="onSurfaceInverse" type="color">#ff313033</item>
+</resources>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:paddingStart="@dimen/d16"
+    android:paddingTop="@dimen/d8"
+    android:paddingEnd="@dimen/d16"
+    android:paddingBottom="@dimen/d8">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_icon"
+        android:layout_width="@dimen/d24"
+        android:layout_height="@dimen/d24"
+        app:tint="?attr/colorOnSurface"
+        tools:src="@drawable/ic_permission_sensors" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/d8"
+        android:gravity="center"
+        android:textAppearance="?attr/textAppearanceHeadline6"
+        android:textColor="?attr/colorOnSurface"
+        tools:text="@string/common_permission_sensors">
+
+    </TextView>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

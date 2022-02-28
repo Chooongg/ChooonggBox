@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="primary" type="color">#ff6750a4</item>
+    <item name="onPrimary" type="color">@android:color/white</item>
+    <item name="primaryContainer" type="color">#ffeaddff</item>
+    <item name="onPrimaryContainer" type="color">#ff21005d</item>
+    <item name="primaryInverse" type="color">#ffd0bcff</item>
+    <item name="secondary" type="color">#ff625b71</item>
+    <item name="onSecondary" type="color">@android:color/white</item>
+    <item name="secondaryContainer" type="color">#ffe8def8</item>
+    <item name="onSecondaryContainer" type="color">#ff1d192b</item>
+    <item name="tertiary" type="color">#ff7d5260</item>
+    <item name="onTertiary" type="color">@android:color/white</item>
+    <item name="tertiaryContainer" type="color">#ffffd8e4</item>
+    <item name="onTertiaryContainer" type="color">#ff31111d</item>
+
+    <item name="error" type="color">#ffb3261e</item>
+    <item name="onError" type="color">@android:color/white</item>
+    <item name="errorContainer" type="color">#fff9dedc</item>
+    <item name="onErrorContainer" type="color">#ff410e0b</item>
+    <item name="background" type="color">#fffffbfe</item>
+    <item name="onBackground" type="color">#ff1c1b1f</item>
+    <item name="surface" type="color">#fffffbfe</item>
+    <item name="onSurface" type="color">#ff1c1b1f</item>
+    <item name="surfaceVariant" type="color">#ffe7e0ec</item>
+    <item name="onSurfaceVariant" type="color">#ff49454f</item>
+    <item name="surfaceInverse" type="color">#ff313033</item>
+    <item name="onSurfaceInverse" type="color">#fff4eff4</item>
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="BoxTheme.Surface" parent="Base.BoxTheme">
+        <item name="toolbarStyle">@style/BoxWidget.Toolbar.OnSurface</item>
+        <item name="appBarLayoutStyle">@style/BoxWidget.AppBarLayout.Surface</item>
+        <item name="collapsingToolbarLayoutMediumStyle">
+            @style/BoxWidget.CollapsingToolbar.Medium.Surface
+        </item>
+        <item name="collapsingToolbarLayoutLargeStyle">
+            @style/BoxWidget.CollapsingToolbar.Large.Surface
+        </item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+</resources>

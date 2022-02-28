@@ -1,0 +1,53 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'maven-publish'
+}
+
+android {
+    compileSdk rootProject.ext.compileSdk
+
+    defaultConfig {
+        minSdk rootProject.ext.minSdk
+        targetSdk rootProject.ext.targetSdk
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = '11'
+    }
+}
+
+dependencies {
+    implementation "androidx.appcompat:appcompat:${appcompatVersion}"
+    api 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0'
+    api 'androidx.core:core-ktx:1.7.0'
+    api "androidx.startup:startup-runtime:1.1.1"
+
+    api 'com.tencent:mmkv-static:1.2.12'
+    // 调试工具
+    implementation 'com.facebook.stetho:stetho:1.6.0'
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = "com.chooongg"
+                artifactId = "utils"
+                version = rootProject.ext.versionName
+            }
+        }
+    }
+}
