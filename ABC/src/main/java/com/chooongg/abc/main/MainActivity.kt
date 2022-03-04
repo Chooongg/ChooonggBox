@@ -1,19 +1,18 @@
 package com.chooongg.abc.main
 
 import android.os.Bundle
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import androidx.viewpager2.widget.ViewPager2
 import com.chooongg.abc.R
 import com.chooongg.abc.databinding.ActivityMainBinding
 import com.chooongg.abc.main.fragment.ColorFragment
 import com.chooongg.abc.main.fragment.HomeFragment
-import com.chooongg.abc.statusLayout.StatusLayoutActivity
 import com.chooongg.core.activity.BoxBindingActivity
 import com.chooongg.core.annotation.TopAppBar
-import com.chooongg.core.ext.startActivity
-import com.chooongg.core.ext.startActivityTransitionPage
 import com.chooongg.core.fragment.BoxFragment
 import com.chooongg.core.fragment.BoxFragmentStateAdapter
-import com.chooongg.ext.logD
 
 @TopAppBar(TopAppBar.TYPE_NONE)
 class MainActivity : BoxBindingActivity<ActivityMainBinding>() {
@@ -23,6 +22,10 @@ class MainActivity : BoxBindingActivity<ActivityMainBinding>() {
     )
 
     override fun initConfig(savedInstanceState: Bundle?) {
+        ViewCompat.setOnApplyWindowInsetsListener(binding.navigationView) { view, insets ->
+            view.updatePadding(bottom = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom)
+            insets
+        }
         binding.viewPager.offscreenPageLimit = 666
         binding.viewPager.adapter = BoxFragmentStateAdapter(this, fragments)
         binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
@@ -35,10 +38,7 @@ class MainActivity : BoxBindingActivity<ActivityMainBinding>() {
         })
         binding.navigationView.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.home -> {
-                    binding.viewPager.setCurrentItem(0, true)
-                    startActivity(StatusLayoutActivity::class)
-                }
+                R.id.home -> binding.viewPager.setCurrentItem(0, true)
                 R.id.color -> binding.viewPager.setCurrentItem(1, true)
                 else -> return@setOnItemSelectedListener false
             }

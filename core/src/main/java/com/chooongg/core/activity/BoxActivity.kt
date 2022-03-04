@@ -7,8 +7,7 @@ import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.coordinatorlayout.widget.CoordinatorLayout
-import androidx.core.view.WindowCompat
-import androidx.core.view.updateLayoutParams
+import androidx.core.view.*
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import com.chooongg.core.R
 import com.chooongg.core.action.InitAction
@@ -65,9 +64,14 @@ abstract class BoxActivity : AppCompatActivity(), InitAction {
         val title4Annotation = getTitle4Annotation()
         if (title4Annotation != null) title = title4Annotation
         // Edge To Edge 实现
-        val edgeToEdge = getEdgeToEdge4Annotation()
-        if (edgeToEdge == true) {
+        if (getEdgeToEdge4Annotation() == true) {
             WindowCompat.setDecorFitsSystemWindows(window, false)
+            if (getActivityFitsNavigationBar()) {
+                ViewCompat.setOnApplyWindowInsetsListener(contentView) { view, insets ->
+                    view.updatePadding(bottom = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom)
+                    insets
+                }
+            }
         }
         configTopAppbarLayout()
         logDTag("ACTIVITY", "${javaClass.simpleName}(${title}) onCreated")
@@ -226,6 +230,9 @@ abstract class BoxActivity : AppCompatActivity(), InitAction {
 
     private fun getEdgeToEdge4Annotation() =
         javaClass.getAnnotation(ActivityEdgeToEdge::class.java)?.value
+
+    private fun getActivityFitsNavigationBar() =
+        javaClass.getAnnotation(ActivityFitsNavigationBar::class.java)?.value ?: true
 
     private fun isAutoHideIME4Annotation() =
         javaClass.getAnnotation(AutoHideIME::class.java)?.isEnable ?: true
