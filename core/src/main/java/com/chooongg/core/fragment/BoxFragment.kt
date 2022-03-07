@@ -57,7 +57,7 @@ abstract class BoxFragment : Fragment(), InitAction {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        logDTag("FRAGMENT", "${javaClass.simpleName}(${title}) onCreateView")
+        logDTag("BOX --> Fragment", "${javaClass.simpleName}(${title}) onCreatedView")
         val view = when (getTopAppBar4Annotation()) {
             TopAppBar.TYPE_SMALL ->
                 inflater.inflate(R.layout.box_activity_root_small, container, false)
@@ -101,7 +101,7 @@ abstract class BoxFragment : Fragment(), InitAction {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        logDTag("FRAGMENT", "${javaClass.simpleName}(${title}) onViewCreated")
+        logDTag("BOX --> Fragment", "${javaClass.simpleName}(${title}) onViewCreated")
         super.onViewCreated(view, savedInstanceState)
         if (isAutoHideIME4Annotation()) view.setOnClickListener {
             hideIME()
@@ -162,7 +162,7 @@ abstract class BoxFragment : Fragment(), InitAction {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        logDTag("FRAGMENT", "${javaClass.simpleName}(${title}) onDestroyView")
+        logDTag("BOX --> Fragment", "${javaClass.simpleName}(${title}) onDestroyView")
         isLoaded = false
     }
 }

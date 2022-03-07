@@ -13,10 +13,7 @@ import com.chooongg.core.R
 import com.chooongg.core.action.InitAction
 import com.chooongg.core.annotation.*
 import com.chooongg.core.toolbar.BoxToolbar
-import com.chooongg.ext.contentView
-import com.chooongg.ext.hideIME
-import com.chooongg.ext.logDTag
-import com.chooongg.ext.resourcesString
+import com.chooongg.ext.*
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.color.MaterialColors
@@ -68,17 +65,19 @@ abstract class BoxActivity : AppCompatActivity(), InitAction {
             WindowCompat.setDecorFitsSystemWindows(window, false)
             if (getActivityFitsNavigationBar()) {
                 ViewCompat.setOnApplyWindowInsetsListener(contentView) { view, insets ->
-                    view.updatePadding(bottom = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom)
+                    if (insets.isVisible(WindowInsetsCompat.Type.navigationBars())) {
+                        view.updatePadding(bottom = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom)
+                    }
                     insets
                 }
             }
         }
         configTopAppbarLayout()
-        logDTag("ACTIVITY", "${javaClass.simpleName}(${title}) onCreated")
+        logDTag("BOX --> Activity", "${javaClass.simpleName}(${title}) onCreated")
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
-        logDTag("ACTIVITY", "${javaClass.simpleName}(${title}) onPostCreated")
+        logDTag("BOX --> Activity", "${javaClass.simpleName}(${title}) onPostCreated")
         super.onPostCreate(savedInstanceState)
         contentView.isFocusable = true
         contentView.isFocusableInTouchMode = true
@@ -248,6 +247,6 @@ abstract class BoxActivity : AppCompatActivity(), InitAction {
 
     override fun onDestroy() {
         super.onDestroy()
-        logDTag("ACTIVITY", "${javaClass.simpleName}(${title}) onDestroy")
+        logDTag("BOX --> Activity", "${javaClass.simpleName}(${title}) onDestroy")
     }
 }
