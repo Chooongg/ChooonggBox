@@ -7,13 +7,19 @@ import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.coordinatorlayout.widget.CoordinatorLayout
-import androidx.core.view.*
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updateLayoutParams
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import com.chooongg.core.R
 import com.chooongg.core.action.InitAction
 import com.chooongg.core.annotation.*
 import com.chooongg.core.toolbar.BoxToolbar
-import com.chooongg.ext.*
+import com.chooongg.ext.contentView
+import com.chooongg.ext.hideIME
+import com.chooongg.ext.logDTag
+import com.chooongg.ext.resourcesString
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.color.MaterialColors
@@ -66,7 +72,14 @@ abstract class BoxActivity : AppCompatActivity(), InitAction {
             if (getActivityFitsNavigationBar()) {
                 ViewCompat.setOnApplyWindowInsetsListener(contentView) { view, insets ->
                     if (insets.isVisible(WindowInsetsCompat.Type.navigationBars())) {
-                        view.updatePadding(bottom = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom)
+                        val navigationInsets =
+                            insets.getInsets(WindowInsetsCompat.Type.navigationBars())
+                        view.setPadding(
+                            navigationInsets.left,
+                            navigationInsets.top,
+                            navigationInsets.right,
+                            navigationInsets.bottom
+                        )
                     }
                     insets
                 }
