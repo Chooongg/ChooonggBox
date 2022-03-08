@@ -18,16 +18,6 @@ fun Context.startActivity(clazz: KClass<out Any>, block: (Intent.() -> Unit)? = 
 
 fun Context.startActivity(
     clazz: KClass<out Any>,
-    view: View,
-    block: (Intent.() -> Unit)? = null
-) {
-    startActivity(
-        clazz, getActivityOption(getActivity(), Pair.create(view, "view"))?.toBundle(), block
-    )
-}
-
-fun Context.startActivity(
-    clazz: KClass<out Any>,
     vararg sharedElements: Pair<View, String>,
     block: (Intent.() -> Unit)? = null
 ) {
@@ -69,14 +59,6 @@ fun Fragment.startActivity(
 
 fun Fragment.startActivity(
     clazz: KClass<out Any>,
-    view: View,
-    block: (Intent.() -> Unit)? = null
-) {
-    startActivity(clazz, getActivityOption(activity, Pair.create(view, "view"))?.toBundle(), block)
-}
-
-fun Fragment.startActivity(
-    clazz: KClass<out Any>,
     vararg sharedElements: Pair<View, String>,
     block: (Intent.() -> Unit)? = null
 ) {
@@ -112,20 +94,6 @@ fun ActivityResultLauncher<Intent>.launch(
     block: (Intent.() -> Unit)? = null
 ) {
     launch(context, clazz, getActivityOption(context.getActivity()), block)
-}
-
-fun ActivityResultLauncher<Intent>.launch(
-    context: Context,
-    clazz: KClass<out Any>,
-    view: View,
-    block: (Intent.() -> Unit)? = null
-) {
-    launch(
-        context,
-        clazz,
-        getActivityOption(context.getActivity(), Pair.create(view, "view")),
-        block
-    )
 }
 
 fun ActivityResultLauncher<Intent>.launch(
