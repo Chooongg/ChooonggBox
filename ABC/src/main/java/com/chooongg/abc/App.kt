@@ -7,6 +7,5 @@ import com.chooongg.ext.isAppDebug
 class App : Application() {
     override fun onCreate() {
         super.onCreate()
-//        BoxLog.setEnable(isAppDebug())
     }
 }

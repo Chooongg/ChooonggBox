@@ -1,26 +1,23 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'maven-publish'
 }
+
+group = 'com.chooongg.echarts'
 
 android {
     compileSdk rootProject.ext.compileSdk
 
     defaultConfig {
-        applicationId "com.chooongg.simple"
         minSdk rootProject.ext.minSdk
         targetSdk rootProject.ext.targetSdk
-        versionCode rootProject.ext.versionCode
-        versionName rootProject.ext.versionName
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
-        debug {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -31,14 +28,24 @@ android {
     kotlinOptions {
         jvmTarget = '11'
     }
-    buildFeatures {
-        viewBinding true
-    }
 }
 
 dependencies {
     implementation "androidx.appcompat:appcompat:${appcompatVersion}"
     implementation "com.google.android.material:material:${materialVersion}"
-    api project(":box")
-    api project(":echarts")
+    api project(":utils")
+    api 'com.google.code.gson:gson:2.8.8'
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = "com.chooongg"
+                artifactId = "echarts"
+                version = rootProject.ext.versionName
+            }
+        }
+    }
 }
