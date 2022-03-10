@@ -19,11 +19,8 @@ function getECharts(isDark){
 function setOption(echartsJson){
     Android.log(echartsJson);
     var option = JSON.parse(echartsJson);
-//    Android.log(string(option));
-//    option = preTask(option);
-//    Android.log(option);
+    option = preTask(option);
     getECharts(false).setOption(option);
-    Android.log("运行完成");
 }
 
 function preTask(obj) {

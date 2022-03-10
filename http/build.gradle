@@ -36,6 +36,7 @@ dependencies {
     implementation "com.google.android.material:material:${materialVersion}"
     api project(":utils")
     // JSON解析
+    //noinspection GradleDependency
     api 'com.google.code.gson:gson:2.8.8'// 2.9.0 GsonFactory报错
     api 'com.github.getActivity:GsonFactory:5.2'
     // 网络请求

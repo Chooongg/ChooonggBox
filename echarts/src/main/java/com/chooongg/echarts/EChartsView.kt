@@ -3,11 +3,11 @@ package com.chooongg.echarts
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import android.webkit.JavascriptInterface
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import com.chooongg.echarts.options.EChartsOption
-import com.chooongg.ext.logD
 import com.google.gson.Gson
 
 @SuppressLint("SetJavaScriptEnabled")
@@ -22,6 +22,8 @@ class EChartsView @JvmOverloads constructor(
     private val waitingJavascriptInterface: MutableList<String> = ArrayList()
 
     init {
+        setBackgroundColor(0)
+        background?.alpha = 0
         settings.apply {
             javaScriptEnabled = true
             javaScriptCanOpenWindowsAutomatically = true
@@ -62,7 +64,7 @@ class EChartsView @JvmOverloads constructor(
     object EChartsJavascriptInterface {
         @JavascriptInterface
         fun log(value: String) {
-            logD(value)
+            Log.d("ECharts", value)
         }
     }
 }
