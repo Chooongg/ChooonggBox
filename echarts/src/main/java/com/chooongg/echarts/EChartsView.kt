@@ -10,6 +10,10 @@ import android.webkit.WebViewClient
 import com.chooongg.echarts.options.EChartsOption
 import com.google.gson.Gson
 
+/**
+ * ECharts WebView 展示
+ * 基于echarts 5.1.3 min
+ */
 @SuppressLint("SetJavaScriptEnabled")
 class EChartsView @JvmOverloads constructor(
     context: Context,
