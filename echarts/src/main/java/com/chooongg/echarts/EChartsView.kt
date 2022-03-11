@@ -79,6 +79,9 @@ class EChartsView @JvmOverloads constructor(
     }
 
     fun setOptionJson(option: JSONObject) {
+        if (!option.has("darkMode")){
+            option.put("darkMode",false)
+        }
         loadJavascript("setOption('$option')")
     }
 
