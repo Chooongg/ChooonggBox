@@ -2,9 +2,14 @@ package com.chooongg.echarts.options
 
 import androidx.annotation.ColorInt
 import androidx.annotation.FloatRange
+import androidx.annotation.Keep
 import androidx.annotation.StringDef
 import com.chooongg.echarts.EChartsUtils
 
+/**
+ * 渐变色
+ */
+@Keep
 class EChartsColor {
     private var type: Any? = null
     private var x: Any? = null

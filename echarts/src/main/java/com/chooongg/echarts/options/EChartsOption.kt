@@ -1,72 +1,26 @@
 package com.chooongg.echarts.options
 
 import androidx.annotation.Keep
+import com.chooongg.echarts.options.axis.EChartsAngleAxis
+import com.chooongg.echarts.options.axis.EChartsGridAxis
+import com.chooongg.echarts.options.axis.EChartsRadiusAxis
 
 /**
  * ECharts 配置项
  */
 @Keep
-class EChartsOption private constructor() {
+class EChartsOption constructor() {
 
-    constructor(block: EChartsOption.() -> Unit) : this() {
-        block.invoke(this)
-    }
-
-    /**
-     * 标题组件，包含主标题和副标题。
-     */
     private var title: Any? = null
-
-    /**
-     * 图例组件。
-     */
     private var legend: Any? = null
-
-    /**
-     * 直角坐标系内绘图网格，单个 grid 内最多可以放置上下两个 X 轴，左右两个 Y 轴。
-     */
     private var grid: Any? = null
-
-    /**
-     * 直角坐标系 grid 中的 x 轴，一般情况下单个 grid 组件最多只能放上下两个 x 轴
-     * 多于两个 x 轴需要通过配置 offset 属性防止同个位置多个 x 轴的重叠。
-     */
     private var xAxis: Any? = null
-
-    /**
-     * 直角坐标系 grid 中的 y 轴，一般情况下单个 grid 组件最多只能放左右两个 y 轴
-     * 多于两个 y 轴需要通过配置 offset 属性防止同个位置多个 Y 轴的重叠。
-     */
     private var yAxis: Any? = null
-
-    /**
-     * 极坐标系，可以用于散点图和折线图。每个极坐标系拥有一个角度轴和一个半径轴。
-     */
     private var polar: Any? = null
-
-    /**
-     * 极坐标系的径向轴。
-     */
     private var radiusAxis: Any? = null
-
-    /**
-     * 极坐标系的角度轴。
-     */
     private var angleAxis: Any? = null
-
-    /**
-     * 雷达图坐标系组件，只适用于雷达图。
-     */
     private var radar: Any? = null
-
-    /**
-     * dataZoom 组件 用于区域缩放，从而能自由关注细节的数据信息，或者概览数据整体，或者去除离群点的影响。
-     */
     private var dataZoom: Any? = null
-
-    /**
-     * visualMap 是视觉映射组件，用于进行『视觉编码』，也就是将数据映射到视觉元素（视觉通道）。
-     */
     private var visualMap: Any? = null
 
     /**
@@ -142,6 +96,8 @@ class EChartsOption private constructor() {
      * 各种图表
      */
     private var series: Any? = null
+
+    private var darkMode: Boolean? = null
 
     /**
      * 调色盘颜色列表。如果系列没有设置颜色，则会依次循环从该列表中取颜色作为系列颜色。
@@ -237,9 +193,131 @@ class EChartsOption private constructor() {
      */
     private var media: Any? = null
 
+    /**
+     * 标题组件，包含主标题和副标题。
+     */
     fun title(block: EChartsTitle.() -> Unit) {
         val title = EChartsTitle()
         block.invoke(title)
         this.title = title
+    }
+
+    /**
+     * 图例组件。
+     */
+    fun legend(block: EChartsLegend.() -> Unit) {
+        val legend = EChartsLegend()
+        block.invoke(legend)
+        this.legend = legend
+    }
+
+    /**
+     * 直角坐标系内绘图网格，单个 grid 内最多可以放置上下两个 X 轴，左右两个 Y 轴。
+     */
+    fun grid(block: EChartsGrid.() -> Unit) {
+        val grid = EChartsGrid()
+        block.invoke(grid)
+        this.grid = grid
+    }
+
+    /**
+     * 直角坐标系 grid 中的 x 轴，一般情况下单个 grid 组件最多只能放上下两个 x 轴
+     * 多于两个 x 轴需要通过配置 offset 属性防止同个位置多个 x 轴的重叠。
+     */
+    fun xAxis(block: EChartsGridAxis.() -> Unit) {
+        val axis = EChartsGridAxis()
+        block.invoke(axis)
+        this.xAxis = axis
+    }
+
+    /**
+     * 直角坐标系 grid 中的 x 轴，一般情况下单个 grid 组件最多只能放上下两个 x 轴
+     * 多于两个 x 轴需要通过配置 offset 属性防止同个位置多个 x 轴的重叠。
+     */
+    fun xAxis(vararg block: EChartsGridAxis.() -> Unit) {
+        val axisList = ArrayList<EChartsGridAxis>()
+        block.forEach {
+            val axis = EChartsGridAxis()
+            it.invoke(axis)
+            axisList.add(axis)
+        }
+        this.xAxis = axisList
+    }
+
+    /**
+     * 直角坐标系 grid 中的 y 轴，一般情况下单个 grid 组件最多只能放左右两个 y 轴
+     * 多于两个 y 轴需要通过配置 offset 属性防止同个位置多个 Y 轴的重叠。
+     */
+    fun yAxis(block: EChartsGridAxis.() -> Unit) {
+        val axis = EChartsGridAxis()
+        block.invoke(axis)
+        this.yAxis = axis
+    }
+
+    /**
+     * 直角坐标系 grid 中的 y 轴，一般情况下单个 grid 组件最多只能放左右两个 y 轴
+     * 多于两个 y 轴需要通过配置 offset 属性防止同个位置多个 Y 轴的重叠。
+     */
+    fun yAxis(vararg block: EChartsGridAxis.() -> Unit) {
+        val axisList = ArrayList<EChartsGridAxis>()
+        block.forEach {
+            val axis = EChartsGridAxis()
+            it.invoke(axis)
+            axisList.add(axis)
+        }
+        this.yAxis = axisList
+    }
+
+    /**
+     * 极坐标系，可以用于散点图和折线图。每个极坐标系拥有一个角度轴和一个半径轴。
+     */
+    fun polar(block: EChartsPolar.() -> Unit) {
+        val polar = EChartsPolar()
+        block.invoke(polar)
+        this.polar = polar
+    }
+
+    /**
+     * 极坐标系的径向轴。
+     */
+    fun radiusAxis(block: EChartsRadiusAxis.() -> Unit) {
+        val axis = EChartsRadiusAxis()
+        block.invoke(axis)
+        this.radiusAxis = axis
+    }
+
+    /**
+     * 极坐标系的径向轴。
+     */
+    fun angleAxis(block: EChartsAngleAxis.() -> Unit) {
+        val axis = EChartsAngleAxis()
+        block.invoke(axis)
+        this.angleAxis = axis
+    }
+
+    /**
+     * 雷达图坐标系组件，只适用于雷达图。
+     */
+    fun radar(block: EChartsRadar.() -> Unit) {
+        val radar = EChartsRadar()
+        block.invoke(radar)
+        this.radar = radar
+    }
+
+    /**
+     * dataZoom 组件 用于区域缩放，从而能自由关注细节的数据信息，或者概览数据整体，或者去除离群点的影响。
+     */
+    fun dataZoom(block: EChartsDataZoom.() -> Unit) {
+        val dataZoom = EChartsDataZoom()
+        block.invoke(dataZoom)
+        this.dataZoom = dataZoom
+    }
+
+    /**
+     * 是否是暗黑模式，默认会根据背景色 backgroundColor 的亮度自动设置。
+     * 如果是设置了容器的背景色而无法判断到，就可以使用该配置手动指定，echarts 会根据是否是暗黑模式调整文本等的颜色。
+     */
+    fun darkMode(value: Boolean) {
+        this.darkMode = value
     }
 }

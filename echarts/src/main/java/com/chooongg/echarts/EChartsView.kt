@@ -4,11 +4,14 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
 import android.util.Log
+import android.view.View
 import android.webkit.JavascriptInterface
+import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import com.chooongg.echarts.options.EChartsOption
 import com.google.gson.Gson
+import org.json.JSONObject
 
 /**
  * ECharts WebView 展示
@@ -28,12 +31,16 @@ class EChartsView @JvmOverloads constructor(
     init {
         setBackgroundColor(0)
         background?.alpha = 0
+        scrollBarStyle = View.SCROLLBARS_OUTSIDE_OVERLAY
         settings.apply {
+            cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
             javaScriptEnabled = true
             javaScriptCanOpenWindowsAutomatically = true
+            allowFileAccess = false
+            builtInZoomControls = true
             displayZoomControls = false
-            addJavascriptInterface(EChartsJavascriptInterface, "Android")
             setSupportZoom(false)
+            addJavascriptInterface(EChartsJavascriptInterface, "Android")
             webViewClient = object : WebViewClient() {
                 override fun onPageFinished(view: WebView?, url: String?) {
                     pageFinished = true
@@ -61,8 +68,24 @@ class EChartsView @JvmOverloads constructor(
         }
     }
 
-    fun setOptions(option: EChartsOption) {
+    fun setOption(option: EChartsOption) {
         loadJavascript("setOption('${Gson().toJson(option)}')")
+    }
+
+    fun setOption(block: EChartsOption.() -> Unit) {
+        val option = EChartsOption()
+        block.invoke(option)
+        setOption(option)
+    }
+
+    fun setOptionJson(option: JSONObject) {
+        loadJavascript("setOption('$option')")
+    }
+
+    fun setOptionJson(block: JSONObject.() -> Unit) {
+        val option = JSONObject()
+        block.invoke(option)
+        setOptionJson(option)
     }
 
     object EChartsJavascriptInterface {
