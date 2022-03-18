@@ -54,6 +54,12 @@ dependencies {
     api 'io.github.scwang90:refresh-header-classics:2.0.5'
     // 权限申请
     api 'com.github.getActivity:XXPermissions:13.5'
+    // 动画文字
+    api 'com.hanks:htextview-fade:0.1.6'
+    api 'com.hanks:htextview-typer:0.1.6'
+    api 'com.hanks:htextview-scale:0.1.6'
+    api 'com.hanks:htextview-evaporate:0.1.6'
+    api 'com.hanks:htextview-fall:0.1.6'
 }
 
 afterEvaluate {

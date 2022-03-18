@@ -10,11 +10,11 @@ import androidx.core.view.NestedScrollingChildHelper
 import androidx.core.view.ViewCompat
 import kotlin.math.max
 
-class NestedScrollWebView @JvmOverloads constructor(
+open class NestedScrollWebView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-) : WebView(context,attrs,defStyleAttr), NestedScrollingChild {
+) : WebView(context, attrs, defStyleAttr), NestedScrollingChild {
 
     private var mLastMotionY = 0
     private val mScrollOffset = IntArray(2)
