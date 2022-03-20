@@ -21,4 +21,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/navigation_main" />
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/layer_image_error" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
