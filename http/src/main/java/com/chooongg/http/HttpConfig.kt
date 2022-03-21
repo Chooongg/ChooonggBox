@@ -1,6 +1,6 @@
 package com.chooongg.http
 
-import com.hjq.gson.factory.GsonFactory
+import com.chooongg.http.gson.GsonFactory
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.CallAdapter
