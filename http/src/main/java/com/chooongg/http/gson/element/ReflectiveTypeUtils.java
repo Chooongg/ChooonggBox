@@ -22,6 +22,7 @@ import java.net.URL;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.BitSet;
 import java.util.Calendar;
 import java.util.Currency;
@@ -145,6 +146,7 @@ public class ReflectiveTypeUtils {
         return adapter;
     }
 
+    @SuppressWarnings("unchecked")
     public static TypeAdapter<?> getTypeAdapter(ConstructorConstructor constructor,
                                                 Gson gson,
                                                 TypeToken<?> fieldType,
@@ -180,9 +182,7 @@ public class ReflectiveTypeUtils {
         } else {
             fieldNames.add(serializedName.value());
             String[] alternates = serializedName.alternate();
-            for (String alternate : alternates) {
-                fieldNames.add(alternate);
-            }
+            fieldNames.addAll(Arrays.asList(alternates));
         }
         return fieldNames;
     }

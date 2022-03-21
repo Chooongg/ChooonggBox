@@ -64,6 +64,7 @@ class AutoSizeTextHelper private constructor(private val textView: TextView) {
                 }
             }
         }
+
     private var isInAutoSize: Boolean = false
 
     private var listeners = ArrayList<OnTextSizeChangeListener>()

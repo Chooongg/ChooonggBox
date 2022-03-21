@@ -36,13 +36,13 @@ object TimeUtils {
         return simpleDateFormat
     }
 
-    fun millis2String(millis: Long) =
+    fun millis2String(millis: Long): String =
         millis2String(millis, getDefaultFormat())
 
-    fun millis2String(millis: Long, pattern: String) =
+    fun millis2String(millis: Long, pattern: String): String =
         millis2String(millis, getSafeDateFormat(pattern))
 
-    fun millis2String(millis: Long, format: DateFormat) =
+    fun millis2String(millis: Long, format: DateFormat): String =
         format.format(Date(millis))
 
     fun string2Millis(time: String) =

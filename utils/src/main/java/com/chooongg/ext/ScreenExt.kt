@@ -5,20 +5,16 @@ import android.content.Context
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.provider.Settings
-import android.view.View
+import android.util.DisplayMetrics
 import android.view.WindowManager
-import android.view.inputmethod.InputMethodManager
 import androidx.annotation.RequiresPermission
-import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.fragment.app.Fragment
 
 
 fun Context.getScreenWidth() = resources.displayMetrics.widthPixels
 
 fun Context.getScreenHeight() = resources.displayMetrics.heightPixels
 
-fun getScreenDisplayMetrics() = Resources.getSystem().displayMetrics
+fun getScreenDisplayMetrics(): DisplayMetrics = Resources.getSystem().displayMetrics
 
 fun getScreenDensity() = Resources.getSystem().displayMetrics.density
 

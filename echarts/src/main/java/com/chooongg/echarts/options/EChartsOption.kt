@@ -9,7 +9,7 @@ import com.chooongg.echarts.options.axis.EChartsRadiusAxis
  * ECharts 配置项
  */
 @Keep
-class EChartsOption constructor() {
+class EChartsOption {
 
     private var title: Any? = null
     private var legend: Any? = null

@@ -10,7 +10,6 @@ import android.util.AttributeSet
 import android.view.ViewTreeObserver
 import androidx.appcompat.widget.LinearLayoutCompat
 import com.chooongg.core.R
-import com.chooongg.ext.resourcesColor
 import kotlin.math.abs
 import kotlin.math.cos
 import kotlin.math.sin

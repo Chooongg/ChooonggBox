@@ -7,7 +7,7 @@ import com.tencent.mmkv.MMKV
 
 internal object BoxMMKV : MMKVSealed() {
 
-    override fun createMMKV() = MMKV.mmkvWithID("AndroidBox")
+    override fun createMMKV(): MMKV = MMKV.mmkvWithID("AndroidBox")
 
     internal object DayNightMode :
         MMKVKey<Int>(getMMKV(), "day_night_mode", AppCompatDelegate.MODE_NIGHT_NO)

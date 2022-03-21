@@ -2,9 +2,7 @@ package com.chooongg.manager
 
 import android.app.Activity
 import android.app.Application
-import android.os.Build
 import android.os.Bundle
-import androidx.annotation.RequiresApi
 import java.util.*
 
 internal object ActivityLifecycleManager : Application.ActivityLifecycleCallbacks {

@@ -1,21 +1,16 @@
 package com.chooongg.core.toolbar
 
 import android.content.Context
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
-import android.graphics.drawable.Drawable
-import android.os.Build
 import android.util.AttributeSet
 import android.view.Gravity
 import android.view.View
-import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import com.chooongg.core.R
-import com.chooongg.ext.*
+import com.chooongg.ext.getActivity
+import com.chooongg.ext.gone
+import com.chooongg.ext.visible
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.divider.MaterialDivider
-import com.google.android.material.elevation.ElevationOverlayProvider
-import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.shape.MaterialShapeUtils
 
 class BoxToolbar @JvmOverloads constructor(

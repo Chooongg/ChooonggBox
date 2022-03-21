@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.core.widget.NestedScrollView
-import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import com.chooongg.ext.doOnClick
 import com.chooongg.ext.gone
 import com.chooongg.ext.inVisible
