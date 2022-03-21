@@ -55,6 +55,7 @@ dependencies {
     // 权限申请
     api 'com.github.getActivity:XXPermissions:13.5'
     // 动画文字
+    api 'com.hanks:htextview-base:0.1.6'        // base library
     api 'com.hanks:htextview-fade:0.1.6'
     api 'com.hanks:htextview-typer:0.1.6'
     api 'com.hanks:htextview-scale:0.1.6'
