@@ -1,6 +1,7 @@
 package com.chooongg.abc.main
 
 import android.os.Bundle
+import androidx.appcompat.widget.PopupMenu
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
@@ -50,6 +51,9 @@ class MainActivity : BoxBindingActivity<ActivityMainBinding>() {
                 R.id.color -> fragments[1].onReselected()
             }
         }
+        val popupMenu = PopupMenu(context, binding.navigationView)
+        popupMenu.menu
+        popupMenu.show()
     }
 
     override fun initContent(savedInstanceState: Bundle?) {

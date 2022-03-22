@@ -110,4 +110,9 @@
         <attr name="basisAxis" />
     </declare-styleable>
 
+    <declare-styleable name="TyperTextView">
+        <attr name="typerSpeed" format="integer" />
+        <attr name="charIncrease" format="integer" />
+    </declare-styleable>
+
 </resources>
