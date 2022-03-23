@@ -94,6 +94,16 @@ public abstract class HText implements IHText {
     }
 
     @Override
+    public void animateText(CharSequence oldText, CharSequence text) {
+        mHTextView.setText(text);
+        mOldText = oldText;
+        mText = text;
+        prepareAnimate();
+        animatePrepare(text);
+        animateStart(text);
+    }
+
+    @Override
     public void setAnimationListener(AnimationListener listener) {
         animationListener = listener;
     }

@@ -8,6 +8,8 @@ public interface IHText {
 
     void animateText(CharSequence text);
 
+    void animateText(CharSequence oldText, CharSequence text);
+
     void onDraw(Canvas canvas);
 
     void setAnimationListener(AnimationListener listener);
