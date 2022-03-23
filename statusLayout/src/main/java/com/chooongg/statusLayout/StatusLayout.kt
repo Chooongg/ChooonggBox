@@ -151,6 +151,7 @@ class StatusLayout @JvmOverloads constructor(
         this.enableAnimation = enable
         if (enable) {
             rootView.layoutTransition = LayoutTransition().apply {
+                setAnimateParentHierarchy(false)
                 setStartDelay(LayoutTransition.APPEARING, 0)
                 setAnimator(
                     LayoutTransition.APPEARING,
