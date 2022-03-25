@@ -8,7 +8,6 @@ import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
-import androidx.core.widget.NestedScrollView
 import com.chooongg.ext.doOnClick
 import com.chooongg.ext.gone
 import com.chooongg.ext.inVisible
@@ -21,9 +20,7 @@ class StatusLayout @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-) : NestedScrollView(context, attrs, defStyleAttr) {
-
-    private val rootView: FrameLayout = FrameLayout(context)
+) : FrameLayout(context, attrs, defStyleAttr) {
 
     var enableAnimation = StatusPage.config.enableAnimation
 
@@ -32,17 +29,17 @@ class StatusLayout @JvmOverloads constructor(
     // 存在的状态不会包括SuccessStatus
     private val existingStatus = HashMap<KClass<out AbstractStatus>, AbstractStatus>()
 
-    private var currentStatus: KClass<out AbstractStatus>? = null
+    private var currentStatus: KClass<out AbstractStatus> = SuccessStatus::class
 
     private var onRetryEventListener: ((KClass<out AbstractStatus>) -> Unit)? = null
 
     private var onStatusChangeListener: ((KClass<out AbstractStatus>) -> Unit)? = null
 
     init {
-        isFillViewport = true
         addView(rootView, -1, generateDefaultLayoutParams())
         setEnableAnimator(enableAnimation)
         if (!isInEditMode) show(StatusPage.config.defaultState)
+
     }
 
     fun setOnRetryListener(block: (KClass<out AbstractStatus>) -> Unit) {
@@ -88,7 +85,7 @@ class StatusLayout @JvmOverloads constructor(
                 }
         }
         val status = existingStatus[statusClass]!!
-        rootView.addView(status.targetView, LayoutParams(-2, -2, Gravity.CENTER))
+        addView(status.targetView, LayoutParams(-2, -2, Gravity.CENTER))
         currentStatus = statusClass
     }
 
@@ -100,7 +97,7 @@ class StatusLayout @JvmOverloads constructor(
         val status = existingStatus[statusClass] ?: return
         status.onDetach(status.targetView)
 
-        rootView.removeView(status.targetView)
+        removeView(status.targetView)
         existingStatus.remove(statusClass)
     }
 
@@ -128,17 +125,13 @@ class StatusLayout @JvmOverloads constructor(
     }
 
     override fun addView(child: View?, index: Int, params: ViewGroup.LayoutParams?) {
-        if (child == rootView) {
-            super.addView(child, index, params)
-            return
-        }
         if (successView == null) {
             if (child == null) return
             successView = child
             if (child.parent != null && child.parent is ViewGroup) {
                 (child.parent as ViewGroup).removeView(child)
             }
-            rootView.addView(successView, 0, params)
+            addView(successView, 0, params)
             if (currentStatus == SuccessStatus::class) {
                 successView!!.visible()
             } else {
@@ -150,7 +143,7 @@ class StatusLayout @JvmOverloads constructor(
     fun setEnableAnimator(enable: Boolean) {
         this.enableAnimation = enable
         if (enable) {
-            rootView.layoutTransition = LayoutTransition().apply {
+            layoutTransition = LayoutTransition().apply {
                 setAnimateParentHierarchy(false)
                 setStartDelay(LayoutTransition.APPEARING, 0)
                 setAnimator(
@@ -165,7 +158,7 @@ class StatusLayout @JvmOverloads constructor(
                 )
             }
         } else {
-            rootView.layoutTransition = null
+            layoutTransition = null
         }
     }
 }

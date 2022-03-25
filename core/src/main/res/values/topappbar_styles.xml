@@ -22,7 +22,7 @@
 
     <style name="BoxWidget.Toolbar.OnPrimary" parent="BoxWidget.Toolbar.OnSurface">
         <item name="titleTextColor">?attr/colorOnPrimary</item>
-        <item name="subtitleTextColor">?attr/colorPrimary</item>
+        <item name="subtitleTextColor">?attr/colorPrimaryContainer</item>
         <item name="navigationIconTint">?attr/colorOnSurface</item>
         <item name="colorControlNormal">?attr/colorOnPrimary</item>
         <item name="android:theme">@style/ThemeOverlay.Material3.Toolbar.Primary</item>
@@ -63,7 +63,7 @@
     <style name="BoxWidget.Toolbar.Primary" parent="BoxWidget.Toolbar.Surface">
         <item name="android:background">?attr/colorPrimary</item>
         <item name="titleTextColor">?attr/colorOnPrimary</item>
-        <item name="subtitleTextColor">?attr/colorOnPrimaryContainer</item>
+        <item name="subtitleTextColor">?attr/colorPrimaryContainer</item>
         <item name="navigationIconTint">?attr/colorOnPrimary</item>
         <item name="android:theme">@style/ThemeOverlay.Material3.Toolbar.Primary</item>
         <item name="materialThemeOverlay">@style/ThemeOverlay.Material3.Toolbar.Primary</item>

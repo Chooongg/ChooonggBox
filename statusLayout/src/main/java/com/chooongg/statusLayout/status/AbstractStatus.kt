@@ -2,6 +2,7 @@ package com.chooongg.statusLayout.status
 
 import android.content.Context
 import android.view.View
+import android.view.ViewGroup
 
 /**
  * 继承此类必须保留单Context构造方法

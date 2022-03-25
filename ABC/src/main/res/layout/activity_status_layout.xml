@@ -3,8 +3,7 @@
     android:id="@+id/status_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:animateLayoutChanges="true"
-    android:background="?android:attr/colorBackground">
+    android:animateLayoutChanges="true">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_progress"
@@ -14,10 +13,5 @@
         android:layout_marginStart="@dimen/contentLarge"
         android:layout_marginEnd="@dimen/contentLarge"
         android:text="Progress" />
-
-    <!--    <androidx.recyclerview.widget.RecyclerView-->
-    <!--        android:id="@+id/recycler_view"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent" />-->
 
 </com.chooongg.statusLayout.StatusLayout>

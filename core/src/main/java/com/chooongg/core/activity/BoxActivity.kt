@@ -1,6 +1,7 @@
 package com.chooongg.core.activity
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.view.*
 import androidx.annotation.IdRes
@@ -16,10 +17,7 @@ import com.chooongg.core.R
 import com.chooongg.core.action.InitAction
 import com.chooongg.core.annotation.*
 import com.chooongg.core.toolbar.BoxToolbar
-import com.chooongg.ext.contentView
-import com.chooongg.ext.hideIME
-import com.chooongg.ext.logDTag
-import com.chooongg.ext.resourcesString
+import com.chooongg.ext.*
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.color.MaterialColors
@@ -92,6 +90,10 @@ abstract class BoxActivity : AppCompatActivity(), InitAction {
     override fun onPostCreate(savedInstanceState: Bundle?) {
         logDTag("BOX --> Activity", "${javaClass.simpleName}(${title}) onPostCreated")
         super.onPostCreate(savedInstanceState)
+        val contentView = contentView
+        if (contentView.background == null) {
+            contentView.setBackgroundColor(attrColor(android.R.attr.colorBackground, Color.GRAY))
+        }
         contentView.isFocusable = true
         contentView.isFocusableInTouchMode = true
         // 设置自动隐藏软键盘

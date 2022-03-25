@@ -20,7 +20,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".statusLayout.StatusLayoutActivity" />
+        <activity
+            android:name=".modules.TopAppbarActivity"
+            android:label="TopAppBar" />
+        <activity android:name=".modules.StatusLayoutActivity"
+            android:label="StatusLayout"/>
 
     </application>
 
