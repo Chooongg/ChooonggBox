@@ -1,6 +1,7 @@
 package com.chooongg.ext
 
 import android.content.Context
+import android.view.Gravity
 import android.widget.Toast
 import androidx.annotation.GravityInt
 import androidx.annotation.StringRes
@@ -20,7 +21,10 @@ fun showToast(text: CharSequence?, duration: Int = Toast.LENGTH_SHORT) {
         ActivityLifecycleManager.activityTop as? Context ?: APPLICATION,
         text,
         duration
-    ).apply { show() }
+    ).apply {
+        setGravity(Gravity.CENTER, 0, 0)
+        show()
+    }
 }
 
 /**
@@ -32,7 +36,10 @@ fun showToast(@StringRes resId: Int, duration: Int = Toast.LENGTH_SHORT) {
         ActivityLifecycleManager.activityTop as? Context ?: APPLICATION,
         resId,
         duration
-    ).apply { show() }
+    ).apply {
+        setGravity(Gravity.CENTER, 0, 0)
+        show()
+    }
 }
 
 /**

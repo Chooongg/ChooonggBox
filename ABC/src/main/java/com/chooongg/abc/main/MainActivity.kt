@@ -1,7 +1,6 @@
 package com.chooongg.abc.main
 
 import android.os.Bundle
-import androidx.appcompat.widget.PopupMenu
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
@@ -14,6 +13,7 @@ import com.chooongg.core.activity.BoxBindingActivity
 import com.chooongg.core.annotation.TopAppBar
 import com.chooongg.core.fragment.BoxFragment
 import com.chooongg.core.fragment.BoxFragmentStateAdapter
+import com.chooongg.ext.showToast
 
 @TopAppBar(TopAppBar.TYPE_NONE)
 class MainActivity : BoxBindingActivity<ActivityMainBinding>() {

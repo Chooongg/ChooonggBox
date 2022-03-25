@@ -20,6 +20,7 @@ import com.chooongg.core.fragment.BoxBindingFragment
 import com.chooongg.ext.attrColor
 import com.chooongg.ext.dp2px
 import com.chooongg.ext.resourcesDimensionPixelSize
+import com.chooongg.ext.showToast
 
 @TopAppBar(TopAppBar.TYPE_SMALL)
 class HomeFragment : BoxBindingFragment<FragmentHomeBinding>(), OnItemClickListener {
@@ -54,6 +55,11 @@ class HomeFragment : BoxBindingFragment<FragmentHomeBinding>(), OnItemClickListe
             "TopAppBar" -> startActivityTransitionPage(TopAppbarActivity::class, view)
             "StatusLayout" -> startActivityTransitionPage(StatusLayoutActivity::class,view)
         }
+    }
+
+    override fun onReselected() {
+        super.onReselected()
+        showToast("asdfasdf")
     }
 
     private class Adapter : BindingAdapter<String, ItemHomeBinding>() {
