@@ -96,18 +96,21 @@
     </declare-styleable>
 
     <!-- 正方形布局 -->
-    <declare-styleable name="SquareCardView">
-        <attr name="basisAxis" />
+    <declare-styleable name="RatioCardView">
+        <!-- 宽高比例 -->
+        <attr name="sizeRatio" format="string" />
     </declare-styleable>
 
     <!-- 正方形布局 -->
-    <declare-styleable name="SquareConstraintLayout">
-        <attr name="basisAxis" />
+    <declare-styleable name="RatioConstraintLayout">
+        <!-- 宽高比例 -->
+        <attr name="sizeRatio" format="string" />
     </declare-styleable>
 
     <!-- 正方形布局 -->
-    <declare-styleable name="SquareFrameLayout">
-        <attr name="basisAxis" />
+    <declare-styleable name="RatioFrameLayout">
+        <!-- 宽高比例 -->
+        <attr name="sizeRatio" format="string" />
     </declare-styleable>
 
     <declare-styleable name="TyperTextView">
