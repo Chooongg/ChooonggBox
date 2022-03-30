@@ -33,7 +33,10 @@ class RatioConstraintLayout @JvmOverloads constructor(
                     widthRatio = arrays[0].toFloat()
                     heightRatio = arrays[1].toFloat()
                 }
-                else -> throw IllegalArgumentException("are you ok?")
+                else -> {
+                    widthRatio = 1f
+                    heightRatio = 1f
+                }
             }
         }
         array.recycle()
