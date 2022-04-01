@@ -7,10 +7,7 @@ import android.view.View
 import android.widget.FrameLayout
 import androidx.core.view.children
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
-import com.chooongg.ext.doOnClick
-import com.chooongg.ext.dp2px
-import com.chooongg.ext.gone
-import com.chooongg.ext.visible
+import com.chooongg.ext.*
 import com.chooongg.statusLayout.status.AbstractStatus
 import com.chooongg.statusLayout.status.SuccessStatus
 import kotlin.reflect.KClass
@@ -68,8 +65,9 @@ class StatusLayout @JvmOverloads constructor(
                 it.visible()
                 if (enableAnimation) {
                     it.animate().cancel()
-                    it.animate().setInterpolator(FastOutSlowInInterpolator())
-                        .alpha(1f).translationY(0f)
+                    it.animate().setInterpolator(FastOutSlowInInterpolator()).setDuration(
+                        resourcesInteger(android.R.integer.config_shortAnimTime).toLong()
+                    ).alpha(1f).translationY(0f)
 
                 }
             }
@@ -82,16 +80,18 @@ class StatusLayout @JvmOverloads constructor(
                     it.visible()
                     if (enableAnimation) {
                         it.animate().cancel()
-                        it.animate().setInterpolator(FastOutSlowInInterpolator())
-                            .alpha(1f).translationY(0f)
+                        it.animate().setInterpolator(FastOutSlowInInterpolator()).setDuration(
+                            resourcesInteger(android.R.integer.config_shortAnimTime).toLong()
+                        ).alpha(1f).translationY(0f)
                     }
                 }
             } else {
                 successViews.forEach {
                     if (enableAnimation) {
                         it.animate().cancel()
-                        it.animate().setInterpolator(FastOutSlowInInterpolator())
-                            .alpha(0f).translationY(dp2px(16f).toFloat())
+                        it.animate().setInterpolator(FastOutSlowInInterpolator()).setDuration(
+                            resourcesInteger(android.R.integer.config_shortAnimTime).toLong()
+                        ).alpha(0f).translationY(dp2px(4f).toFloat())
                             .withEndAction { it.gone() }
                     } else {
                         it.gone()
@@ -112,7 +112,7 @@ class StatusLayout @JvmOverloads constructor(
                     obtainTargetView(context)
                     if (enableAnimation) {
                         targetView.alpha = 0f
-                        targetView.translationY = dp2px(16f).toFloat()
+                        targetView.translationY = dp2px(4f).toFloat()
                     }
                     onAttach(targetView, message)
                     getReloadEventView(targetView)?.doOnClick {
@@ -125,8 +125,9 @@ class StatusLayout @JvmOverloads constructor(
         currentStatus = statusClass
         if (enableAnimation) {
             status.targetView.animate().cancel()
-            status.targetView.animate().setInterpolator(FastOutSlowInInterpolator())
-                .alpha(1f).translationY(0f)
+            status.targetView.animate().setInterpolator(FastOutSlowInInterpolator()).setDuration(
+                resourcesInteger(android.R.integer.config_shortAnimTime).toLong()
+            ).alpha(1f).translationY(0f)
         }
     }
 
@@ -139,8 +140,9 @@ class StatusLayout @JvmOverloads constructor(
         status.onDetach(status.targetView)
         if (enableAnimation) {
             status.targetView.animate().cancel()
-            status.targetView.animate().setInterpolator(FastOutSlowInInterpolator())
-                .alpha(0f).translationY(dp2px(16f).toFloat())
+            status.targetView.animate().setInterpolator(FastOutSlowInInterpolator()).setDuration(
+                resourcesInteger(android.R.integer.config_shortAnimTime).toLong()
+            ).alpha(0f).translationY(dp2px(4f).toFloat())
                 .withEndAction {
                     removeView(status.targetView)
                     existingStatus.remove(statusClass)

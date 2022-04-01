@@ -137,10 +137,12 @@ private fun getActivityOption(
 ): ActivityOptionsCompat? {
     ActivityOptionsCompat.makeBasic()
     return if (activity != null) {
-        if (sharedElements.size == 1) {
-            ActivityOptionsCompat.makeSceneTransitionAnimation(
+        when (sharedElements.size) {
+//            0-> ActivityOptionsCompat.makeBasic()
+            1 -> ActivityOptionsCompat.makeSceneTransitionAnimation(
                 activity, sharedElements[0].first, sharedElements[0].second
             )
-        } else ActivityOptionsCompat.makeSceneTransitionAnimation(activity, *sharedElements)
+            else -> ActivityOptionsCompat.makeSceneTransitionAnimation(activity, *sharedElements)
+        }
     } else null
 }

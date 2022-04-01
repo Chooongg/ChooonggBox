@@ -24,6 +24,7 @@ import com.google.android.material.color.MaterialColors
 import com.google.android.material.transition.platform.MaterialArcMotion
 import com.google.android.material.transition.platform.MaterialContainerTransform
 import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback
+import com.google.android.material.transition.platform.MaterialSharedAxis
 
 @ActivityEdgeToEdge
 abstract class BoxActivity : AppCompatActivity(), InitAction {
@@ -48,8 +49,13 @@ abstract class BoxActivity : AppCompatActivity(), InitAction {
         // 如果开启 Activity 过渡动画则初始化 Material 效果
         if (getActivityTransitions4Annotation()) {
             window.requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS)
+            window.requestFeature(Window.FEATURE_CONTENT_TRANSITIONS)
             val contentView = contentView
             contentView.transitionName = "box_transitions_content"
+            window.enterTransition = MaterialSharedAxis(MaterialSharedAxis.Y, true)
+            window.exitTransition = null
+            window.returnTransition = MaterialSharedAxis(MaterialSharedAxis.Y, false)
+            window.reenterTransition = null
             setEnterSharedElementCallback(MaterialContainerTransformSharedElementCallback())
             setExitSharedElementCallback(MaterialContainerTransformSharedElementCallback())
             window.sharedElementEnterTransition = buildContainerTransform(contentView, true)
