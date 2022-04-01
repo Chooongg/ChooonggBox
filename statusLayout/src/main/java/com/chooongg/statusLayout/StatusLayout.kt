@@ -35,7 +35,10 @@ class StatusLayout @JvmOverloads constructor(
 
     private var onStatusChangeListener: ((KClass<out AbstractStatus>) -> Unit)? = null
 
-    init {
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        successViews.clear()
+        children.forEach { if (it.tag !is String || it.tag != STATUS_ITEM_TAG) successViews.add(it) }
         if (!isInEditMode) show(StatusPage.config.defaultState)
     }
 
