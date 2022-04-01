@@ -2,8 +2,7 @@
 <com.chooongg.statusLayout.StatusLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/status_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:animateLayoutChanges="true">
+    android:layout_height="match_parent">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_progress"
