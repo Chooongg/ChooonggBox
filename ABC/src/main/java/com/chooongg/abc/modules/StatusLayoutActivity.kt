@@ -20,7 +20,7 @@ class StatusLayoutActivity : BoxBindingActivity<ActivityStatusLayoutBinding>() {
     override fun initContent(savedInstanceState: Bundle?) {
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.status_layout, menu)
         return true
     }
