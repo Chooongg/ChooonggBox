@@ -16,11 +16,11 @@ import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import com.chooongg.core.R
 import com.chooongg.core.action.InitAction
 import com.chooongg.core.annotation.*
+import com.chooongg.core.ext.getMaterialColor
 import com.chooongg.core.toolbar.BoxToolbar
 import com.chooongg.ext.*
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.CollapsingToolbarLayout
-import com.google.android.material.color.MaterialColors
 import com.google.android.material.transition.platform.MaterialArcMotion
 import com.google.android.material.transition.platform.MaterialContainerTransform
 import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback
@@ -131,11 +131,7 @@ abstract class BoxActivity : AppCompatActivity(), InitAction {
 
     private fun buildContainerTransform(contentView: View, entering: Boolean) =
         MaterialContainerTransform(this, entering).apply {
-            setAllContainerColors(
-                MaterialColors.getColor(
-                    contentView, com.google.android.material.R.attr.colorSurface
-                )
-            )
+            setAllContainerColors(contentView.getMaterialColor(com.google.android.material.R.attr.colorSurface))
             addTarget(contentView.id)
             fadeMode = MaterialContainerTransform.FADE_MODE_THROUGH
             interpolator = FastOutSlowInInterpolator()

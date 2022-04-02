@@ -31,7 +31,7 @@ abstract class BoxFragment : Fragment(), InitAction {
         private set
 
     @IdRes
-    protected open fun getLiftOnScrollTargetId(): Int? = null
+    open fun getLiftOnScrollTargetId(): Int? = null
 
     open fun onReselected() = Unit
 

@@ -11,7 +11,9 @@ class BoxFragmentAdapter<T : BoxFragment> : FragmentStateAdapter {
 
     private val fragments: MutableList<T>
 
-    constructor(fragmentActivity: FragmentActivity, fragments: MutableList<T>) : super(fragmentActivity) {
+    constructor(fragmentActivity: FragmentActivity, fragments: MutableList<T>) : super(
+        fragmentActivity
+    ) {
         this.fragments = fragments
     }
 
@@ -19,7 +21,11 @@ class BoxFragmentAdapter<T : BoxFragment> : FragmentStateAdapter {
         this.fragments = fragments
     }
 
-    constructor(fragmentManager: FragmentManager, lifecycle: Lifecycle, fragments: MutableList<T>) : super(fragmentManager, lifecycle) {
+    constructor(
+        fragmentManager: FragmentManager,
+        lifecycle: Lifecycle,
+        fragments: MutableList<T>
+    ) : super(fragmentManager, lifecycle) {
         this.fragments = fragments
     }
 
@@ -29,4 +35,6 @@ class BoxFragmentAdapter<T : BoxFragment> : FragmentStateAdapter {
     override fun createFragment(position: Int) = fragments[position]
 
     fun getTitle(position: Int) = fragments[position].title
+
+    fun getLiftOnScrollTargetId(position: Int) = fragments[position].getLiftOnScrollTargetId()
 }

@@ -10,9 +10,9 @@ import com.chooongg.abc.databinding.ActivityMainBinding
 import com.chooongg.abc.main.fragment.ColorFragment
 import com.chooongg.abc.main.fragment.HomeFragment
 import com.chooongg.core.activity.BoxBindingActivity
+import com.chooongg.core.adapter.BoxFragmentAdapter
 import com.chooongg.core.annotation.TopAppBar
 import com.chooongg.core.fragment.BoxFragment
-import com.chooongg.core.fragment.BoxFragmentStateAdapter
 
 @TopAppBar(TopAppBar.TYPE_NONE)
 class MainActivity : BoxBindingActivity<ActivityMainBinding>() {
@@ -27,7 +27,7 @@ class MainActivity : BoxBindingActivity<ActivityMainBinding>() {
             insets
         }
         binding.viewPager.offscreenPageLimit = 666
-        binding.viewPager.adapter = BoxFragmentStateAdapter(this, fragments)
+        binding.viewPager.adapter = BoxFragmentAdapter(this, fragments)
         binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 when (position) {
