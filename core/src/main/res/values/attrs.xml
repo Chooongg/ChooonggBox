@@ -97,6 +97,23 @@
         </attr>
     </declare-styleable>
 
+    <declare-styleable name="PickerRecyclerView">
+        <attr name="orientation" format="enum">
+            <enum name="horizontal" value="0" />
+            <enum name="vertical" value="1" />
+        </attr>
+        <attr name="visibleCount" format="integer" />
+        <attr name="isLoop" format="boolean" />
+        <attr name="scaleX" format="float" />
+        <attr name="scaleY" format="float" />
+        <attr name="alpha" format="float" />
+
+        <attr name="dividerVisible"  format="boolean"/>
+        <attr name="dividerColor" format="color"/>
+        <attr name="dividerSize" format="dimension"/>
+        <attr name="dividerMargin" format="dimension"/>
+    </declare-styleable>
+
     <!-- 正方形布局 -->
     <declare-styleable name="RatioCardView">
         <!-- 宽高比例 -->
