@@ -26,14 +26,11 @@ class HttpInitializer : Initializer<Unit> {
                     add(SvgDecoder.Factory())
                     add(VideoFrameDecoder.Factory())
                 }.placeholder(
-                    context.attrColor(com.google.android.material.R.attr.colorOutline, Color.GRAY)
+                    context.attrColor(com.google.android.material.R.attr.colorOutline)
                 ).fallback(
-                    context.attrColor(com.google.android.material.R.attr.colorOutline, Color.GRAY)
+                    context.attrColor(com.google.android.material.R.attr.colorOutline)
                 ).error(
-                    context.attrColor(
-                        com.google.android.material.R.attr.colorErrorContainer,
-                        Color.GRAY
-                    )
+                    context.attrColor(com.google.android.material.R.attr.colorErrorContainer)
                 ).build()
         )
     }

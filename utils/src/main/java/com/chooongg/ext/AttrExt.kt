@@ -2,6 +2,7 @@ package com.chooongg.ext
 
 import android.content.Context
 import android.content.res.ColorStateList
+import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.util.TypedValue
 import android.view.View
@@ -44,7 +45,7 @@ fun Context.attrFloat(@AttrRes id: Int, defValue: Float): Float {
     return float
 }
 
-fun Context.attrColor(@AttrRes id: Int, @ColorInt defValue: Int): Int {
+fun Context.attrColor(@AttrRes id: Int, @ColorInt defValue: Int = Color.GRAY): Int {
     val a = obtainStyledAttributes(intArrayOf(id))
     val color = a.getColor(0, defValue)
     a.recycle()
@@ -117,7 +118,7 @@ fun Fragment.attrInt(@AttrRes id: Int, defValue: Int) =
 fun Fragment.attrFloat(@AttrRes id: Int, defValue: Float) =
     requireContext().attrFloat(id, defValue)
 
-fun Fragment.attrColor(@AttrRes id: Int, @ColorInt defValue: Int) =
+fun Fragment.attrColor(@AttrRes id: Int, @ColorInt defValue: Int = Color.GRAY) =
     requireContext().attrColor(id, defValue)
 
 fun Fragment.attrColorStateList(@AttrRes id: Int) =
@@ -156,7 +157,7 @@ fun View.attrInt(@AttrRes id: Int, defValue: Int) =
 fun View.attrFloat(@AttrRes id: Int, defValue: Float) =
     context.attrFloat(id, defValue)
 
-fun View.attrColor(@AttrRes id: Int, @ColorInt defValue: Int) =
+fun View.attrColor(@AttrRes id: Int, @ColorInt defValue: Int = Color.GRAY) =
     context.attrColor(id, defValue)
 
 fun View.attrColorStateList(@AttrRes id: Int) =
@@ -231,7 +232,11 @@ fun Context.attrChildFloat(@AttrRes id: Int, @AttrRes childId: Int, defValue: Fl
     return float
 }
 
-fun Context.attrChildColor(@AttrRes id: Int, @AttrRes childId: Int, @ColorInt defValue: Int): Int {
+fun Context.attrChildColor(
+    @AttrRes id: Int,
+    @AttrRes childId: Int,
+    @ColorInt defValue: Int = Color.GRAY
+): Int {
     val typedValue = TypedValue()
     theme.resolveAttribute(id, typedValue, true)
     val attribute = intArrayOf(childId)
@@ -335,7 +340,7 @@ fun Fragment.attrChildInt(@AttrRes id: Int, @AttrRes childId: Int, defValue: Int
 fun Fragment.attrChildFloat(@AttrRes id: Int, @AttrRes childId: Int, defValue: Float) =
     requireContext().attrChildFloat(id, childId, defValue)
 
-fun Fragment.attrChildColor(@AttrRes id: Int, @AttrRes childId: Int, @ColorInt defValue: Int) =
+fun Fragment.attrChildColor(@AttrRes id: Int, @AttrRes childId: Int, @ColorInt defValue: Int = Color.GRAY) =
     requireContext().attrChildColor(id, childId, defValue)
 
 fun Fragment.attrChildColorStateList(@AttrRes id: Int, @AttrRes childId: Int) =
@@ -374,7 +379,7 @@ fun View.attrChildInt(@AttrRes id: Int, @AttrRes childId: Int, defValue: Int) =
 fun View.attrChildFloat(@AttrRes id: Int, @AttrRes childId: Int, defValue: Float) =
     context.attrChildFloat(id, childId, defValue)
 
-fun View.attrChildColor(@AttrRes id: Int, @AttrRes childId: Int, @ColorInt defValue: Int) =
+fun View.attrChildColor(@AttrRes id: Int, @AttrRes childId: Int, @ColorInt defValue: Int = Color.GRAY) =
     context.attrChildColor(id, childId, defValue)
 
 fun View.attrChildColorStateList(@AttrRes id: Int, @AttrRes childId: Int) =

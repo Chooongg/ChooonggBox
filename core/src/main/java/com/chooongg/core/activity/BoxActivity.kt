@@ -98,7 +98,7 @@ abstract class BoxActivity : AppCompatActivity(), InitAction {
         super.onPostCreate(savedInstanceState)
         val contentView = contentView
         if (contentView.background == null) {
-            contentView.setBackgroundColor(attrColor(android.R.attr.colorBackground, Color.GRAY))
+            contentView.setBackgroundColor(attrColor(android.R.attr.colorBackground))
         }
         contentView.isFocusable = true
         contentView.isFocusableInTouchMode = true
