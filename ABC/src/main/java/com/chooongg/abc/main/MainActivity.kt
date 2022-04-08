@@ -26,6 +26,7 @@ class MainActivity : BoxBindingActivity<ActivityMainBinding>() {
             view.updatePadding(bottom = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom)
             insets
         }
+        binding.viewPager.isUserInputEnabled = false
         binding.viewPager.offscreenPageLimit = 666
         binding.viewPager.adapter = BoxFragmentAdapter(this, fragments)
         binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {

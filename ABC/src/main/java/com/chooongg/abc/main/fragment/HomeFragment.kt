@@ -17,6 +17,7 @@ import com.chooongg.core.ext.startActivity
 import com.chooongg.core.ext.startActivityTransitionPage
 import com.chooongg.core.fragment.BoxBindingFragment
 import com.chooongg.ext.resourcesDimensionPixelSize
+import com.chooongg.ext.showToast
 
 @TopAppBar(TopAppBar.TYPE_SMALL)
 class HomeFragment : BoxBindingFragment<FragmentHomeBinding>(), OnItemClickListener {
@@ -52,6 +53,10 @@ class HomeFragment : BoxBindingFragment<FragmentHomeBinding>(), OnItemClickListe
         }
     }
 
+    override fun onReselected() {
+        super.onReselected()
+        showToast("onReselected ColorFragment")
+    }
 
     private class Adapter : BindingAdapter<String, ItemHomeBinding>() {
         override fun convert(holder: BaseViewHolder, binding: ItemHomeBinding, item: String) {

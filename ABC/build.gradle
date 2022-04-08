@@ -41,4 +41,5 @@ dependencies {
     implementation "com.google.android.material:material:${materialVersion}"
     api project(":box")
     api project(":echarts")
+    implementation 'com.github.zawadz88.materialpopupmenu:material-popup-menu:4.1.0'
 }
