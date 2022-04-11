@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <drawable name="box_ic_menu_end">@drawable/ic_menu_end_left</drawable>
+</resources>

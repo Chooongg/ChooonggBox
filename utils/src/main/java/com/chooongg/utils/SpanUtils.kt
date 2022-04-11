@@ -6,6 +6,8 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Typeface
 import android.graphics.drawable.Drawable
+import android.text.Spannable
+import android.text.SpannableString
 import android.text.style.*
 import androidx.annotation.IntDef
 import androidx.annotation.StringDef
@@ -35,6 +37,22 @@ class SpanUtils(val content: CharSequence) {
     operator fun plus(nextVal: SpanUtils) = append(nextVal)
 
     operator fun plus(content: CharSequence) = append(content)
+
+    fun build():CharSequence{
+        val builder = StringBuilder()
+        textConstructor.forEach { builder.append(it) }
+        val spanStr = SpannableString(builder.toString())
+        var index = 0
+        textConstructor.forEachIndexed { position, str ->
+            val end = index + str.length
+            styles[position].forEach {
+                spanStr.setSpan(it, index, end, Spannable.SPAN_INCLUSIVE_EXCLUSIVE)
+//                if (it is URLSpan) this.movementMethod = LinkMovementMethod()
+            }
+            index += str.length
+        }
+        return spanStr
+    }
 
     /**
      * 设置背景色

@@ -6,16 +6,6 @@
         <enum name="basisHeight" value="1" />
     </attr>
 
-    <attr name="sizeRatio" format="string" />
-
-    <attr name="shimmer_color" format="color" />
-    <attr name="shimmer_animation_duration" format="integer" />
-    <attr name="shimmer_auto_start" format="boolean" />
-    <attr name="shimmer_angle" format="integer" />
-    <attr name="shimmer_mask_width" format="float" />
-    <attr name="shimmer_gradient_center_color_width" format="float" />
-    <attr name="shimmer_reverse_animation" format="boolean" />
-
     <!-- 自动文字大小调整 -->
     <declare-styleable name="AutoSizeTextView">
         <attr name="ast_autoSizeEnable" format="boolean" />
@@ -44,6 +34,14 @@
         <attr name="snapScrollMsPerInch" format="float" />
         <attr name="snapMaxFlingSizeFraction" format="float" />
     </declare-styleable>
+
+    <attr name="shimmer_color" format="color" />
+    <attr name="shimmer_animation_duration" format="integer" />
+    <attr name="shimmer_auto_start" format="boolean" />
+    <attr name="shimmer_angle" format="integer" />
+    <attr name="shimmer_mask_width" format="float" />
+    <attr name="shimmer_gradient_center_color_width" format="float" />
+    <attr name="shimmer_reverse_animation" format="boolean" />
 
     <!-- 蒙版ConstraintLayout -->
     <declare-styleable name="ShimmerConstraintLayout">
@@ -113,6 +111,8 @@
         <attr name="dividerSize" format="dimension"/>
         <attr name="dividerMargin" format="dimension"/>
     </declare-styleable>
+
+    <attr name="sizeRatio" format="string" />
 
     <!-- 正方形布局 -->
     <declare-styleable name="RatioCardView">

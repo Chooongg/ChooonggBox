@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/contentSmall"
+        android:layout_marginBottom="@dimen/contentSmall"
+        app:dividerColor="?colorOutline" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/contentMedium"
+        android:layout_marginEnd="@dimen/contentMedium"
+        android:layout_marginBottom="@dimen/contentSmall"
+        android:alpha="0.7"
+        android:ellipsize="end"
+        android:lines="1"
+        android:textAppearance="?textAppearanceBodySmall"
+        tools:text="Header"
+        tools:visibility="visible" />
+
+</LinearLayout>

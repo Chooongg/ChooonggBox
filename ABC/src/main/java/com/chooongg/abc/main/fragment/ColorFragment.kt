@@ -2,16 +2,14 @@ package com.chooongg.abc.main.fragment
 
 import android.os.Bundle
 import android.view.Gravity
-import androidx.appcompat.widget.PopupMenu
 import com.chooongg.abc.databinding.FragmentColorBinding
-import com.chooongg.abc.main.MainActivity
 import com.chooongg.core.annotation.Title
 import com.chooongg.core.annotation.TopAppBar
-import com.chooongg.core.ext.startActivityTransitionPage
+import com.chooongg.core.ext.getMaterialColor
 import com.chooongg.core.fragment.BoxBindingFragment
+import com.chooongg.core.popupMenu.popupMenu
 import com.chooongg.ext.doOnClick
-import com.chooongg.ext.showToast
-import com.github.zawadz88.materialpopupmenu.popupMenu
+import com.chooongg.ext.style
 
 @Title("Color")
 @TopAppBar(TopAppBar.TYPE_SMALL)
@@ -20,12 +18,14 @@ class ColorFragment : BoxBindingFragment<FragmentColorBinding>() {
         binding.test.doOnClick {
 //            startActivityTransitionPage(MainActivity::class, it)
             popupMenu {
-                this.fixedContentWidthInPx = it.width
-                this.dropdownGravity = Gravity.START
+                this.dropdownGravity = Gravity.END
+                dropDownVerticalOffset = -it.height / 2
                 section {
 //                    title = "测试标签"
                     item {
-                        label = "测试"
+                        label = "测试".style {
+                            setForegroundColor(binding.test.getMaterialColor(com.google.android.material.R.attr.colorPrimary))
+                        }.build()
                     }
                     item {
                         label = "学习"
