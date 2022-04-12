@@ -83,7 +83,7 @@ class EventBusCore : ViewModel() {
         stickyEventFlows.remove(eventName)
     }
 
-    @Suppress("EXPERIMENTAL_API_USAGE")
+    @Suppress("EXPERIMENTAL_API_USAGE", "OPT_IN_USAGE")
     fun clearStickEvent(eventName: String) {
         stickyEventFlows[eventName]?.resetReplayCache()
     }
