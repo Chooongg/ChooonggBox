@@ -2,8 +2,13 @@ package com.chooongg.ext
 
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.graphics.Rect
 import android.view.View
 
+val View?.localVisibleRect: Rect get() = Rect().also { this?.getLocalVisibleRect(it) }
+val View?.globalVisibleRect: Rect get() = Rect().also { this?.getGlobalVisibleRect(it) }
+val View?.isRectVisible: Boolean get() = this != null && globalVisibleRect != localVisibleRect
+val View?.isVisible: Boolean get() = this != null && visibility == View.VISIBLE
 fun View.visible() = apply { if (visibility != View.VISIBLE) visibility = View.VISIBLE }
 fun View.inVisible() = apply { if (visibility != View.INVISIBLE) visibility = View.INVISIBLE }
 fun View.gone() = apply { if (visibility != View.GONE) visibility = View.GONE }
@@ -43,6 +48,14 @@ fun setOnClicks(vararg views: View, block: (View) -> Unit) {
  */
 fun setOnLongClicks(vararg views: View, block: (View) -> Boolean) {
     views.forEach { it.doOnLongClick(block) }
+}
+
+inline fun <T : View> T.postApply(crossinline block: T.() -> Unit) {
+    post { apply(block) }
+}
+
+inline fun <T : View> T.postDelayed(delayMillis: Long, crossinline block: T.() -> Unit) {
+    postDelayed({ block() }, delayMillis)
 }
 
 /**

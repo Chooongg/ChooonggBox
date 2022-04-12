@@ -20,6 +20,8 @@ class MaterialPopupMenuBuilder {
 
     var style: Int = 0
 
+    var overlapAnchor: Boolean? = null
+
     var dropdownGravity: Int = Gravity.NO_GRAVITY
 
     var fixedWidth: Int = ViewGroup.LayoutParams.WRAP_CONTENT
@@ -32,7 +34,6 @@ class MaterialPopupMenuBuilder {
     var dropdownPaddingTop: Int = 0
     var dropdownPaddingEnd: Int = 0
     var dropdownPaddingBottom: Int = 0
-
 
     private val sectionHolderList = arrayListOf<SectionHolder>()
 
@@ -71,13 +72,14 @@ class MaterialPopupMenuBuilder {
             style = style,
             sections = sections,
         ).apply {
+            overlapAnchor = this@MaterialPopupMenuBuilder.overlapAnchor
             width = fixedWidth
             gravity = dropdownGravity
             verticalOffset = dropDownVerticalOffset
             horizontalOffset = dropDownHorizontalOffset
             paddingStart = dropdownPaddingStart
-            paddingTop = dropdownPaddingTop
             paddingEnd = dropdownPaddingEnd
+            paddingTop = dropdownPaddingTop
             paddingBottom = dropdownPaddingBottom
         }
     }

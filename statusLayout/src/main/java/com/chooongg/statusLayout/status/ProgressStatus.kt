@@ -1,6 +1,5 @@
 package com.chooongg.statusLayout.status
 
-import android.graphics.Color
 import android.view.View
 import com.chooongg.ext.dp2px
 import com.chooongg.ext.gone

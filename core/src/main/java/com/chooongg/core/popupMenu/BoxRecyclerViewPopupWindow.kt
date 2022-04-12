@@ -34,6 +34,7 @@ internal class BoxRecyclerViewPopupWindow(
     private val popupWidthUnit: Int = dp2px(56f)
 
     private val popup: PopupWindow = PopupWindow(context, null, R.attr.popupMenuStyle)
+    var overlapAnchor: Boolean? = null
     var width = ViewGroup.LayoutParams.WRAP_CONTENT
     var gravity: Int = Gravity.NO_GRAVITY
     var verticalOffset: Int = 0
@@ -59,6 +60,9 @@ internal class BoxRecyclerViewPopupWindow(
     }
 
     internal fun show() {
+        if (overlapAnchor != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            popup.overlapAnchor = overlapAnchor!!
+        }
         val height = buildDropDown()
         PopupWindowCompat.setWindowLayoutType(
             popup,
@@ -120,6 +124,7 @@ internal class BoxRecyclerViewPopupWindow(
         var otherHeights = 0
 
         val dropDownList = RecyclerView(context).apply {
+            elevation = popup.elevation
             overScrollMode = View.OVER_SCROLL_NEVER
             adapter = this@BoxRecyclerViewPopupWindow.adapter
             layoutManager = LinearLayoutManager(context)
@@ -147,7 +152,7 @@ internal class BoxRecyclerViewPopupWindow(
             popup.getMaxAvailableHeight(anchorView, verticalOffset)
         }
 
-        if (popup.background != null) {
+        if (popup.background!= null) {
             popup.background.getPadding(tempRect)
             otherHeights += tempRect.top + tempRect.bottom
         } else {

@@ -16,33 +16,33 @@
             android:layout_marginTop="@dimen/contentLarge">
 
             <FrameLayout
+                android:id="@+id/btn_primary"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_weight="1"
-                android:background="?attr/colorPrimary">
+                android:background="?colorPrimary">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="Primary"
-                    android:textColor="?attr/colorOnPrimary" />
-
+                    android:textColor="?colorOnPrimary" />
             </FrameLayout>
 
             <FrameLayout
+                android:id="@+id/btn_on_primary"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_weight="1"
-                android:background="?attr/colorOnPrimary">
+                android:background="?colorOnPrimary">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="OnPrimary"
-                    android:textColor="?attr/colorPrimary" />
-
+                    android:textColor="?colorPrimary" />
             </FrameLayout>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -52,6 +52,7 @@
             android:layout_height="wrap_content">
 
             <FrameLayout
+                android:id="@+id/btn_primary_container"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_weight="1"
@@ -63,10 +64,10 @@
                     android:layout_gravity="center"
                     android:text="PrimaryContainer"
                     android:textColor="?attr/colorOnPrimaryContainer" />
-
             </FrameLayout>
 
             <FrameLayout
+                android:id="@+id/btn_on_primary_container"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_weight="1"
@@ -78,7 +79,6 @@
                     android:layout_gravity="center"
                     android:text="OnPrimaryContainer"
                     android:textColor="?attr/colorPrimaryContainer" />
-
             </FrameLayout>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -89,7 +89,7 @@
             android:layout_marginTop="@dimen/contentLarge">
 
             <FrameLayout
-                android:id="@+id/test"
+                android:id="@+id/btn_secondary"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_weight="1"
@@ -101,10 +101,10 @@
                     android:layout_gravity="center"
                     android:text="Secondary"
                     android:textColor="?attr/colorOnSecondary" />
-
             </FrameLayout>
 
             <FrameLayout
+                android:id="@+id/btn_on_secondary"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_weight="1"
@@ -116,7 +116,6 @@
                     android:layout_gravity="center"
                     android:text="OnSecondary"
                     android:textColor="?attr/colorSecondary" />
-
             </FrameLayout>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -126,6 +125,7 @@
             android:layout_height="wrap_content">
 
             <FrameLayout
+                android:id="@+id/btn_secondary_container"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_weight="1"
@@ -137,10 +137,10 @@
                     android:layout_gravity="center"
                     android:text="SecondaryContainer"
                     android:textColor="?attr/colorOnSecondaryContainer" />
-
             </FrameLayout>
 
             <FrameLayout
+                android:id="@+id/btn_on_secondary_container"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_weight="1"
@@ -152,7 +152,6 @@
                     android:layout_gravity="center"
                     android:text="OnSecondaryContainer"
                     android:textColor="?attr/colorSecondaryContainer" />
-
             </FrameLayout>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -163,6 +162,7 @@
             android:layout_marginTop="@dimen/contentLarge">
 
             <FrameLayout
+                android:id="@+id/btn_tertiary"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_weight="1"
@@ -174,10 +174,10 @@
                     android:layout_gravity="center"
                     android:text="Tertiary"
                     android:textColor="?attr/colorOnTertiary" />
-
             </FrameLayout>
 
             <FrameLayout
+                android:id="@+id/btn_on_tertiary"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_weight="1"
@@ -189,7 +189,6 @@
                     android:layout_gravity="center"
                     android:text="OnTertiary"
                     android:textColor="?attr/colorTertiary" />
-
             </FrameLayout>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -199,6 +198,7 @@
             android:layout_height="wrap_content">
 
             <FrameLayout
+                android:id="@+id/btn_tertiary_container"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_weight="1"
@@ -210,10 +210,10 @@
                     android:layout_gravity="center"
                     android:text="TertiaryContainer"
                     android:textColor="?attr/colorOnTertiaryContainer" />
-
             </FrameLayout>
 
             <FrameLayout
+                android:id="@+id/btn_on_tertiary_container"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_weight="1"
@@ -225,7 +225,6 @@
                     android:layout_gravity="center"
                     android:text="OnTertiaryContainer"
                     android:textColor="?attr/colorTertiaryContainer" />
-
             </FrameLayout>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -236,6 +235,7 @@
             android:layout_marginTop="@dimen/contentLarge">
 
             <FrameLayout
+                android:id="@+id/btn_error"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_weight="1"
@@ -247,10 +247,10 @@
                     android:layout_gravity="center"
                     android:text="Error"
                     android:textColor="?attr/colorOnError" />
-
             </FrameLayout>
 
             <FrameLayout
+                android:id="@+id/btn_on_error"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_weight="1"
@@ -262,7 +262,6 @@
                     android:layout_gravity="center"
                     android:text="OnError"
                     android:textColor="?attr/colorError" />
-
             </FrameLayout>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -272,6 +271,7 @@
             android:layout_height="wrap_content">
 
             <FrameLayout
+                android:id="@+id/btn_error_container"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_weight="1"
@@ -283,10 +283,10 @@
                     android:layout_gravity="center"
                     android:text="ErrorContainer"
                     android:textColor="?attr/colorOnErrorContainer" />
-
             </FrameLayout>
 
             <FrameLayout
+                android:id="@+id/btn_on_error_container"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_weight="1"
@@ -298,7 +298,6 @@
                     android:layout_gravity="center"
                     android:text="OnErrorContainer"
                     android:textColor="?attr/colorErrorContainer" />
-
             </FrameLayout>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -309,6 +308,7 @@
             android:layout_marginTop="@dimen/contentLarge">
 
             <FrameLayout
+                android:id="@+id/btn_surface"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_weight="1"
@@ -320,10 +320,10 @@
                     android:layout_gravity="center"
                     android:text="Surface"
                     android:textColor="?attr/colorOnSurface" />
-
             </FrameLayout>
 
             <FrameLayout
+                android:id="@+id/btn_on_surface"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_weight="1"
@@ -335,7 +335,6 @@
                     android:layout_gravity="center"
                     android:text="OnSurface"
                     android:textColor="?attr/colorSurface" />
-
             </FrameLayout>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -345,6 +344,7 @@
             android:layout_height="wrap_content">
 
             <FrameLayout
+                android:id="@+id/btn_surface_variant"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_weight="1"
@@ -356,10 +356,10 @@
                     android:layout_gravity="center"
                     android:text="SurfaceVariant"
                     android:textColor="?attr/colorOnSurfaceVariant" />
-
             </FrameLayout>
 
             <FrameLayout
+                android:id="@+id/btn_on_surface_variant"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_weight="1"
@@ -371,7 +371,6 @@
                     android:layout_gravity="center"
                     android:text="OnSurfaceVariant"
                     android:textColor="?attr/colorSurfaceVariant" />
-
             </FrameLayout>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -382,6 +381,7 @@
             android:layout_marginTop="@dimen/contentLarge">
 
             <FrameLayout
+                android:id="@+id/btn_background"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_weight="1"
@@ -393,10 +393,10 @@
                     android:layout_gravity="center"
                     android:text="Background"
                     android:textColor="?attr/colorOnBackground" />
-
             </FrameLayout>
 
             <FrameLayout
+                android:id="@+id/btn_on_background"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_weight="1"
@@ -408,7 +408,6 @@
                     android:layout_gravity="center"
                     android:text="OnBackground"
                     android:textColor="?android:attr/colorBackground" />
-
             </FrameLayout>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -419,6 +418,7 @@
             android:layout_marginBottom="@dimen/contentLarge">
 
             <FrameLayout
+                android:id="@+id/btn_outline"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_weight="1"
@@ -430,7 +430,6 @@
                     android:layout_gravity="center"
                     android:text="Outline"
                     android:textColor="@android:color/white" />
-
             </FrameLayout>
 
         </androidx.appcompat.widget.LinearLayoutCompat>

@@ -23,6 +23,8 @@ class BoxPopupMenu internal constructor(
 
     private var dismissListener: (() -> Unit)? = null
 
+    var overlapAnchor: Boolean? = null
+
     var gravity: Int = Gravity.NO_GRAVITY
     var width: Int = ViewGroup.LayoutParams.WRAP_CONTENT
     var verticalOffset: Int = 0
@@ -44,6 +46,7 @@ class BoxPopupMenu internal constructor(
         val styledContext = if (style != 0) ContextThemeWrapper(context, style) else context
 
         val popupWindow = BoxRecyclerViewPopupWindow(styledContext, anchor).apply {
+            overlapAnchor = this@BoxPopupMenu.overlapAnchor
             gravity = this@BoxPopupMenu.gravity
             width = this@BoxPopupMenu.width
             verticalOffset = this@BoxPopupMenu.verticalOffset
