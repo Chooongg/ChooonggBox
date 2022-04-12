@@ -16,6 +16,6 @@ ext {
     versionCode = 1
     versionName = '0.0.1'
 
-    appcompatVersion = '1.6.0-alpha01'
+    appcompatVersion = '1.4.1'
     materialVersion = '1.6.0-beta01'
 }
