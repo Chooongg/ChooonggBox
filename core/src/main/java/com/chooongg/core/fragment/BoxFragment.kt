@@ -104,8 +104,8 @@ abstract class BoxFragment : Fragment(), InitAction {
         logDTag("BOX --> Fragment", "${javaClass.simpleName}(${title}) onViewCreated")
         super.onViewCreated(view, savedInstanceState)
         if (isAutoHideIME4Annotation()) view.setOnClickListener {
-            hideIME()
             it.clearFocus()
+            hideIME()
         }
         initConfig(savedInstanceState)
         initContent(savedInstanceState)

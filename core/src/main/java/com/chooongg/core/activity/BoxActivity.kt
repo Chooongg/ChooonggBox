@@ -1,7 +1,6 @@
 package com.chooongg.core.activity
 
 import android.content.Context
-import android.graphics.Color
 import android.os.Bundle
 import android.view.*
 import androidx.annotation.IdRes
@@ -104,8 +103,8 @@ abstract class BoxActivity : AppCompatActivity(), InitAction {
         contentView.isFocusableInTouchMode = true
         // 设置自动隐藏软键盘
         if (isAutoHideIME4Annotation()) contentView.setOnClickListener {
-            hideIME()
             it.clearFocus()
+            hideIME()
         }
         initConfig(savedInstanceState)
         initContent(savedInstanceState)
