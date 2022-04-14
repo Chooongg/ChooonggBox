@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="BoxTheme.Surface" parent="Base.BoxTheme">
         <item name="android:statusBarColor">#11000000</item>
@@ -100,7 +100,7 @@
         <item name="subtitleCentered">false</item>
         <!-- Dialog -->
         <item name="materialAlertDialogTheme">
-            @style/ThemeOverlay.Material3.MaterialAlertDialog.FillWidth
+            @style/ThemeOverlay.Material3.MaterialAlertDialog.FillWidth.Center
         </item>
     </style>
 
@@ -115,6 +115,24 @@
     </style>
 
     <style name="ThemeOverlay.Material3.MaterialAlertDialog.FillWidth" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="materialAlertDialogButtonSpacerVisibility" tools:ignore="PrivateResource">
+            @integer/mtrl_view_gone
+        </item>
+        <item name="buttonBarPositiveButtonStyle">
+            @style/Widget.Material3.Button.TextButton.Dialog.FillWidth
+        </item>
+        <item name="buttonBarNegativeButtonStyle">
+            @style/Widget.Material3.Button.TextButton.Dialog.FillWidth
+        </item>
+        <item name="buttonBarNeutralButtonStyle">
+            @style/Widget.Material3.Button.TextButton.Dialog.FillWidth
+        </item>
+    </style>
+
+    <style name="ThemeOverlay.Material3.MaterialAlertDialog.FillWidth.Center" parent="ThemeOverlay.Material3.MaterialAlertDialog.Centered">
+        <item name="materialAlertDialogButtonSpacerVisibility" tools:ignore="PrivateResource">
+            @integer/mtrl_view_gone
+        </item>
         <item name="buttonBarPositiveButtonStyle">
             @style/Widget.Material3.Button.TextButton.Dialog.FillWidth
         </item>
