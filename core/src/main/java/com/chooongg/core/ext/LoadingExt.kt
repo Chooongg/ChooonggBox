@@ -8,6 +8,7 @@ import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.TextView
 import androidx.activity.ComponentActivity
+import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.chooongg.core.R
@@ -24,6 +25,14 @@ fun Activity.showLoading(
     } else showLoadingForActivity(message)
 }
 
+fun Activity.showLoading(@StringRes resId: Int, vararg format: Any?) {
+    if (format.isNullOrEmpty()) {
+        showLoading(resourcesString(resId))
+    } else {
+        showLoading(resourcesString(resId, *format))
+    }
+}
+
 /**
  * 隐藏加载框
  */
@@ -36,10 +45,12 @@ fun Activity.hideLoading() {
 /**
  * 显示加载框
  */
-fun Fragment.showLoading(
-    message: CharSequence?
-) {
+fun Fragment.showLoading(message: CharSequence?) {
     activity?.showLoading(message)
+}
+
+fun Fragment.showLoading(@StringRes resId: Int, vararg format: Any?) {
+    activity?.showLoading(resId, *format)
 }
 
 /**
