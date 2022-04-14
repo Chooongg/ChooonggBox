@@ -1,6 +1,9 @@
 package com.chooongg.abc.main
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
@@ -13,6 +16,7 @@ import com.chooongg.core.activity.BoxBindingActivity
 import com.chooongg.core.adapter.BoxFragmentAdapter
 import com.chooongg.core.annotation.TopAppBar
 import com.chooongg.core.fragment.BoxFragment
+import com.chooongg.ext.setNightMode
 
 @TopAppBar(TopAppBar.TYPE_NONE)
 class MainActivity : BoxBindingActivity<ActivityMainBinding>() {
