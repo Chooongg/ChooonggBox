@@ -124,7 +124,9 @@ class StatusLayout @JvmOverloads constructor(
                 }
         }
         val status = existingStatus[statusClass]!!
-        addView(status.targetView, LayoutParams(-2, -2, Gravity.CENTER))
+        if (status.targetView.parent == null) {
+            addView(status.targetView, LayoutParams(-2, -2, Gravity.CENTER))
+        }
         currentStatus = statusClass
         if (enableAnimation) {
             status.targetView.animate().cancel()
