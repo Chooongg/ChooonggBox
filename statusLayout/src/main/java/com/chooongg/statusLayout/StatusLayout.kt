@@ -161,8 +161,4 @@ class StatusLayout @JvmOverloads constructor(
     private fun createStatus(statusClass: KClass<out AbstractStatus>): AbstractStatus {
         return statusClass.java.newInstance()
     }
-
-    fun setEnableAnimator(enable: Boolean) {
-        this.enableAnimation = enable
-    }
 }
