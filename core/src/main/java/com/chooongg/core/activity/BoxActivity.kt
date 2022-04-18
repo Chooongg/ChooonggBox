@@ -63,9 +63,6 @@ abstract class BoxActivity : AppCompatActivity(), InitAction {
             initTransitions()
         }
         super.onCreate(savedInstanceState)
-        // 设置屏幕方向
-        val orientation4Annotation = getScreenOrientation4Annotation()
-        if (orientation4Annotation != null) requestedOrientation = orientation4Annotation
         // 注解标题解析
         val title4Annotation = getTitle4Annotation()
         if (title4Annotation != null) title = title4Annotation
@@ -228,9 +225,6 @@ abstract class BoxActivity : AppCompatActivity(), InitAction {
 
     private fun getTheme4Annotation() =
         javaClass.getAnnotation(Theme::class.java)?.value
-
-    private fun getScreenOrientation4Annotation() =
-        javaClass.getAnnotation(ActivityScreenOrientation::class.java)?.value
 
     private fun getActivityTransitions4Annotation() =
         javaClass.getAnnotation(ActivityTransitions::class.java)?.value ?: true

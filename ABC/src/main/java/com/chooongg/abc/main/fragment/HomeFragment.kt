@@ -14,7 +14,6 @@ import com.chooongg.core.annotation.TopAppBar
 import com.chooongg.core.ext.divider
 import com.chooongg.core.ext.doOnItemClick
 import com.chooongg.core.ext.startActivity
-import com.chooongg.core.ext.startActivityTransitionPage
 import com.chooongg.core.fragment.BoxBindingFragment
 import com.chooongg.ext.resourcesDimensionPixelSize
 import com.chooongg.ext.showToast
@@ -48,8 +47,10 @@ class HomeFragment : BoxBindingFragment<FragmentHomeBinding>(), OnItemClickListe
 
     override fun onItemClick(a: BaseQuickAdapter<*, *>, view: View, position: Int) {
         when (adapter.data[position]) {
-            "TopAppBar" -> startActivity(TopAppbarActivity::class)
-            "StatusLayout" -> startActivityTransitionPage(StatusLayoutActivity::class, view)
+            "TopAppBar" -> startActivity(
+                TopAppbarActivity::class, null
+            ) {}
+            "StatusLayout" -> startActivity(StatusLayoutActivity::class)
         }
     }
 

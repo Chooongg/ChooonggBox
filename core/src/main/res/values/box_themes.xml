@@ -107,11 +107,10 @@
     <style name="BoxWindowAnimation" parent="@android:style/Animation.Activity">
         <item name="android:windowEnterAnimation">@anim/fade_in</item>
         <item name="android:windowExitAnimation">@anim/fade_out</item>
-        <item name="android:activityOpenEnterAnimation">@anim/parallax_horizontal_open_enter</item>
-        <item name="android:activityOpenExitAnimation">@anim/parallax_horizontal_open_exit</item>
-        <item name="android:activityCloseExitAnimation">@anim/parallax_horizontal_close_exit</item>
-        <item name="android:activityCloseEnterAnimation">@anim/parallax_horizontal_close_enter
-        </item>
+        <item name="android:activityOpenEnterAnimation">@anim/shared_axis_y_enter</item>
+        <item name="android:activityOpenExitAnimation">@anim/nothing</item>
+        <item name="android:activityCloseExitAnimation">@anim/shared_axis_y_exit</item>
+        <item name="android:activityCloseEnterAnimation">@anim/nothing</item>
     </style>
 
     <style name="ThemeOverlay.Material3.MaterialAlertDialog.FillWidth" parent="ThemeOverlay.Material3.MaterialAlertDialog">
