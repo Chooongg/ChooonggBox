@@ -8,7 +8,7 @@ import com.chooongg.ext.getTClass
 
 abstract class BoxBindingActivity<BINDING : ViewBinding> : BoxActivity() {
 
-    protected var isCreated = false
+    private var isCreated = false
 
     @Suppress("UNCHECKED_CAST")
     protected val binding by lazy {
