@@ -31,14 +31,14 @@ class SpanUtils(val content: CharSequence) {
      * 追加内容文本
      */
     fun append(content: CharSequence): SpanUtils {
-        return SpanUtils(content)
+        return append(SpanUtils(content))
     }
 
     operator fun plus(nextVal: SpanUtils) = append(nextVal)
 
     operator fun plus(content: CharSequence) = append(content)
 
-    fun build():CharSequence{
+    fun build(): CharSequence {
         val builder = StringBuilder()
         textConstructor.forEach { builder.append(it) }
         val spanStr = SpannableString(builder.toString())
