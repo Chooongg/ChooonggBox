@@ -255,6 +255,10 @@ abstract class BoxActivity : AppCompatActivity(), InitAction {
     private fun getTopAppBarGravity4Annotation() =
         javaClass.getAnnotation(TopAppBarGravity::class.java)
 
+    fun clearTransition(){
+        contentView.transitionName = null
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         logDTag("BOX --> Activity", "${javaClass.simpleName}(${title}) onDestroy")
