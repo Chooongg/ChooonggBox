@@ -10,7 +10,6 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.updateLayoutParams
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import com.chooongg.core.R
 import com.chooongg.core.action.InitAction
@@ -163,20 +162,7 @@ abstract class BoxActivity : AppCompatActivity(), InitAction {
     }
 
     override fun setContentView(layoutResID: Int) {
-        when (getTopAppBar4Annotation()) {
-            TopAppBar.TYPE_SMALL, TopAppBar.TYPE_MEDIUM, TopAppBar.TYPE_LARGE -> {
-                val coordinatorLayout = getCoordinatorLayout()
-                if (coordinatorLayout == null) {
-                    super.setContentView(layoutResID)
-                    return
-                }
-                val view = layoutInflater.inflate(layoutResID, coordinatorLayout)
-                view.updateLayoutParams<CoordinatorLayout.LayoutParams> {
-                    behavior = AppBarLayout.ScrollingViewBehavior()
-                }
-            }
-            else -> super.setContentView(layoutResID)
-        }
+        setContentView(layoutInflater.inflate(layoutResID, null))
     }
 
     override fun setContentView(view: View?) {
@@ -188,6 +174,7 @@ abstract class BoxActivity : AppCompatActivity(), InitAction {
                     return
                 }
                 if (view == null) return
+                view.id = com.chooongg.R.id.content_view
                 coordinatorLayout.addView(view, CoordinatorLayout.LayoutParams(-1, -1).apply {
                     behavior = AppBarLayout.ScrollingViewBehavior()
                 })
@@ -255,7 +242,7 @@ abstract class BoxActivity : AppCompatActivity(), InitAction {
     private fun getTopAppBarGravity4Annotation() =
         javaClass.getAnnotation(TopAppBarGravity::class.java)
 
-    fun clearTransition(){
+    fun clearTransition() {
         contentView.transitionName = null
     }
 

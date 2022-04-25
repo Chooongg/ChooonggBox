@@ -22,22 +22,17 @@ object StatusPage {
         onRetryEventListener: ((KClass<out AbstractStatus>) -> Unit)? = null
     ): StatusLayout {
         val parent = targetView.parent as ViewGroup?
-        var targetViewIndex = 0
         val statusLayout = StatusLayout(targetView.context)
+        parent?.let { targetViewParent ->
+            val targetIndex = targetViewParent.indexOfChild(targetView)
+            targetViewParent.removeView(targetView)
+            targetViewParent.addView(statusLayout, targetIndex, targetView.layoutParams)
+        }
         statusLayout.addView(targetView)
         if (onRetryEventListener != null) {
             statusLayout.setOnRetryListener(onRetryEventListener)
         }
-        parent?.let { targetViewParent ->
-            for (i in 0 until targetViewParent.childCount) {
-                if (targetViewParent.getChildAt(i) == targetView) {
-                    targetViewIndex = i
-                    break
-                }
-            }
-            targetViewParent.removeView(targetView)
-            targetViewParent.addView(statusLayout, targetViewIndex, targetView.layoutParams)
-        }
+
         return statusLayout
     }
 
@@ -48,6 +43,9 @@ object StatusPage {
         activity: Activity,
         onRetryEventListener: ((KClass<out AbstractStatus>) -> Unit)? = null
     ): StatusLayout {
+        val view = activity.findViewById<View>(com.chooongg.R.id.content_view)
+        if (view != null) return bindStatePage(view, onRetryEventListener)
+
         val targetView = activity.findViewById<ViewGroup>(android.R.id.content)
         val targetViewIndex = 0
         val oldContent: View = targetView.getChildAt(targetViewIndex)

@@ -78,10 +78,13 @@ abstract class BoxFragment : Fragment(), InitAction {
             }
         }
         val childView = initView(inflater, container, savedInstanceState)
-        if (childView != null) (view as CoordinatorLayout).addView(
-            childView, CoordinatorLayout.LayoutParams(-1, -1).apply {
-                behavior = AppBarLayout.ScrollingViewBehavior()
-            })
+        if (childView != null) {
+            childView.id = com.chooongg.R.id.content_view
+            (view as CoordinatorLayout).addView(
+                childView, CoordinatorLayout.LayoutParams(-1, -1).apply {
+                    behavior = AppBarLayout.ScrollingViewBehavior()
+                })
+        }
         val appBarLayout = view.findViewById<AppBarLayout>(R.id.appbar_layout)
         val liftOnScrollTargetId = getLiftOnScrollTargetId()
         if (liftOnScrollTargetId != null) {
