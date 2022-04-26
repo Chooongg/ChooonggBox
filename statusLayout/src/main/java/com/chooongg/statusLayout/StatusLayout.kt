@@ -36,6 +36,7 @@ class StatusLayout @JvmOverloads constructor(
     private var onStatusChangeListener: ((KClass<out AbstractStatus>) -> Unit)? = null
 
     internal fun onBindFinished() {
+        if (!isInEditMode) show(StatusPage.config.defaultState)
         successViews.clear()
         children.forEach {
             if (it.tag !is String || it.tag != STATUS_ITEM_TAG) {
@@ -43,13 +44,15 @@ class StatusLayout @JvmOverloads constructor(
                 successViews.add(it)
             }
         }
-        if (!isInEditMode) show(StatusPage.config.defaultState)
     }
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
         onBindFinished()
     }
+
+    private fun getEnableAnimation(isForceNoAnim: Boolean) =
+        if (isForceNoAnim) false else enableAnimation
 
     fun setOnRetryListener(block: (KClass<out AbstractStatus>) -> Unit) {
         onRetryEventListener = block
@@ -59,8 +62,20 @@ class StatusLayout @JvmOverloads constructor(
         onStatusChangeListener = block
     }
 
-    fun showSuccess() {
-        show(SuccessStatus::class)
+    fun beginShowSuccess() {
+        val animation = enableAnimation
+        enableAnimation = false
+        showSuccess()
+        enableAnimation = animation
+    }
+
+    fun showSuccess() = show(SuccessStatus::class)
+
+    fun beginShow(statusClass: KClass<out AbstractStatus>, message: CharSequence? = null) {
+        val animation = enableAnimation
+        enableAnimation = false
+        show(statusClass, message)
+        enableAnimation = animation
     }
 
     fun show(statusClass: KClass<out AbstractStatus>, message: CharSequence? = null) {
