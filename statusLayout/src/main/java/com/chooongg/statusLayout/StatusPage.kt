@@ -32,7 +32,7 @@ object StatusPage {
         if (onRetryEventListener != null) {
             statusLayout.setOnRetryListener(onRetryEventListener)
         }
-
+        statusLayout.onBindFinished()
         return statusLayout
     }
 
@@ -57,6 +57,7 @@ object StatusPage {
             statusLayout.setOnRetryListener(onRetryEventListener)
         }
         targetView.addView(statusLayout, targetViewIndex, oldLayoutParams)
+        statusLayout.onBindFinished()
         return statusLayout
     }
 

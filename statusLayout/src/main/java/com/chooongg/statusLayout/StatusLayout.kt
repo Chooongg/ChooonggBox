@@ -35,8 +35,7 @@ class StatusLayout @JvmOverloads constructor(
 
     private var onStatusChangeListener: ((KClass<out AbstractStatus>) -> Unit)? = null
 
-    override fun onAttachedToWindow() {
-        super.onAttachedToWindow()
+    internal fun onBindFinished() {
         successViews.clear()
         children.forEach {
             if (it.tag !is String || it.tag != STATUS_ITEM_TAG) {
@@ -47,15 +46,9 @@ class StatusLayout @JvmOverloads constructor(
         if (!isInEditMode) show(StatusPage.config.defaultState)
     }
 
-    override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
-        super.onLayout(changed, left, top, right, bottom)
-        successViews.clear()
-        children.forEach {
-            if (it.tag !is String || it.tag != STATUS_ITEM_TAG) {
-                if (currentStatus != SuccessStatus::class && it.visibility != View.GONE) it.gone()
-                successViews.add(it)
-            }
-        }
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        onBindFinished()
     }
 
     fun setOnRetryListener(block: (KClass<out AbstractStatus>) -> Unit) {
