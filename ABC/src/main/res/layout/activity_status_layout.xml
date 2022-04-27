@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.chooongg.statusLayout.StatusLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/status_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    app:initializeSuccess="true">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_progress"

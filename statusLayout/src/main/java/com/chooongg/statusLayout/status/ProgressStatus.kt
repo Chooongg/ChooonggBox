@@ -1,5 +1,6 @@
 package com.chooongg.statusLayout.status
 
+import android.graphics.Color
 import android.view.View
 import com.chooongg.ext.dp2px
 import com.chooongg.ext.gone
@@ -13,6 +14,7 @@ class ProgressStatus : AbstractStatus() {
         indicatorSize = dp2px(56f)
         trackCornerRadius = dp2px(16f)
         hide()
+        setBackgroundColor(Color.RED)
     }
 
     override fun onAttach(view: View, message: CharSequence?) {

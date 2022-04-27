@@ -19,10 +19,11 @@ object StatusPage {
      */
     fun bindStatePage(
         targetView: View,
+        initializeSuccess: Boolean = false,
         onRetryEventListener: ((KClass<out AbstractStatus>) -> Unit)? = null
     ): StatusLayout {
         val parent = targetView.parent as ViewGroup?
-        val statusLayout = StatusLayout(targetView.context)
+        val statusLayout = StatusLayout(targetView.context, null, 0, initializeSuccess)
         parent?.let { targetViewParent ->
             val targetIndex = targetViewParent.indexOfChild(targetView)
             targetViewParent.removeView(targetView)
@@ -32,7 +33,6 @@ object StatusPage {
         if (onRetryEventListener != null) {
             statusLayout.setOnRetryListener(onRetryEventListener)
         }
-        statusLayout.onBindFinished()
         return statusLayout
     }
 
@@ -41,23 +41,23 @@ object StatusPage {
      */
     fun bindStatePage(
         activity: Activity,
+        initializeSuccess: Boolean = false,
         onRetryEventListener: ((KClass<out AbstractStatus>) -> Unit)? = null
     ): StatusLayout {
         val view = activity.findViewById<View>(com.chooongg.R.id.content_view)
-        if (view != null) return bindStatePage(view, onRetryEventListener)
+        if (view != null) return bindStatePage(view, initializeSuccess, onRetryEventListener)
 
         val targetView = activity.findViewById<ViewGroup>(android.R.id.content)
         val targetViewIndex = 0
         val oldContent: View = targetView.getChildAt(targetViewIndex)
         targetView.removeView(oldContent)
         val oldLayoutParams = oldContent.layoutParams
-        val statusLayout = StatusLayout(oldContent.context)
+        val statusLayout = StatusLayout(targetView.context, null, 0, initializeSuccess)
         statusLayout.addView(oldContent)
         if (onRetryEventListener != null) {
             statusLayout.setOnRetryListener(onRetryEventListener)
         }
         targetView.addView(statusLayout, targetViewIndex, oldLayoutParams)
-        statusLayout.onBindFinished()
         return statusLayout
     }
 
