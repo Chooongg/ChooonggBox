@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.Gravity
 import android.view.View
+import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.core.view.children
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
@@ -22,7 +23,12 @@ class StatusLayout @JvmOverloads constructor(
         internal const val STATUS_ITEM_TAG = "status_layout_item_status"
     }
 
+    private var isCreated = false
+    private var initStatus: KClass<out AbstractStatus>? = null
+    private var initStatusMessage: CharSequence? = null
+
     var enableAnimation = StatusPage.config.enableAnimation
+        get() = isCreated && StatusPage.config.enableAnimation
 
     private var successViews: ArrayList<View> = ArrayList()
 
@@ -36,19 +42,20 @@ class StatusLayout @JvmOverloads constructor(
     private var onStatusChangeListener: ((KClass<out AbstractStatus>) -> Unit)? = null
 
     internal fun onBindFinished() {
-        if (!isInEditMode) show(StatusPage.config.defaultState)
         successViews.clear()
         children.forEach {
-            if (it.tag !is String || it.tag != STATUS_ITEM_TAG) {
-                if (currentStatus != SuccessStatus::class && it.visibility != View.GONE) it.gone()
+            if (it.tag != STATUS_ITEM_TAG) {
                 successViews.add(it)
             }
         }
+        if (!isInEditMode) show(StatusPage.config.defaultState)
     }
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
         onBindFinished()
+        isCreated = true
+        initStatus?.let { show(it, initStatusMessage) }
     }
 
     private fun getEnableAnimation(isForceNoAnim: Boolean) =
@@ -71,6 +78,7 @@ class StatusLayout @JvmOverloads constructor(
 
     fun showSuccess() = show(SuccessStatus::class)
 
+
     fun beginShow(statusClass: KClass<out AbstractStatus>, message: CharSequence? = null) {
         val animation = enableAnimation
         enableAnimation = false
@@ -79,6 +87,11 @@ class StatusLayout @JvmOverloads constructor(
     }
 
     fun show(statusClass: KClass<out AbstractStatus>, message: CharSequence? = null) {
+        if (!isCreated) {
+            initStatus = statusClass
+            initStatusMessage = message
+            return
+        }
         if (currentStatus == statusClass) return
         if (statusClass == SuccessStatus::class) {
             hideAllStatus()
@@ -89,7 +102,6 @@ class StatusLayout @JvmOverloads constructor(
                     it.animate().setInterpolator(FastOutSlowInInterpolator()).setDuration(
                         resourcesInteger(android.R.integer.config_shortAnimTime).toLong()
                     ).alpha(1f).translationY(0f)
-
                 }
             }
             currentStatus = SuccessStatus::class
@@ -143,6 +155,7 @@ class StatusLayout @JvmOverloads constructor(
         }
         val status = existingStatus[statusClass]!!
         if (status.targetView.parent == null) {
+            status.targetView.tag = STATUS_ITEM_TAG
             addView(status.targetView, LayoutParams(-2, -2, Gravity.CENTER))
         }
         currentStatus = statusClass
@@ -178,5 +191,38 @@ class StatusLayout @JvmOverloads constructor(
 
     private fun createStatus(statusClass: KClass<out AbstractStatus>): AbstractStatus {
         return statusClass.java.newInstance()
+    }
+
+    override fun addView(child: View?, index: Int, params: ViewGroup.LayoutParams?) {
+        if (currentStatus != SuccessStatus::class && child?.tag == STATUS_ITEM_TAG) child.gone()
+        super.addView(child, index, params)
+    }
+
+    override fun removeView(view: View?) {
+        super.removeView(view)
+    }
+
+    override fun removeViewAt(index: Int) {
+        super.removeViewAt(index)
+    }
+
+    override fun removeAllViews() {
+        super.removeAllViews()
+    }
+
+    override fun removeAllViewsInLayout() {
+        super.removeAllViewsInLayout()
+    }
+
+    override fun removeViews(start: Int, count: Int) {
+        super.removeViews(start, count)
+    }
+
+    override fun removeViewInLayout(view: View?) {
+        super.removeViewInLayout(view)
+    }
+
+    override fun removeViewsInLayout(start: Int, count: Int) {
+        super.removeViewsInLayout(start, count)
     }
 }
