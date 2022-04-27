@@ -14,7 +14,6 @@ class ProgressStatus : AbstractStatus() {
         indicatorSize = dp2px(56f)
         trackCornerRadius = dp2px(16f)
         hide()
-        setBackgroundColor(Color.RED)
     }
 
     override fun onAttach(view: View, message: CharSequence?) {
