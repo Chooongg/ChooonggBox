@@ -13,7 +13,7 @@ fun View.visible() = apply { if (visibility != View.VISIBLE) visibility = View.V
 fun View.inVisible() = apply { if (visibility != View.INVISIBLE) visibility = View.INVISIBLE }
 fun View.gone() = apply { if (visibility != View.GONE) visibility = View.GONE }
 
-const val CLICK_INTERVAL = 300L
+const val CLICK_INTERVAL = 600L
 
 private var lastClickTime = 0L
 
