@@ -44,7 +44,7 @@ object StatusPage {
         initializeSuccess: Boolean = false,
         onRetryEventListener: ((KClass<out AbstractStatus>) -> Unit)? = null
     ): StatusLayout {
-        val view = activity.findViewById<View>(com.chooongg.R.id.content_view)
+        val view = activity.findViewById<View>(com.chooongg.R.id.box_content_view)
         if (view != null) return bindStatePage(view, initializeSuccess, onRetryEventListener)
 
         val targetView = activity.findViewById<ViewGroup>(android.R.id.content)

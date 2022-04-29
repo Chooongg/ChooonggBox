@@ -79,7 +79,7 @@ abstract class BoxFragment : Fragment(), InitAction {
         }
         val childView = initView(inflater, container, savedInstanceState)
         if (childView != null) {
-            childView.id = com.chooongg.R.id.content_view
+            childView.id = com.chooongg.R.id.box_content_view
             (view as CoordinatorLayout).addView(
                 childView, CoordinatorLayout.LayoutParams(-1, -1).apply {
                     behavior = AppBarLayout.ScrollingViewBehavior()

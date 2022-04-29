@@ -8,12 +8,15 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.google.android.material.appbar.AppBarLayout
 import java.lang.reflect.Field
 
-class AppBarLayoutBehavior(context: Context, attrs: AttributeSet?) :
-    AppBarLayout.Behavior(context, attrs) {
+class AppBarLayoutBehavior : AppBarLayout.Behavior {
 
     companion object {
         const val TYPE_FLING = 1
     }
+
+    constructor() : super()
+
+    constructor(context: Context, attrs: AttributeSet? = null) : super(context, attrs)
 
     private var isFlinging = false
     private var shouldBlockNestedScroll = false

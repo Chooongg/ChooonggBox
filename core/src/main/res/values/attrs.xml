@@ -13,10 +13,27 @@
         <attr name="ast_precision" format="float" />
     </declare-styleable>
 
+
     <!-- Box 工具栏 -->
+    <attr name="defaultNavigation" format="boolean" />
+    <attr name="autoSetActionBar" format="boolean" />
     <declare-styleable name="BoxToolbar">
-        <attr name="defaultNavigation" format="boolean" />
-        <attr name="autoSetActionBar" format="boolean" />
+        <attr name="defaultNavigation" />
+        <attr name="autoSetActionBar" />
+    </declare-styleable>
+    <declare-styleable name="BoxToolbarLayout">
+        <attr name="toolbarMode" format="enum">
+            <enum name="small" value="0" />
+            <enum name="medium" value="1" />
+            <enum name="large" value="2" />
+        </attr>
+
+        <attr name="liftOnScroll" />
+        <attr name="liftOnScrollTargetViewId" />
+        <attr name="maxLines" />
+
+        <attr name="defaultNavigation" />
+        <attr name="autoSetActionBar" />
     </declare-styleable>
 
     <!-- 重力粘性对齐RecyclerView -->
@@ -106,10 +123,10 @@
         <attr name="scaleY" format="float" />
         <attr name="alpha" format="float" />
 
-        <attr name="dividerVisible"  format="boolean"/>
-        <attr name="dividerColor" format="color"/>
-        <attr name="dividerSize" format="dimension"/>
-        <attr name="dividerMargin" format="dimension"/>
+        <attr name="dividerVisible" format="boolean" />
+        <attr name="dividerColor" format="color" />
+        <attr name="dividerSize" format="dimension" />
+        <attr name="dividerMargin" format="dimension" />
     </declare-styleable>
 
     <attr name="sizeRatio" format="string" />

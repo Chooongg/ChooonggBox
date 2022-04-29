@@ -10,8 +10,7 @@
         style="?attr/appBarLayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
-        app:layout_behavior="com.chooongg.core.widget.behavior.AppBarLayoutBehavior">
+        android:fitsSystemWindows="true">
 
         <com.chooongg.core.toolbar.BoxToolbar
             android:id="@+id/toolbar"

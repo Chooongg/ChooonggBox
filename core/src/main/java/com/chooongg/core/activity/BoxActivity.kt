@@ -10,11 +10,9 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import com.chooongg.core.R
 import com.chooongg.core.action.InitAction
 import com.chooongg.core.annotation.*
-import com.chooongg.core.ext.getMaterialColor
 import com.chooongg.core.toolbar.BoxToolbar
 import com.chooongg.ext.*
 import com.google.android.material.appbar.AppBarLayout
@@ -50,15 +48,17 @@ abstract class BoxActivity : AppCompatActivity(), InitAction {
             window.requestFeature(Window.FEATURE_CONTENT_TRANSITIONS)
             val contentView = contentView
             contentView.transitionName = "box_transitions_content"
-            window.enterTransition = MaterialSharedAxis(MaterialSharedAxis.Y, true)
-            window.exitTransition = null
-            window.returnTransition = MaterialSharedAxis(MaterialSharedAxis.Y, false)
-            window.reenterTransition = null
             setEnterSharedElementCallback(MaterialContainerTransformSharedElementCallback())
             setExitSharedElementCallback(MaterialContainerTransformSharedElementCallback())
-            window.sharedElementEnterTransition = buildContainerTransform(contentView, true)
-            window.sharedElementReturnTransition = buildContainerTransform(contentView, false)
-            window.sharedElementsUseOverlay = false
+            window.apply {
+                sharedElementsUseOverlay = false
+                enterTransition = MaterialSharedAxis(MaterialSharedAxis.Y, true)
+                exitTransition = null
+                returnTransition = MaterialSharedAxis(MaterialSharedAxis.Y, false)
+                reenterTransition = null
+                sharedElementEnterTransition = buildContainerTransform(contentView, true)
+                sharedElementReturnTransition = buildContainerTransform(contentView, false)
+            }
             initTransitions()
         }
         super.onCreate(savedInstanceState)
@@ -126,10 +126,9 @@ abstract class BoxActivity : AppCompatActivity(), InitAction {
 
     private fun buildContainerTransform(contentView: View, entering: Boolean) =
         MaterialContainerTransform(this, entering).apply {
-            setAllContainerColors(contentView.getMaterialColor(com.google.android.material.R.attr.colorSurface))
             addTarget(contentView.id)
+            containerColor = attrColor(com.google.android.material.R.attr.colorSurface)
             fadeMode = MaterialContainerTransform.FADE_MODE_THROUGH
-            interpolator = FastOutSlowInInterpolator()
             pathMotion = MaterialArcMotion()
             isDrawDebugEnabled = false
         }
@@ -174,7 +173,7 @@ abstract class BoxActivity : AppCompatActivity(), InitAction {
                     return
                 }
                 if (view == null) return
-                view.id = com.chooongg.R.id.content_view
+                view.id = com.chooongg.R.id.box_content_view
                 coordinatorLayout.addView(view, CoordinatorLayout.LayoutParams(-1, -1).apply {
                     behavior = AppBarLayout.ScrollingViewBehavior()
                 })
