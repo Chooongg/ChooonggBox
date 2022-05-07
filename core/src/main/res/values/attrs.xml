@@ -131,19 +131,19 @@
 
     <attr name="sizeRatio" format="string" />
 
-    <!-- 正方形布局 -->
+    <!-- 宽高比布局 -->
+    <declare-styleable name="RatioView">
+        <!-- 宽高比例 -->
+        <attr name="sizeRatio" />
+    </declare-styleable>
     <declare-styleable name="RatioCardView">
         <!-- 宽高比例 -->
         <attr name="sizeRatio" />
     </declare-styleable>
-
-    <!-- 正方形布局 -->
     <declare-styleable name="RatioConstraintLayout">
         <!-- 宽高比例 -->
         <attr name="sizeRatio" />
     </declare-styleable>
-
-    <!-- 正方形布局 -->
     <declare-styleable name="RatioFrameLayout">
         <!-- 宽高比例 -->
         <attr name="sizeRatio" />
