@@ -1,6 +1,5 @@
 package com.chooongg.core.widget
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Path
@@ -94,7 +93,6 @@ class VerticalTextView @JvmOverloads constructor(
         return result
     }
 
-    @SuppressLint("DrawAllocation")
     override fun onDraw(canvas: Canvas) {
         canvas.save()
         val startX: Int
