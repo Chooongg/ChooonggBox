@@ -26,6 +26,8 @@ class VerticalTextView @JvmOverloads constructor(
     private var textBounds = Rect()
     private var direction = 0
 
+    private val path = Path()
+
     init {
         val a = context.obtainStyledAttributes(attrs, R.styleable.VerticalTextView, defStyleAttr, 0)
         direction = a.getInt(R.styleable.VerticalTextView_direction, 0)
@@ -99,7 +101,7 @@ class VerticalTextView @JvmOverloads constructor(
         val startY: Int
         val stopX: Int
         val stopY: Int
-        val path = Path()
+        path.reset()
         when (direction) {
             ORIENTATION_UP_TO_DOWN -> {
                 startX = width - textBounds.height() shr 1
