@@ -26,7 +26,7 @@ fun Activity.showLoading(
 }
 
 fun Activity.showLoading(@StringRes resId: Int, vararg format: Any?) {
-    if (format.isNullOrEmpty()) {
+    if (format.isEmpty()) {
         showLoading(resourcesString(resId))
     } else {
         showLoading(resourcesString(resId, *format))
