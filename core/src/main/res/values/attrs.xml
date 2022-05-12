@@ -154,4 +154,13 @@
         <attr name="charIncrease" format="integer" />
     </declare-styleable>
 
+    <declare-styleable name="VerticalTextView">
+        <attr name="direction">
+            <enum name="upToDown" value="0" />
+            <enum name="downToUp" value="1" />
+            <enum name="leftToRight" value="2" />
+            <enum name="rightToLeft" value="3" />
+        </attr>
+    </declare-styleable>
+
 </resources>
