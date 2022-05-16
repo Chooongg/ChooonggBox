@@ -21,6 +21,8 @@ class MainActivity : BoxBindingActivity<ActivityMainBinding>() {
         HomeFragment(), ColorFragment()
     )
 
+    override fun initBinding() = ActivityMainBinding.inflate(layoutInflater)
+
     override fun initConfig(savedInstanceState: Bundle?) {
         ViewCompat.setOnApplyWindowInsetsListener(binding.navigationView) { view, insets ->
             view.updatePadding(bottom = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom)

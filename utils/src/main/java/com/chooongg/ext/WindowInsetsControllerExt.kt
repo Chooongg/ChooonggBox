@@ -14,7 +14,7 @@ fun Window.getWindowInsetsController() = WindowCompat.getInsetsController(this, 
  */
 fun Fragment.showSystemBars() = requireActivity().showSystemBars()
 fun Activity.showSystemBars() {
-    window.getWindowInsetsController()?.show(WindowInsetsCompat.Type.systemBars())
+    window.getWindowInsetsController().show(WindowInsetsCompat.Type.systemBars())
 }
 
 /**
@@ -22,7 +22,7 @@ fun Activity.showSystemBars() {
  */
 fun Fragment.hideSystemBars() = requireActivity().hideSystemBars()
 fun Activity.hideSystemBars() {
-    window.getWindowInsetsController()?.hide(WindowInsetsCompat.Type.systemBars())
+    window.getWindowInsetsController().hide(WindowInsetsCompat.Type.systemBars())
 }
 
 /**
@@ -30,7 +30,7 @@ fun Activity.hideSystemBars() {
  */
 fun Fragment.showStatusBars() = requireActivity().showStatusBars()
 fun Activity.showStatusBars() {
-    window.getWindowInsetsController()?.show(WindowInsetsCompat.Type.statusBars())
+    window.getWindowInsetsController().show(WindowInsetsCompat.Type.statusBars())
 }
 
 /**
@@ -38,7 +38,7 @@ fun Activity.showStatusBars() {
  */
 fun Fragment.hideStatusBars() = requireActivity().hideStatusBars()
 fun Activity.hideStatusBars() {
-    window.getWindowInsetsController()?.hide(WindowInsetsCompat.Type.statusBars())
+    window.getWindowInsetsController().hide(WindowInsetsCompat.Type.statusBars())
 }
 
 /**
@@ -46,7 +46,7 @@ fun Activity.hideStatusBars() {
  */
 fun Fragment.showNavigationBars() = requireActivity().showNavigationBars()
 fun Activity.showNavigationBars() {
-    window.getWindowInsetsController()?.show(WindowInsetsCompat.Type.navigationBars())
+    window.getWindowInsetsController().show(WindowInsetsCompat.Type.navigationBars())
 }
 
 /**
@@ -54,7 +54,7 @@ fun Activity.showNavigationBars() {
  */
 fun Fragment.hideNavigationBars() = requireActivity().hideNavigationBars()
 fun Activity.hideNavigationBars() {
-    window.getWindowInsetsController()?.hide(WindowInsetsCompat.Type.navigationBars())
+    window.getWindowInsetsController().hide(WindowInsetsCompat.Type.navigationBars())
 }
 
 /**
@@ -63,7 +63,7 @@ fun Activity.hideNavigationBars() {
 fun Fragment.showIME(view: View? = null) = requireActivity().showIME(view)
 fun Activity.showIME(view: View? = null) {
     view?.requestFocus()
-    window.getWindowInsetsController()?.show(WindowInsetsCompat.Type.ime())
+    window.getWindowInsetsController().show(WindowInsetsCompat.Type.ime())
 }
 
 /**
@@ -71,7 +71,7 @@ fun Activity.showIME(view: View? = null) {
  */
 fun Fragment.hideIME() = requireActivity().hideIME()
 fun Activity.hideIME() {
-    window.getWindowInsetsController()?.hide(WindowInsetsCompat.Type.ime())
+    window.getWindowInsetsController().hide(WindowInsetsCompat.Type.ime())
 }
 
 /**
@@ -81,15 +81,15 @@ fun Fragment.setLightStatusBars(isLightMode: Boolean) =
     requireActivity().setLightStatusBars(isLightMode)
 
 fun Activity.setLightStatusBars(isLightMode: Boolean) {
-    window.getWindowInsetsController()?.isAppearanceLightStatusBars = isLightMode
+    window.getWindowInsetsController().isAppearanceLightStatusBars = isLightMode
 }
 
 /**
  * 是否是亮色状态栏
  */
 fun Fragment.isLightStatusBars() = requireActivity().isLightStatusBars()
-fun Activity.isLightStatusBars(): Boolean? {
-    return window.getWindowInsetsController()?.isAppearanceLightStatusBars
+fun Activity.isLightStatusBars(): Boolean {
+    return window.getWindowInsetsController().isAppearanceLightStatusBars
 }
 
 /**
@@ -99,13 +99,13 @@ fun Fragment.setLightNavigationBars(isLightMode: Boolean) =
     requireActivity().setLightNavigationBars(isLightMode)
 
 fun Activity.setLightNavigationBars(isLightMode: Boolean) {
-    window.getWindowInsetsController()?.isAppearanceLightNavigationBars = isLightMode
+    window.getWindowInsetsController().isAppearanceLightNavigationBars = isLightMode
 }
 
 /**
  * 是否是亮色导航栏
  */
 fun Fragment.isLightNavigationBars() = requireActivity().isLightNavigationBars()
-fun Activity.isLightNavigationBars(): Boolean? {
-    return window.getWindowInsetsController()?.isAppearanceLightNavigationBars
+fun Activity.isLightNavigationBars(): Boolean {
+    return window.getWindowInsetsController().isAppearanceLightNavigationBars
 }

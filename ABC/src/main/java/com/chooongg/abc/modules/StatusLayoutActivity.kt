@@ -11,6 +11,8 @@ import com.chooongg.statusLayout.status.ProgressStatus
 
 open class StatusLayoutActivity : BoxBindingActivity<ActivityStatusLayoutBinding>() {
 
+    override fun initBinding() = ActivityStatusLayoutBinding.inflate(layoutInflater)
+
     override fun initConfig(savedInstanceState: Bundle?) {
         binding.btnProgress.doOnClick {
             binding.statusLayout.show(ProgressStatus::class)
