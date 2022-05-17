@@ -3,11 +3,16 @@ package com.chooongg.abc.main.fragment
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
 import com.chooongg.abc.R
+import com.chooongg.abc.Test
 import com.chooongg.abc.databinding.FragmentColorBinding
 import com.chooongg.core.annotation.Title
 import com.chooongg.core.annotation.TopAppBar
+import com.chooongg.core.channel.receiveEvent
+import com.chooongg.core.channel.sendEvent
 import com.chooongg.core.fragment.BoxBindingFragment
+import com.chooongg.ext.doOnClick
 import com.chooongg.ext.setNightMode
+import com.chooongg.ext.showToast
 
 @Title("Color")
 @TopAppBar(TopAppBar.TYPE_SMALL)
@@ -36,6 +41,10 @@ class ColorFragment : BoxBindingFragment<FragmentColorBinding>() {
     }
 
     override fun initContent(savedInstanceState: Bundle?) {
+        receiveEvent<Test> { showToast("测试") }
+        binding.btnPrimary.doOnClick {
+            sendEvent(Test())
+        }
     }
 
     override fun initContentByLazy() {
