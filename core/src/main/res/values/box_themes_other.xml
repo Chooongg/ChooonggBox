@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="BoxWindowAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:windowEnterAnimation">@anim/fade_in</item>
+        <item name="android:windowExitAnimation">@anim/fade_out</item>
+        <item name="android:activityOpenEnterAnimation">@anim/shared_axis_y_enter</item>
+        <item name="android:activityOpenExitAnimation">@anim/nothing</item>
+        <item name="android:activityCloseExitAnimation">@anim/shared_axis_y_exit</item>
+        <item name="android:activityCloseEnterAnimation">@anim/nothing</item>
+    </style>
+
+    <style name="ThemeOverlay.Material3.MaterialAlertDialog.FillWidth" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="materialAlertDialogButtonSpacerVisibility" tools:ignore="PrivateResource">
+            @integer/mtrl_view_gone
+        </item>
+        <item name="buttonBarPositiveButtonStyle">
+            @style/Widget.Material3.Button.TextButton.Dialog.FillWidth
+        </item>
+        <item name="buttonBarNegativeButtonStyle">
+            @style/Widget.Material3.Button.TextButton.Dialog.FillWidth
+        </item>
+        <item name="buttonBarNeutralButtonStyle">
+            @style/Widget.Material3.Button.TextButton.Dialog.FillWidth
+        </item>
+    </style>
+
+    <style name="ThemeOverlay.Material3.MaterialAlertDialog.FillWidth.Center" parent="ThemeOverlay.Material3.MaterialAlertDialog.Centered">
+        <item name="materialAlertDialogButtonSpacerVisibility" tools:ignore="PrivateResource">
+            @integer/mtrl_view_gone
+        </item>
+        <item name="buttonBarPositiveButtonStyle">
+            @style/Widget.Material3.Button.TextButton.Dialog.FillWidth
+        </item>
+        <item name="buttonBarNegativeButtonStyle">
+            @style/Widget.Material3.Button.TextButton.Dialog.FillWidth
+        </item>
+        <item name="buttonBarNeutralButtonStyle">
+            @style/Widget.Material3.Button.TextButton.Dialog.FillWidth
+        </item>
+    </style>
+
+    <style name="Widget.Material3.Button.TextButton.Dialog.FillWidth" parent="Widget.Material3.Button.TextButton.Dialog">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:maxWidth">@null</item>
+    </style>
+</resources>

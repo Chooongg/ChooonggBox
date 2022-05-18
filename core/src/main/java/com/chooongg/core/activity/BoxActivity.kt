@@ -2,9 +2,13 @@ package com.chooongg.core.activity
 
 import android.content.Context
 import android.os.Bundle
-import android.view.*
-import androidx.annotation.IdRes
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
+import android.view.Window
+import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.FitWindowsLinearLayout
 import androidx.appcompat.widget.Toolbar
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.ViewCompat
@@ -17,9 +21,6 @@ import com.chooongg.core.toolbar.BoxToolbar
 import com.chooongg.ext.*
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.CollapsingToolbarLayout
-import com.google.android.material.transition.platform.MaterialArcMotion
-import com.google.android.material.transition.platform.MaterialContainerTransform
-import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback
 import com.google.android.material.transition.platform.MaterialSharedAxis
 
 @ActivityEdgeToEdge
@@ -29,9 +30,6 @@ abstract class BoxActivity : AppCompatActivity(), InitAction {
 
     inline val context: Context get() = this
 
-    @IdRes
-    protected open fun getLiftOnScrollTargetId(): Int? = null
-
     protected open fun initTransitions() = Unit
 
     override fun initContentByLazy() = Unit
@@ -39,6 +37,7 @@ abstract class BoxActivity : AppCompatActivity(), InitAction {
     open fun onRefresh(any: Any? = null) = Unit
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        logDTag("BOX --> Activity", "${javaClass.simpleName}(${title}) onCreated")
         // 设置主题
         val theme4Annotation = getTheme4Annotation()
         if (theme4Annotation != null) setTheme(theme4Annotation)
@@ -46,18 +45,12 @@ abstract class BoxActivity : AppCompatActivity(), InitAction {
         if (getActivityTransitions4Annotation()) {
             window.requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS)
             window.requestFeature(Window.FEATURE_CONTENT_TRANSITIONS)
-            val contentView = contentView
-            contentView.transitionName = "box_transitions_content"
-            setEnterSharedElementCallback(MaterialContainerTransformSharedElementCallback())
-            setExitSharedElementCallback(MaterialContainerTransformSharedElementCallback())
             window.apply {
-                sharedElementsUseOverlay = false
+                sharedElementsUseOverlay = true
                 enterTransition = MaterialSharedAxis(MaterialSharedAxis.Y, true)
                 exitTransition = null
                 returnTransition = MaterialSharedAxis(MaterialSharedAxis.Y, false)
                 reenterTransition = null
-                sharedElementEnterTransition = buildContainerTransform(contentView, true)
-                sharedElementReturnTransition = buildContainerTransform(contentView, false)
             }
             initTransitions()
         }
@@ -84,8 +77,10 @@ abstract class BoxActivity : AppCompatActivity(), InitAction {
                 }
             }
         }
-        configTopAppbarLayout()
-        logDTag("BOX --> Activity", "${javaClass.simpleName}(${title}) onCreated")
+        configTopAppBar()
+        if (initViewRes() != View.NO_ID) super.setContentView(initViewRes())
+        else initView(layoutInflater, null)?.let { super.setContentView(it) }
+        initConfig(savedInstanceState)
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
@@ -102,10 +97,26 @@ abstract class BoxActivity : AppCompatActivity(), InitAction {
             it.clearFocus()
             hideIME()
         }
-        initConfig(savedInstanceState)
         initContent(savedInstanceState)
         initContentByLazy()
     }
+
+    protected open fun configTopAppBar() {
+        (contentView.parent as? FitWindowsLinearLayout)?.let {
+            val toolbar = BoxToolbar(context)
+            if (getEdgeToEdge4Annotation() == true) {
+                val frameLayout = FrameLayout(context)
+                frameLayout.addView(toolbar)
+
+            } else {
+                it.addView(toolbar, 0)
+            }
+        }
+    }
+
+    override fun setContentView(layoutResID: Int) = Unit
+    override fun setContentView(view: View?) = Unit
+    override fun setContentView(view: View?, params: ViewGroup.LayoutParams?) = Unit
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return if (item.itemId == android.R.id.home) {
@@ -124,81 +135,15 @@ abstract class BoxActivity : AppCompatActivity(), InitAction {
         }
     }
 
-    private fun buildContainerTransform(contentView: View, entering: Boolean) =
-        MaterialContainerTransform(this, entering).apply {
-            addTarget(contentView.id)
-            containerColor = attrColor(com.google.android.material.R.attr.colorSurface)
-            fadeMode = MaterialContainerTransform.FADE_MODE_THROUGH
-            pathMotion = MaterialArcMotion()
-            isDrawDebugEnabled = false
-        }
-
-    /**
-     * 配置 TopAppbar 布局
-     */
-    private fun configTopAppbarLayout() {
-        when (getTopAppBar4Annotation()) {
-            TopAppBar.TYPE_SMALL -> super.setContentView(R.layout.box_activity_root_small)
-            TopAppBar.TYPE_MEDIUM -> super.setContentView(R.layout.box_activity_root_medium)
-            TopAppBar.TYPE_LARGE -> super.setContentView(R.layout.box_activity_root_large)
-            else -> return
-        }
-        if (supportActionBar == null) setSupportActionBar(findViewById<BoxToolbar>(R.id.toolbar))
-        val appBarLayout = findViewById<AppBarLayout>(R.id.appbar_layout)
-        val liftOnScrollTargetId = getLiftOnScrollTargetId()
-        if (liftOnScrollTargetId != null) {
-            appBarLayout.liftOnScrollTargetViewId = liftOnScrollTargetId
-        }
-        val collapsingLayout = findViewById<CollapsingToolbarLayout>(R.id.collapsing_toolbar_layout)
-            ?: return
-        val topAppBarGravity = getTopAppBarGravity4Annotation() ?: return
-        if (topAppBarGravity.collapsedTitleGravity != Gravity.NO_GRAVITY) {
-            collapsingLayout.collapsedTitleGravity = topAppBarGravity.collapsedTitleGravity
-        }
-        if (topAppBarGravity.expandedTitleGravity != Gravity.NO_GRAVITY) {
-            collapsingLayout.expandedTitleGravity = topAppBarGravity.expandedTitleGravity
-        }
-    }
-
-    override fun setContentView(layoutResID: Int) {
-        setContentView(layoutInflater.inflate(layoutResID, null))
-    }
-
-    override fun setContentView(view: View?) {
-        when (getTopAppBar4Annotation()) {
-            TopAppBar.TYPE_SMALL, TopAppBar.TYPE_MEDIUM, TopAppBar.TYPE_LARGE -> {
-                val coordinatorLayout = getCoordinatorLayout()
-                if (coordinatorLayout == null) {
-                    super.setContentView(view)
-                    return
-                }
-                if (view == null) return
-                view.id = com.chooongg.R.id.box_content_view
-                coordinatorLayout.addView(view, CoordinatorLayout.LayoutParams(-1, -1).apply {
-                    behavior = AppBarLayout.ScrollingViewBehavior()
-                })
-            }
-            else -> super.setContentView(view)
-        }
-    }
-
-    override fun setContentView(view: View?, params: ViewGroup.LayoutParams?) {
-        when (getTopAppBar4Annotation()) {
-            TopAppBar.TYPE_SMALL, TopAppBar.TYPE_MEDIUM, TopAppBar.TYPE_LARGE -> {
-                val coordinatorLayout = getCoordinatorLayout()
-                if (coordinatorLayout == null) {
-                    super.setContentView(view)
-                    return
-                }
-                if (view == null) return
-                if (params is CoordinatorLayout.LayoutParams && params.behavior == null) {
-                    params.behavior = AppBarLayout.ScrollingViewBehavior()
-                }
-                coordinatorLayout.addView(view, params)
-            }
-            else -> super.setContentView(view)
-        }
-    }
+//    private fun buildContainerTransform(contentView: View, entering: Boolean) =
+//        MaterialContainerTransform(this, entering).apply {
+//            addTarget(contentView.id)
+//            containerColor = attrColor(com.google.android.material.R.attr.colorSurface)
+//            fadeMode = MaterialContainerTransform.FADE_MODE_THROUGH
+//            pathMotion = MaterialArcMotion()
+//            interpolator = FastOutSlowInInterpolator()
+//            isDrawDebugEnabled = false
+//        }
 
     protected fun getCoordinatorLayout(): CoordinatorLayout? =
         findViewById(R.id.coordinator_layout)
@@ -232,8 +177,8 @@ abstract class BoxActivity : AppCompatActivity(), InitAction {
     private fun isAutoHideIME4Annotation() =
         javaClass.getAnnotation(AutoHideIME::class.java)?.isEnable ?: true
 
-    private fun getTopAppBar4Annotation() =
-        javaClass.getAnnotation(TopAppBar::class.java)?.value ?: TopAppBar.TYPE_SMALL
+    private fun isShowTopAppBar4Annotation() =
+        javaClass.getAnnotation(TopAppBar::class.java)?.isShow ?: false
 
     private fun isShowTopAppBarDefaultNavigation4Annotation() =
         javaClass.getAnnotation(TopAppBarDefaultNavigation::class.java)?.isShow ?: true

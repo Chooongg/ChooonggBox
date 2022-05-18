@@ -33,7 +33,6 @@ android {
 dependencies {
     implementation "androidx.appcompat:appcompat:${appcompatVersion}"
     implementation "com.google.android.material:material:${materialVersion}"
-    api project(":utils")
     api project(":core")
     api project(":http")
     api project(":statusLayout")

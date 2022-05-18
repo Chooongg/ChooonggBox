@@ -1,51 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- BoxToolbar -->
-
-    <style name="BoxWidget.Toolbar.OnSurface" parent="Widget.Material3.Toolbar.OnSurface">
-        <item name="titleMargin">0dp</item>
-        <item name="maxButtonHeight">?attr/actionBarSize</item>
-        <item name="android:minHeight">?attr/actionBarSize</item>
-        <item name="contentInsetStartWithNavigation">?attr/actionBarSize</item>
-        <item name="subtitleTextAppearance">@style/BoxSubtitleAppearance</item>
-        <item name="android:theme">@style/ThemeOverlay.Material3.Toolbar.Surface</item>
-        <item name="materialThemeOverlay">@style/ThemeOverlay.Material3.Toolbar.Surface</item>
-    </style>
-
-    <style name="BoxWidget.Toolbar.OnSurface.Center" parent="BoxWidget.Toolbar.OnSurface">
-        <item name="titleCentered">true</item>
-        <item name="subtitleCentered">true</item>
-        <item name="contentInsetStart">16dp</item>
-        <item name="contentInsetEnd">16dp</item>
-    </style>
-
-    <style name="BoxWidget.Toolbar.OnPrimary" parent="BoxWidget.Toolbar.OnSurface">
-        <item name="titleTextColor">?attr/colorOnPrimary</item>
-        <item name="subtitleTextColor">?attr/colorPrimaryContainer</item>
-        <item name="navigationIconTint">?attr/colorOnSurface</item>
-        <item name="colorControlNormal">?attr/colorOnPrimary</item>
-        <item name="android:theme">@style/ThemeOverlay.Material3.Toolbar.Primary</item>
-        <item name="materialThemeOverlay">@style/ThemeOverlay.Material3.Toolbar.Primary</item>
-    </style>
-
-    <style name="BoxWidget.Toolbar.OnPrimary.Center" parent="BoxWidget.Toolbar.OnPrimary">
-        <item name="titleCentered">true</item>
-        <item name="subtitleCentered">true</item>
-        <item name="contentInsetStart">16dp</item>
-        <item name="contentInsetEnd">16dp</item>
-    </style>
-
-    <style name="BoxWidget.Toolbar.OnPrimarySurface" parent="BoxWidget.Toolbar.OnPrimary" />
-
-    <style name="BoxWidget.Toolbar.OnPrimarySurface.Center" parent="BoxWidget.Toolbar.OnPrimarySurface">
-        <item name="titleCentered">true</item>
-        <item name="subtitleCentered">true</item>
-        <item name="contentInsetStart">16dp</item>
-        <item name="contentInsetEnd">16dp</item>
-    </style>
-
-    <style name="BoxWidget.Toolbar.Surface" parent="Widget.Material3.Toolbar.Surface">
+    <style name="BoxWidget.Toolbar.Surface" parent="Widget.MaterialComponents.Toolbar.Surface">
+        <item name="elevation">0dp</item>
+        <item name="android:background">@null</item>
         <item name="titleMargin">0dp</item>
         <item name="maxButtonHeight">?attr/actionBarSize</item>
         <item name="android:minHeight">?attr/actionBarSize</item>
@@ -60,74 +18,33 @@
         <item name="contentInsetEnd">16dp</item>
     </style>
 
-    <style name="BoxWidget.Toolbar.Primary" parent="BoxWidget.Toolbar.Surface">
-        <item name="android:background">?attr/colorPrimary</item>
-        <item name="titleTextColor">?attr/colorOnPrimary</item>
-        <item name="subtitleTextColor">?attr/colorPrimaryContainer</item>
-        <item name="navigationIconTint">?attr/colorOnPrimary</item>
-        <item name="android:theme">@style/ThemeOverlay.Material3.Toolbar.Primary</item>
-        <item name="materialThemeOverlay">@style/ThemeOverlay.Material3.Toolbar.Primary</item>
+    <style name="BoxWidget.Toolbar.Primary" parent="Widget.MaterialComponents.Toolbar.Primary">
+        <item name="titleMargin">0dp</item>
+        <item name="maxButtonHeight">?attr/actionBarSize</item>
+        <item name="android:minHeight">?attr/actionBarSize</item>
+        <item name="contentInsetStartWithNavigation">?attr/actionBarSize</item>
+        <item name="subtitleTextAppearance">@style/BoxSubtitleAppearance</item>
     </style>
 
     <style name="BoxWidget.Toolbar.Primary.Center" parent="BoxWidget.Toolbar.Primary">
+        <item name="titleCentered">true</item>
+        <item name="subtitleCentered">true</item>
         <item name="contentInsetStart">16dp</item>
         <item name="contentInsetEnd">16dp</item>
-        <item name="subtitleCentered">true</item>
-        <item name="titleCentered">true</item>
     </style>
 
-    <style name="BoxWidget.Toolbar.PrimarySurface" parent="BoxWidget.Toolbar.Primary" />
+    <style name="BoxWidget.Toolbar.PrimarySurface" parent="Widget.MaterialComponents.Toolbar.PrimarySurface">
+        <item name="titleMargin">0dp</item>
+        <item name="maxButtonHeight">?attr/actionBarSize</item>
+        <item name="android:minHeight">?attr/actionBarSize</item>
+        <item name="contentInsetStartWithNavigation">?attr/actionBarSize</item>
+        <item name="subtitleTextAppearance">@style/BoxSubtitleAppearance</item>
+    </style>
 
     <style name="BoxWidget.Toolbar.PrimarySurface.Center" parent="BoxWidget.Toolbar.PrimarySurface">
+        <item name="titleCentered">true</item>
+        <item name="subtitleCentered">true</item>
         <item name="contentInsetStart">16dp</item>
         <item name="contentInsetEnd">16dp</item>
-        <item name="subtitleCentered">true</item>
-        <item name="titleCentered">true</item>
     </style>
-
-    <style name="BoxSubtitleAppearance">
-        <item name="android:textSize">10sp</item>
-    </style>
-
-    <style name="BoxWidget.Toolbar.Button.Navigation.Primary" parent="Widget.AppCompat.Toolbar.Button.Navigation">
-        <item name="android:scaleType">center</item>
-        <item name="minWidth">?attr/actionBarSize</item>
-        <item name="tint">?attr/colorOnPrimary</item>
-    </style>
-
-    <style name="ThemeOverlay.Material3.Toolbar.Primary" parent="">
-        <item name="actionMenuTextColor">?attr/colorOnPrimary</item>
-        <item name="colorControlNormal">?attr/colorOnPrimary</item>
-    </style>
-
-    <!-- AppBarLayout -->
-
-    <style name="BoxWidget.AppBarLayout.Surface" parent="Widget.Material3.AppBarLayout" />
-
-    <style name="BoxWidget.AppBarLayout.Primary" parent="Widget.Material3.AppBarLayout">
-        <item name="android:background">?attr/colorPrimary</item>
-        <item name="liftOnScroll">false</item>
-    </style>
-
-    <style name="BoxWidget.AppBarLayout.PrimarySurface" parent="BoxWidget.AppBarLayout.Primary" />
-
-    <!-- CollapsingToolbar -->
-    <style name="BoxWidget.CollapsingToolbar.Medium.Surface" parent="Widget.Material3.CollapsingToolbar.Medium" />
-
-    <style name="BoxWidget.CollapsingToolbar.Medium.Primary" parent="Widget.Material3.CollapsingToolbar.Medium">
-        <item name="collapsedTitleTextColor">?attr/colorOnPrimary</item>
-        <item name="expandedTitleTextColor">?attr/colorOnPrimary</item>
-    </style>
-
-    <style name="BoxWidget.CollapsingToolbar.Medium.PrimarySurface" parent="BoxWidget.CollapsingToolbar.Medium.Primary" />
-
-    <style name="BoxWidget.CollapsingToolbar.Large.Surface" parent="Widget.Material3.CollapsingToolbar.Large" />
-
-    <style name="BoxWidget.CollapsingToolbar.Large.Primary" parent="Widget.Material3.CollapsingToolbar.Large">
-        <item name="collapsedTitleTextColor">?attr/colorOnPrimary</item>
-        <item name="expandedTitleTextColor">?attr/colorOnPrimary</item>
-    </style>
-
-    <style name="BoxWidget.CollapsingToolbar.Large.PrimarySurface" parent="BoxWidget.CollapsingToolbar.Large.Primary" />
-
 </resources>

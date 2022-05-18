@@ -1,5 +1,6 @@
 package com.chooongg.abc.main
 
+import android.app.ApplicationErrorReport.TYPE_NONE
 import android.os.Bundle
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -11,10 +12,11 @@ import com.chooongg.abc.main.fragment.ColorFragment
 import com.chooongg.abc.main.fragment.HomeFragment
 import com.chooongg.core.activity.BoxBindingActivity
 import com.chooongg.core.adapter.BoxFragmentAdapter
+import com.chooongg.core.annotation.ActivityEdgeToEdge
 import com.chooongg.core.annotation.TopAppBar
 import com.chooongg.core.fragment.BoxFragment
 
-@TopAppBar(TopAppBar.TYPE_NONE)
+@TopAppBar(false)
 class MainActivity : BoxBindingActivity<ActivityMainBinding>() {
 
     private val fragments: MutableList<BoxFragment> = mutableListOf(
@@ -28,6 +30,7 @@ class MainActivity : BoxBindingActivity<ActivityMainBinding>() {
             view.updatePadding(bottom = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom)
             insets
         }
+        setContentView(R.layout.activity_main)
         binding.viewPager.isUserInputEnabled = false
         binding.viewPager.offscreenPageLimit = 666
         binding.viewPager.adapter = BoxFragmentAdapter(this, fragments)

@@ -1,10 +1,13 @@
 package com.chooongg.abc.main.fragment
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.listener.OnItemClickListener
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
+import com.chooongg.abc.databinding.FragmentColorBinding
 import com.chooongg.abc.databinding.FragmentHomeBinding
 import com.chooongg.abc.databinding.ItemHomeBinding
 import com.chooongg.abc.modules.StatusLayoutActivity
@@ -13,15 +16,17 @@ import com.chooongg.core.adapter.BindingAdapter
 import com.chooongg.core.annotation.TopAppBar
 import com.chooongg.core.ext.divider
 import com.chooongg.core.ext.doOnItemClick
-import com.chooongg.core.ext.startActivityTransitionPage
+import com.chooongg.core.ext.startActivity
 import com.chooongg.core.fragment.BoxBindingFragment
 import com.chooongg.ext.resourcesDimensionPixelSize
 import com.chooongg.ext.showToast
 
-@TopAppBar(TopAppBar.TYPE_SMALL)
 class HomeFragment : BoxBindingFragment<FragmentHomeBinding>(), OnItemClickListener {
 
     private val adapter = Adapter()
+
+    override fun initBinding(inflater: LayoutInflater, container: ViewGroup?) =
+        FragmentHomeBinding.inflate(inflater, container, false)
 
     override fun initConfig(savedInstanceState: Bundle?) {
         binding.recyclerView.adapter = adapter
@@ -47,8 +52,8 @@ class HomeFragment : BoxBindingFragment<FragmentHomeBinding>(), OnItemClickListe
 
     override fun onItemClick(a: BaseQuickAdapter<*, *>, view: View, position: Int) {
         when (adapter.data[position]) {
-            "TopAppBar" -> startActivityTransitionPage(TopAppbarActivity::class, view)
-            "StatusLayout" -> startActivityTransitionPage(StatusLayoutActivity::class, view)
+            "TopAppBar" -> startActivity(TopAppbarActivity::class)
+            "StatusLayout" -> startActivity(StatusLayoutActivity::class)
         }
     }
 

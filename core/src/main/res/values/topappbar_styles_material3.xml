@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- BoxToolbar -->
+    <style name="BoxWidget.Material3.Toolbar.OnSurface" parent="Widget.Material3.Toolbar.OnSurface">
+        <item name="titleMargin">0dp</item>
+        <item name="maxButtonHeight">?attr/actionBarSize</item>
+        <item name="android:minHeight">?attr/actionBarSize</item>
+        <item name="contentInsetStartWithNavigation">?attr/actionBarSize</item>
+        <item name="subtitleTextAppearance">@style/BoxSubtitleAppearance</item>
+    </style>
+
+    <style name="BoxWidget.Material3.Toolbar.OnSurface.Center" parent="BoxWidget.Material3.Toolbar.OnSurface">
+        <item name="titleCentered">true</item>
+        <item name="subtitleCentered">true</item>
+        <item name="contentInsetStart">16dp</item>
+        <item name="contentInsetEnd">16dp</item>
+    </style>
+
+    <style name="BoxWidget.Material3.Toolbar.OnPrimary" parent="BoxWidget.Material3.Toolbar.OnSurface">
+        <item name="titleTextColor">?attr/colorOnPrimary</item>
+        <item name="subtitleTextColor">?attr/colorPrimaryContainer</item>
+        <item name="navigationIconTint">?attr/colorOnPrimary</item>
+        <item name="colorControlNormal">?attr/colorOnPrimary</item>
+        <item name="android:theme">@style/ThemeOverlay.Material3.Toolbar.Primary</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.Material3.Toolbar.Primary</item>
+    </style>
+
+    <style name="BoxWidget.Material3.Toolbar.OnPrimary.Center" parent="BoxWidget.Material3.Toolbar.OnPrimary">
+        <item name="titleCentered">true</item>
+        <item name="subtitleCentered">true</item>
+        <item name="contentInsetStart">16dp</item>
+        <item name="contentInsetEnd">16dp</item>
+    </style>
+
+    <style name="BoxWidget.Material3.Toolbar.OnPrimarySurface" parent="BoxWidget.Material3.Toolbar.OnPrimary" />
+
+    <style name="BoxWidget.Material3.Toolbar.OnPrimarySurface.Center" parent="BoxWidget.Material3.Toolbar.OnPrimarySurface">
+        <item name="titleCentered">true</item>
+        <item name="subtitleCentered">true</item>
+        <item name="contentInsetStart">16dp</item>
+        <item name="contentInsetEnd">16dp</item>
+    </style>
+
+    <style name="BoxWidget.Material3.Toolbar.Surface" parent="Widget.Material3.Toolbar.Surface">
+        <item name="titleMargin">0dp</item>
+        <item name="maxButtonHeight">?attr/actionBarSize</item>
+        <item name="android:minHeight">?attr/actionBarSize</item>
+        <item name="contentInsetStartWithNavigation">?attr/actionBarSize</item>
+        <item name="subtitleTextAppearance">@style/BoxSubtitleAppearance</item>
+    </style>
+
+    <style name="BoxWidget.Material3.Toolbar.Surface.Center" parent="BoxWidget.Material3.Toolbar.Surface">
+        <item name="titleCentered">true</item>
+        <item name="subtitleCentered">true</item>
+        <item name="contentInsetStart">16dp</item>
+        <item name="contentInsetEnd">16dp</item>
+    </style>
+
+    <style name="BoxWidget.Material3.Toolbar.Primary" parent="BoxWidget.Material3.Toolbar.Surface">
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="titleTextColor">?attr/colorOnPrimary</item>
+        <item name="subtitleTextColor">?attr/colorPrimaryContainer</item>
+        <item name="navigationIconTint">?attr/colorOnPrimary</item>
+        <item name="android:theme">@style/ThemeOverlay.Material3.Toolbar.Primary</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.Material3.Toolbar.Primary</item>
+    </style>
+
+    <style name="BoxWidget.Material3.Toolbar.Primary.Center" parent="BoxWidget.Material3.Toolbar.Primary">
+        <item name="contentInsetStart">16dp</item>
+        <item name="contentInsetEnd">16dp</item>
+        <item name="subtitleCentered">true</item>
+        <item name="titleCentered">true</item>
+    </style>
+
+    <style name="BoxWidget.Material3.Toolbar.PrimarySurface" parent="BoxWidget.Material3.Toolbar.Primary" />
+
+    <style name="BoxWidget.Material3.Toolbar.PrimarySurface.Center" parent="BoxWidget.Material3.Toolbar.PrimarySurface">
+        <item name="contentInsetStart">16dp</item>
+        <item name="contentInsetEnd">16dp</item>
+        <item name="subtitleCentered">true</item>
+        <item name="titleCentered">true</item>
+    </style>
+
+    <style name="BoxSubtitleAppearance">
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="BoxWidget.Toolbar.Button.Navigation.Primary" parent="Widget.AppCompat.Toolbar.Button.Navigation">
+        <item name="android:scaleType">center</item>
+        <item name="minWidth">?attr/actionBarSize</item>
+        <item name="tint">?attr/colorOnPrimary</item>
+    </style>
+
+    <style name="ThemeOverlay.Material3.Toolbar.Primary" parent="">
+        <item name="actionMenuTextColor">?attr/colorOnPrimary</item>
+        <item name="colorControlNormal">?attr/colorOnPrimary</item>
+    </style>
+
+    <!-- AppBarLayout -->
+
+    <style name="BoxWidget.Material3.AppBarLayout.Surface" parent="Widget.Material3.AppBarLayout" />
+
+    <style name="BoxWidget.Material3.AppBarLayout.Primary" parent="Widget.Material3.AppBarLayout">
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="liftOnScroll">false</item>
+    </style>
+
+    <style name="BoxWidget.Material3.AppBarLayout.PrimarySurface" parent="BoxWidget.Material3.AppBarLayout.Primary" />
+
+    <!-- CollapsingToolbar -->
+
+    <style name="BoxWidget.Material3.CollapsingToolbar.Medium.Surface" parent="Widget.Material3.CollapsingToolbar.Medium" />
+
+    <style name="BoxWidget.Material3.CollapsingToolbar.Medium.Primary" parent="Widget.Material3.CollapsingToolbar.Medium">
+        <item name="collapsedTitleTextColor">?attr/colorOnPrimary</item>
+        <item name="expandedTitleTextColor">?attr/colorOnPrimary</item>
+    </style>
+
+    <style name="BoxWidget.Material3.CollapsingToolbar.Medium.PrimarySurface" parent="BoxWidget.Material3.CollapsingToolbar.Medium.Primary" />
+
+    <style name="BoxWidget.Material3.CollapsingToolbar.Large.Surface" parent="Widget.Material3.CollapsingToolbar.Large" />
+
+    <style name="BoxWidget.Material3.CollapsingToolbar.Large.Primary" parent="Widget.Material3.CollapsingToolbar.Large">
+        <item name="collapsedTitleTextColor">?attr/colorOnPrimary</item>
+        <item name="expandedTitleTextColor">?attr/colorOnPrimary</item>
+    </style>
+
+    <style name="BoxWidget.Material3.CollapsingToolbar.Large.PrimarySurface" parent="BoxWidget.Material3.CollapsingToolbar.Large.Primary" />
+
+</resources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="BoxWidget.Material3.Toolbar.OnPrimarySurface" parent="BoxWidget.Material3.Toolbar.OnSurface" />
+
+    <style name="BoxWidget.Material3.Toolbar.OnPrimarySurface.Center" parent="BoxWidget.Material3.Toolbar.OnSurface.Center" />
+
+    <style name="BoxWidget.Material3.Toolbar.PrimarySurface" parent="BoxWidget.Toolbar.Surface" />
+
+    <style name="BoxWidget.Material3.Toolbar.PrimarySurface.Center" parent="BoxWidget.Toolbar.Surface.Center" />
+
+    <style name="BoxWidget.Material3.AppBarLayout.PrimarySurface" parent="BoxWidget.Material3.AppBarLayout.Surface" />
+
+    <style name="BoxWidget.Material3.CollapsingToolbar.Medium.PrimarySurface" parent="BoxWidget.Material3.CollapsingToolbar.Medium.Surface" />
+
+    <style name="BoxWidget.Material3.CollapsingToolbar.Large.PrimarySurface" parent="BoxWidget.Material3.CollapsingToolbar.Large.Surface" />
+
+</resources>

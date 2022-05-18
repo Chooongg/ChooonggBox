@@ -2,20 +2,20 @@
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="?colorOutline">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.google.android.material.divider.MaterialDivider
-            style="@style/Widget.Material3.MaterialDivider.Heavy"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="@dimen/dividerBig" />
 
         <com.chooongg.core.toolbar.BoxToolbar
-            style="@style/BoxWidget.Toolbar.OnSurface"
+            style="@style/BoxWidget.Material3.Toolbar.OnSurface"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:elevation="@dimen/d4"
@@ -23,13 +23,12 @@
             app:subtitle="BoxWidget.Toolbar.OnSurface"
             app:title="OnSurface" />
 
-        <com.google.android.material.divider.MaterialDivider
-            style="@style/Widget.Material3.MaterialDivider.Heavy"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="@dimen/dividerBig" />
 
         <com.chooongg.core.toolbar.BoxToolbar
-            style="@style/BoxWidget.Toolbar.OnPrimary"
+            style="@style/BoxWidget.Material3.Toolbar.OnPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:elevation="@dimen/d4"
@@ -37,13 +36,12 @@
             app:subtitle="BoxWidget.Toolbar.OnPrimary"
             app:title="OnPrimary" />
 
-        <com.google.android.material.divider.MaterialDivider
-            style="@style/Widget.Material3.MaterialDivider.Heavy"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="@dimen/dividerBig" />
 
         <com.chooongg.core.toolbar.BoxToolbar
-            style="@style/BoxWidget.Toolbar.OnPrimarySurface"
+            style="@style/BoxWidget.Material3.Toolbar.OnPrimarySurface"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:elevation="@dimen/d4"
@@ -51,10 +49,9 @@
             app:subtitle="BoxWidget.Toolbar.OnPrimarySurface"
             app:title="OnPrimarySurface" />
 
-        <com.google.android.material.divider.MaterialDivider
-            style="@style/Widget.Material3.MaterialDivider.Heavy"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="@dimen/dividerBig" />
 
         <com.chooongg.core.toolbar.BoxToolbar
             style="@style/BoxWidget.Toolbar.Surface"
@@ -65,10 +62,9 @@
             app:subtitle="BoxWidget.Toolbar.Surface"
             app:title="Surface" />
 
-        <com.google.android.material.divider.MaterialDivider
-            style="@style/Widget.Material3.MaterialDivider.Heavy"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="@dimen/dividerBig" />
 
         <com.chooongg.core.toolbar.BoxToolbar
             style="@style/BoxWidget.Toolbar.Primary"
@@ -79,10 +75,9 @@
             app:subtitle="BoxWidget.Toolbar.Primary"
             app:title="Primary" />
 
-        <com.google.android.material.divider.MaterialDivider
-            style="@style/Widget.Material3.MaterialDivider.Heavy"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="@dimen/dividerBig" />
 
         <com.chooongg.core.toolbar.BoxToolbar
             style="@style/BoxWidget.Toolbar.PrimarySurface"
@@ -93,13 +88,12 @@
             app:subtitle="BoxWidget.Toolbar.PrimarySurface"
             app:title="PrimarySurface" />
 
-        <com.google.android.material.divider.MaterialDivider
-            style="@style/Widget.Material3.MaterialDivider.Heavy"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="@dimen/dividerBig" />
 
         <com.chooongg.core.toolbar.BoxToolbar
-            style="@style/BoxWidget.Toolbar.OnSurface.Center"
+            style="@style/BoxWidget.Material3.Toolbar.OnSurface.Center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:elevation="@dimen/d4"
@@ -107,13 +101,12 @@
             app:subtitle="BoxWidget.Toolbar.OnSurface.Center"
             app:title="OnSurface.Center" />
 
-        <com.google.android.material.divider.MaterialDivider
-            style="@style/Widget.Material3.MaterialDivider.Heavy"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="@dimen/dividerBig" />
 
         <com.chooongg.core.toolbar.BoxToolbar
-            style="@style/BoxWidget.Toolbar.OnPrimary.Center"
+            style="@style/BoxWidget.Material3.Toolbar.OnPrimary.Center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:elevation="@dimen/d4"
@@ -121,13 +114,12 @@
             app:subtitle="BoxWidget.Toolbar.OnPrimary.Center"
             app:title="OnPrimary.Center" />
 
-        <com.google.android.material.divider.MaterialDivider
-            style="@style/Widget.Material3.MaterialDivider.Heavy"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="@dimen/dividerBig" />
 
         <com.chooongg.core.toolbar.BoxToolbar
-            style="@style/BoxWidget.Toolbar.OnPrimarySurface.Center"
+            style="@style/BoxWidget.Material3.Toolbar.OnPrimarySurface.Center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:elevation="@dimen/d4"
@@ -135,10 +127,9 @@
             app:subtitle="BoxWidget.Toolbar.OnPrimarySurface.Center"
             app:title="OnPrimarySurface.Center" />
 
-        <com.google.android.material.divider.MaterialDivider
-            style="@style/Widget.Material3.MaterialDivider.Heavy"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="@dimen/dividerBig" />
 
         <com.chooongg.core.toolbar.BoxToolbar
             style="@style/BoxWidget.Toolbar.Surface.Center"
@@ -149,10 +140,9 @@
             app:subtitle="BoxWidget.Toolbar.Surface.Center"
             app:title="Surface.Center" />
 
-        <com.google.android.material.divider.MaterialDivider
-            style="@style/Widget.Material3.MaterialDivider.Heavy"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="@dimen/dividerBig" />
 
         <com.chooongg.core.toolbar.BoxToolbar
             style="@style/BoxWidget.Toolbar.Primary.Center"
@@ -163,10 +153,9 @@
             app:subtitle="BoxWidget.Toolbar.Primary.Center"
             app:title="Primary.Center" />
 
-        <com.google.android.material.divider.MaterialDivider
-            style="@style/Widget.Material3.MaterialDivider.Heavy"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="@dimen/dividerBig" />
 
         <com.chooongg.core.toolbar.BoxToolbar
             style="@style/BoxWidget.Toolbar.PrimarySurface.Center"
@@ -177,185 +166,9 @@
             app:subtitle="BoxWidget.Toolbar.PrimarySurface.Center"
             app:title="PrimarySurface.Center" />
 
-        <com.google.android.material.divider.MaterialDivider
-            style="@style/Widget.Material3.MaterialDivider.Heavy"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <!-- 重复 -->
-
-        <com.google.android.material.divider.MaterialDivider
-            style="@style/Widget.Material3.MaterialDivider.Heavy"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <com.chooongg.core.toolbar.BoxToolbar
-            style="@style/BoxWidget.Toolbar.OnSurface"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:elevation="@dimen/d4"
-            app:autoSetActionBar="false"
-            app:subtitle="BoxWidget.Toolbar.OnSurface"
-            app:title="OnSurface" />
-
-        <com.google.android.material.divider.MaterialDivider
-            style="@style/Widget.Material3.MaterialDivider.Heavy"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <com.chooongg.core.toolbar.BoxToolbar
-            style="@style/BoxWidget.Toolbar.OnPrimary"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:elevation="@dimen/d4"
-            app:autoSetActionBar="false"
-            app:subtitle="BoxWidget.Toolbar.OnPrimary"
-            app:title="OnPrimary" />
-
-        <com.google.android.material.divider.MaterialDivider
-            style="@style/Widget.Material3.MaterialDivider.Heavy"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <com.chooongg.core.toolbar.BoxToolbar
-            style="@style/BoxWidget.Toolbar.OnPrimarySurface"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:elevation="@dimen/d4"
-            app:autoSetActionBar="false"
-            app:subtitle="BoxWidget.Toolbar.OnPrimarySurface"
-            app:title="OnPrimarySurface" />
-
-        <com.google.android.material.divider.MaterialDivider
-            style="@style/Widget.Material3.MaterialDivider.Heavy"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <com.chooongg.core.toolbar.BoxToolbar
-            style="@style/BoxWidget.Toolbar.Surface"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:elevation="@dimen/d4"
-            app:autoSetActionBar="false"
-            app:subtitle="BoxWidget.Toolbar.Surface"
-            app:title="Surface" />
-
-        <com.google.android.material.divider.MaterialDivider
-            style="@style/Widget.Material3.MaterialDivider.Heavy"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <com.chooongg.core.toolbar.BoxToolbar
-            style="@style/BoxWidget.Toolbar.Primary"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:elevation="@dimen/d4"
-            app:autoSetActionBar="false"
-            app:subtitle="BoxWidget.Toolbar.Primary"
-            app:title="Primary" />
-
-        <com.google.android.material.divider.MaterialDivider
-            style="@style/Widget.Material3.MaterialDivider.Heavy"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <com.chooongg.core.toolbar.BoxToolbar
-            style="@style/BoxWidget.Toolbar.PrimarySurface"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:elevation="@dimen/d4"
-            app:autoSetActionBar="false"
-            app:subtitle="BoxWidget.Toolbar.PrimarySurface"
-            app:title="PrimarySurface" />
-
-        <com.google.android.material.divider.MaterialDivider
-            style="@style/Widget.Material3.MaterialDivider.Heavy"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <com.chooongg.core.toolbar.BoxToolbar
-            style="@style/BoxWidget.Toolbar.OnSurface.Center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:elevation="@dimen/d4"
-            app:autoSetActionBar="false"
-            app:subtitle="BoxWidget.Toolbar.OnSurface.Center"
-            app:title="OnSurface.Center" />
-
-        <com.google.android.material.divider.MaterialDivider
-            style="@style/Widget.Material3.MaterialDivider.Heavy"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <com.chooongg.core.toolbar.BoxToolbar
-            style="@style/BoxWidget.Toolbar.OnPrimary.Center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:elevation="@dimen/d4"
-            app:autoSetActionBar="false"
-            app:subtitle="BoxWidget.Toolbar.OnPrimary.Center"
-            app:title="OnPrimary.Center" />
-
-        <com.google.android.material.divider.MaterialDivider
-            style="@style/Widget.Material3.MaterialDivider.Heavy"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <com.chooongg.core.toolbar.BoxToolbar
-            style="@style/BoxWidget.Toolbar.OnPrimarySurface.Center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:elevation="@dimen/d4"
-            app:autoSetActionBar="false"
-            app:subtitle="BoxWidget.Toolbar.OnPrimarySurface.Center"
-            app:title="OnPrimarySurface.Center" />
-
-        <com.google.android.material.divider.MaterialDivider
-            style="@style/Widget.Material3.MaterialDivider.Heavy"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <com.chooongg.core.toolbar.BoxToolbar
-            style="@style/BoxWidget.Toolbar.Surface.Center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:elevation="@dimen/d4"
-            app:autoSetActionBar="false"
-            app:subtitle="BoxWidget.Toolbar.Surface.Center"
-            app:title="Surface.Center" />
-
-        <com.google.android.material.divider.MaterialDivider
-            style="@style/Widget.Material3.MaterialDivider.Heavy"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <com.chooongg.core.toolbar.BoxToolbar
-            style="@style/BoxWidget.Toolbar.Primary.Center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:elevation="@dimen/d4"
-            app:autoSetActionBar="false"
-            app:subtitle="BoxWidget.Toolbar.Primary.Center"
-            app:title="Primary.Center" />
-
-        <com.google.android.material.divider.MaterialDivider
-            style="@style/Widget.Material3.MaterialDivider.Heavy"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <com.chooongg.core.toolbar.BoxToolbar
-            style="@style/BoxWidget.Toolbar.PrimarySurface.Center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:elevation="@dimen/d4"
-            app:autoSetActionBar="false"
-            app:subtitle="BoxWidget.Toolbar.PrimarySurface.Center"
-            app:title="PrimarySurface.Center" />
-
-        <com.google.android.material.divider.MaterialDivider
-            style="@style/Widget.Material3.MaterialDivider.Heavy"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="@dimen/dividerBig" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
