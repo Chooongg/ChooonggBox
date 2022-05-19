@@ -40,7 +40,6 @@
         <item name="colorOutline">@color/outline</item>
         <!-- 过渡动画 -->
         <item name="android:windowAnimationStyle">@style/BoxWindowAnimation</item>
-        <item name="android:windowActivityTransitions">true</item>
         <item name="windowActionModeOverlay">false</item>
         <!-- 圆角设置 -->
         <item name="shapeAppearanceSmallComponent">@style/ShapeAppearanceImage.Rounded.8dp</item>
