@@ -6,9 +6,11 @@ import android.view.MenuItem
 import com.chooongg.abc.R
 import com.chooongg.abc.databinding.ActivityStatusLayoutBinding
 import com.chooongg.core.activity.BoxBindingActivity
+import com.chooongg.core.annotation.TopAppBar
 import com.chooongg.ext.doOnClick
 import com.chooongg.statusLayout.status.ProgressStatus
 
+@TopAppBar
 open class StatusLayoutActivity : BoxBindingActivity<ActivityStatusLayoutBinding>() {
 
     override fun initBinding() = ActivityStatusLayoutBinding.inflate(layoutInflater)

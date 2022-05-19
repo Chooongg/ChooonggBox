@@ -1,14 +1,15 @@
 package com.chooongg.core.activity
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
-import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.FitWindowsLinearLayout
+import androidx.appcompat.widget.FitWindowsViewGroup
 import androidx.appcompat.widget.Toolbar
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.ViewCompat
@@ -18,7 +19,10 @@ import com.chooongg.core.R
 import com.chooongg.core.action.InitAction
 import com.chooongg.core.annotation.*
 import com.chooongg.core.toolbar.BoxToolbar
-import com.chooongg.ext.*
+import com.chooongg.ext.contentView
+import com.chooongg.ext.hideIME
+import com.chooongg.ext.logDTag
+import com.chooongg.ext.resourcesString
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.transition.platform.MaterialSharedAxis
@@ -59,8 +63,9 @@ abstract class BoxActivity : AppCompatActivity(), InitAction {
         val title4Annotation = getTitle4Annotation()
         if (title4Annotation != null) title = title4Annotation
         // Edge To Edge 实现
-        if (getEdgeToEdge4Annotation() == true) {
+        if (getEdgeToEdge4Annotation()) {
             WindowCompat.setDecorFitsSystemWindows(window, false)
+            window.statusBarColor = Color.TRANSPARENT
             if (getActivityFitsNavigationBar()) {
                 ViewCompat.setOnApplyWindowInsetsListener(contentView) { view, insets ->
                     if (insets.isVisible(WindowInsetsCompat.Type.navigationBars())) {
@@ -87,9 +92,9 @@ abstract class BoxActivity : AppCompatActivity(), InitAction {
         logDTag("BOX --> Activity", "${javaClass.simpleName}(${title}) onPostCreated")
         super.onPostCreate(savedInstanceState)
         val contentView = contentView
-        if (contentView.background == null) {
-            contentView.setBackgroundColor(attrColor(android.R.attr.colorBackground))
-        }
+//        if (contentView.background == null) {
+//            contentView.setBackgroundColor(attrColor(android.R.attr.colorBackground))
+//        }
         contentView.isFocusable = true
         contentView.isFocusableInTouchMode = true
         // 设置自动隐藏软键盘
@@ -102,14 +107,33 @@ abstract class BoxActivity : AppCompatActivity(), InitAction {
     }
 
     protected open fun configTopAppBar() {
-        (contentView.parent as? FitWindowsLinearLayout)?.let {
-            val toolbar = BoxToolbar(context)
-            if (getEdgeToEdge4Annotation() == true) {
-                val frameLayout = FrameLayout(context)
-                frameLayout.addView(toolbar)
-
-            } else {
-                it.addView(toolbar, 0)
+        if (isShowTopAppBar4Annotation()) {
+            val parent = contentView.parent
+            if (parent is FitWindowsViewGroup && parent is ViewGroup) {
+                val topAppbarGroup =
+                    layoutInflater.inflate(R.layout.box_activity_top_appbar, parent, false)
+                val toolbar = topAppbarGroup.findViewById<BoxToolbar>(R.id.toolbar)
+                parent.addView(topAppbarGroup, if (parent is FitWindowsLinearLayout) 0 else -1)
+                topAppbarGroup.elevation = toolbar.elevation
+                toolbar.elevation = 0f
+                topAppbarGroup.background = toolbar.background
+                toolbar.background = null
+                if (getEdgeToEdge4Annotation()) {
+                    ViewCompat.setOnApplyWindowInsetsListener(topAppbarGroup) { view, insets ->
+                        if (insets.isVisible(WindowInsetsCompat.Type.statusBars())) {
+                            val statusBarInsets =
+                                insets.getInsets(WindowInsetsCompat.Type.statusBars())
+                            view.setPadding(
+                                statusBarInsets.left,
+                                statusBarInsets.top,
+                                statusBarInsets.right,
+                                statusBarInsets.bottom
+                            )
+                        }
+                        insets
+                    }
+                }
+                setSupportActionBar(toolbar)
             }
         }
     }
@@ -169,7 +193,7 @@ abstract class BoxActivity : AppCompatActivity(), InitAction {
     }
 
     private fun getEdgeToEdge4Annotation() =
-        javaClass.getAnnotation(ActivityEdgeToEdge::class.java)?.value
+        javaClass.getAnnotation(ActivityEdgeToEdge::class.java)?.value ?: false
 
     private fun getActivityFitsNavigationBar() =
         javaClass.getAnnotation(ActivityFitsNavigationBar::class.java)?.value ?: true

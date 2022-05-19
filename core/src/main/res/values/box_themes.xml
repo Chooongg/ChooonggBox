@@ -2,17 +2,17 @@
 <resources>
 
     <style name="BoxTheme.Surface" parent="Base.BoxTheme">
-        <item name="android:statusBarColor">#11000000</item>
+        <item name="android:statusBarColor">#dddddd</item>
         <item name="toolbarStyle">@style/BoxWidget.Toolbar.Surface</item>
         <item name="appBarLayoutStyle">@style/Widget.MaterialComponents.AppBarLayout.Surface</item>
     </style>
 
     <style name="BoxTheme.Surface.CenterTitle" parent="BoxTheme.Surface">
-        <item name="android:statusBarColor">#11000000</item>
         <item name="toolbarStyle">@style/BoxWidget.Toolbar.Surface.Center</item>
     </style>
 
     <style name="BoxTheme.Primary" parent="Base.BoxTheme">
+        <item name="android:statusBarColor">?colorPrimary</item>
         <item name="toolbarStyle">@style/BoxWidget.Toolbar.Primary</item>
         <item name="appBarLayoutStyle">@style/Widget.MaterialComponents.AppBarLayout.Primary</item>
     </style>
@@ -22,6 +22,7 @@
     </style>
 
     <style name="BoxTheme.PrimarySurface" parent="Base.BoxTheme">
+        <item name="android:statusBarColor">?colorPrimarySurface</item>
         <item name="toolbarStyle">@style/BoxWidget.Toolbar.PrimarySurface</item>
         <item name="appBarLayoutStyle">
             @style/Widget.MaterialComponents.AppBarLayout.PrimarySurface
@@ -32,13 +33,15 @@
         <item name="toolbarStyle">@style/BoxWidget.Toolbar.PrimarySurface.Center</item>
     </style>
 
-    <style name="Base.BoxTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="android:statusBarColor">?colorPrimary</item>
+    <style name="Base.BoxTheme" parent="Theme.MaterialComponents.DayNight">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
         <item name="colorOutline">@color/outline</item>
         <!-- 过渡动画 -->
         <item name="android:windowAnimationStyle">@style/BoxWindowAnimation</item>
         <item name="android:windowActivityTransitions">true</item>
-        <item name="windowActionModeOverlay">true</item>
+        <item name="windowActionModeOverlay">false</item>
         <!-- 圆角设置 -->
         <item name="shapeAppearanceSmallComponent">@style/ShapeAppearanceImage.Rounded.8dp</item>
         <item name="shapeAppearanceMediumComponent">@style/ShapeAppearanceImage.Rounded.16dp</item>
@@ -50,5 +53,6 @@
         <item name="materialAlertDialogTheme">
             @style/ThemeOverlay.Material3.MaterialAlertDialog.FillWidth.Center
         </item>
+        <item name="android:configChanges">keyboardHidden|orientation|screenSize</item>
     </style>
 </resources>

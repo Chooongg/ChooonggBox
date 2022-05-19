@@ -2,7 +2,7 @@
 <resources>
 
     <style name="BoxTheme.Surface" parent="Base.BoxTheme">
-        <item name="statusBarScrim">@android:color/transparent</item>
+        <item name="android:statusBarColor">?colorSurface</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="toolbarStyle">@style/BoxWidget.Toolbar.Surface</item>
         <item name="appBarLayoutStyle">@style/Widget.MaterialComponents.AppBarLayout.Surface</item>

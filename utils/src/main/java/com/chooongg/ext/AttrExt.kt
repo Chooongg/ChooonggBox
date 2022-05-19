@@ -6,6 +6,8 @@ import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.util.TypedValue
 import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.annotation.AttrRes
 import androidx.annotation.ColorInt
 import androidx.fragment.app.Fragment
@@ -402,3 +404,19 @@ fun View.attrChildResourcesId(@AttrRes id: Int, @AttrRes childId: Int, defValue:
 
 fun View.attrChildDrawable(@AttrRes id: Int, @AttrRes childId: Int) =
     context.attrChildDrawable(id, childId)
+
+fun TextView.setTextColorAttr(@AttrRes resId: Int) {
+    setTextColor(context.attrColor(resId))
+}
+
+fun TextView.setHintTextColorAttr(@AttrRes resId: Int) {
+    setHintTextColor(context.attrColor(resId))
+}
+
+fun ImageView.setColorFilterAttr(@AttrRes resId: Int) {
+    setColorFilter(context.attrColor(resId))
+}
+
+fun View.setBackgroundAttr(@AttrRes resId: Int) {
+    setBackgroundColor(context.attrColor(resId))
+}
