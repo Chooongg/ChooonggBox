@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import androidx.recyclerview.widget.RecyclerView
 import com.chooongg.core.R
-import com.chooongg.core.ext.getMaterialColor
+import com.chooongg.ext.attrColor
 
 /**
  * 包装PickerLayoutManager的PickerRecyclerView
@@ -30,7 +30,7 @@ open class PickerRecyclerView @JvmOverloads constructor(
 
     var dividerVisible = DIVIDER_VISIBLE
     var dividerSize = DIVIDER_SIZE
-    var dividerColor = getMaterialColor(com.google.android.material.R.attr.colorOutline)
+    var dividerColor = attrColor(com.google.android.material.R.attr.colorOutline)
     var dividerMargin = DIVIDER_MARGIN
 
     private var decor: PickerItemDecoration? = null
