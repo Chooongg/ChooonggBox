@@ -6,21 +6,6 @@
     android:layout_height="match_parent"
     app:initializeSuccess="true">
 
-    <com.chooongg.core.widget.arcLayout.ArcLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:arc_cropDirection="cropOutside"
-        app:arc_height="@dimen/d24"
-        android:elevation="@dimen/d4"
-        app:arc_position="bottom">
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="?colorPrimary" />
-
-    </com.chooongg.core.widget.arcLayout.ArcLayout>
-
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_progress"
         android:layout_width="match_parent"
