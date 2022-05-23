@@ -24,7 +24,6 @@
         android:alpha="0.7"
         android:ellipsize="end"
         android:lines="1"
-        android:textAppearance="?textAppearanceBodySmall"
         tools:text="Header"
         tools:visibility="visible" />
 
