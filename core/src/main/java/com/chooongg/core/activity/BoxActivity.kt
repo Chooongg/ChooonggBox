@@ -36,6 +36,8 @@ abstract class BoxActivity : AppCompatActivity(), InitAction {
 
     protected open fun initTransitions() = Unit
 
+    open fun initTopAppBar(parent: ViewGroup?, toolbar: Toolbar?) = Unit
+
     override fun initContentByLazy() = Unit
 
     open fun onRefresh(any: Any? = null) = Unit
@@ -134,6 +136,7 @@ abstract class BoxActivity : AppCompatActivity(), InitAction {
                     }
                 }
                 setSupportActionBar(toolbar)
+                initTopAppBar(topAppbarGroup as ViewGroup, toolbar)
             }
         }
     }
