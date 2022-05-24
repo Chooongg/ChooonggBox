@@ -22,7 +22,6 @@ open class StatusLayoutActivity : BoxBindingActivity<ActivityStatusLayoutBinding
     }
 
     override fun initContent(savedInstanceState: Bundle?) {
-//        binding.statusLayout.showSuccess()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
