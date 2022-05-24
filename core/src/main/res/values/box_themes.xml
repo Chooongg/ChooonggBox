@@ -50,7 +50,7 @@
         <item name="actionBarSize">@dimen/d48</item>
         <!-- Dialog -->
         <item name="materialAlertDialogTheme">
-            @style/ThemeOverlay.Material3.MaterialAlertDialog.FillWidth.Center
+            @style/ThemeOverlay.MaterialComponents.MaterialAlertDialog.Centered.FillWidth
         </item>
         <item name="android:configChanges">keyboardHidden|orientation|screenSize</item>
     </style>
