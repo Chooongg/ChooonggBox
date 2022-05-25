@@ -2,6 +2,7 @@
 <resources>
 
     <style name="BoxWidget.Toolbar.Surface" parent="Widget.MaterialComponents.Toolbar.Surface">
+        <item name="android:elevation">4dp</item>
         <item name="titleMargin">0dp</item>
         <item name="maxButtonHeight">?attr/actionBarSize</item>
         <item name="android:minHeight">?attr/actionBarSize</item>
@@ -17,6 +18,7 @@
     </style>
 
     <style name="BoxWidget.Toolbar.Primary" parent="Widget.MaterialComponents.Toolbar.Primary">
+        <item name="android:elevation">4dp</item>
         <item name="titleMargin">0dp</item>
         <item name="maxButtonHeight">?attr/actionBarSize</item>
         <item name="android:minHeight">?attr/actionBarSize</item>
@@ -32,6 +34,7 @@
     </style>
 
     <style name="BoxWidget.Toolbar.PrimarySurface" parent="Widget.MaterialComponents.Toolbar.PrimarySurface">
+        <item name="android:elevation">4dp</item>
         <item name="titleMargin">0dp</item>
         <item name="maxButtonHeight">?attr/actionBarSize</item>
         <item name="android:minHeight">?attr/actionBarSize</item>

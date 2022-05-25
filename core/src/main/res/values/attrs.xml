@@ -13,7 +13,6 @@
         <attr name="ast_precision" format="float" />
     </declare-styleable>
 
-
     <!-- Box 工具栏 -->
     <attr name="defaultNavigation" format="boolean" />
     <attr name="autoSetActionBar" format="boolean" />
