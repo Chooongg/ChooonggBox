@@ -84,9 +84,9 @@ abstract class BoxActivity : AppCompatActivity(), InitAction {
                 }
             }
         }
-        configTopAppBar()
         if (initViewRes() != View.NO_ID) super.setContentView(initViewRes())
         else initView(layoutInflater, null)?.let { super.setContentView(it) }
+        configTopAppBar()
         initConfig(savedInstanceState)
     }
 
@@ -135,7 +135,6 @@ abstract class BoxActivity : AppCompatActivity(), InitAction {
                         insets
                     }
                 }
-                setSupportActionBar(toolbar)
                 initTopAppBar(topAppbarGroup as ViewGroup, toolbar)
             }
         }
