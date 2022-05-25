@@ -18,7 +18,7 @@ allprojects {
 
 ```kotlin
 dependencies {
-    implementation 'com.github.Chooongg.ChooonggBox:box:1.1.16'
+    implementation "com.github.Chooongg.ChooonggBox:box:$boxVersion"
 }
 ```
 
@@ -26,10 +26,10 @@ dependencies {
 
 ```kotlin
 dependencies {
-    implementation 'com.github.Chooongg.ChooonggBox:core:1.1.16'
-    implementation 'com.github.Chooongg.ChooonggBox:http:1.1.16'
-    implementation 'com.github.Chooongg.ChooonggBox:statusLayout:1.1.16'
-    implementation 'com.github.Chooongg.ChooonggBox:echarts:1.1.16'
-    implementation 'com.github.Chooongg.ChooonggBox:utils:1.1.16'
+    implementation "com.github.Chooongg.ChooonggBox:core:$boxVersion"
+    implementation "com.github.Chooongg.ChooonggBox:http:$boxVersion"
+    implementation "com.github.Chooongg.ChooonggBox:statusLayout:$boxVersion"
+    implementation "com.github.Chooongg.ChooonggBox:echarts:$boxVersion"
+    implementation "com.github.Chooongg.ChooonggBox:utils:$boxVersion"
 }
 ```
