@@ -1,7 +1,7 @@
 package com.chooongg.http
 
 import android.content.Context
-import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import androidx.startup.Initializer
 import coil.Coil
@@ -25,13 +25,10 @@ class HttpInitializer : Initializer<Unit> {
                     }
                     add(SvgDecoder.Factory())
                     add(VideoFrameDecoder.Factory())
-                }.placeholder(
-                    context.attrColor(com.google.android.material.R.attr.colorOutline)
-                ).fallback(
-                    context.attrColor(com.google.android.material.R.attr.colorOutline)
-                ).error(
-                    context.attrColor(com.google.android.material.R.attr.colorErrorContainer)
-                ).build()
+                }.placeholder(ColorDrawable(context.attrColor(android.R.attr.colorBackground)))
+                .fallback(ColorDrawable(context.attrColor(android.R.attr.colorBackground)))
+                .error(ColorDrawable(context.attrColor(android.R.attr.colorBackground)))
+                .build()
         )
     }
 
