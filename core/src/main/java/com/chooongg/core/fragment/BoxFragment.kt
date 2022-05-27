@@ -98,7 +98,7 @@ abstract class BoxFragment : Fragment(), InitAction {
     private fun isAutoHideIME4Annotation() =
         javaClass.getAnnotation(AutoHideIME::class.java)?.isEnable ?: true
 
-    open fun onBackPressed() = true
+    open fun onBackPressed() = false
 
     override fun onDestroyView() {
         super.onDestroyView()
