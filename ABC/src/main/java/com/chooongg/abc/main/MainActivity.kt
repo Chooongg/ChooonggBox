@@ -8,10 +8,14 @@ import com.chooongg.abc.main.fragment.ColorFragment
 import com.chooongg.abc.main.fragment.HomeFragment
 import com.chooongg.core.activity.BoxBindingActivity
 import com.chooongg.core.adapter.BoxFragmentAdapter
+import com.chooongg.core.annotation.ActivityEdgeToEdge
 import com.chooongg.core.annotation.TopAppBar
+import com.chooongg.core.annotation.TopAppBarDefaultNavigation
 import com.chooongg.core.fragment.BoxFragment
 
 @TopAppBar
+@TopAppBarDefaultNavigation(false)
+@ActivityEdgeToEdge(false)
 class MainActivity : BoxBindingActivity<ActivityMainBinding>() {
 
     private val fragments: MutableList<BoxFragment> = mutableListOf(

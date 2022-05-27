@@ -5,10 +5,9 @@ import android.util.AttributeSet
 import android.view.Gravity
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.updatePaddingRelative
 import com.chooongg.core.R
-import com.chooongg.ext.getActivity
-import com.chooongg.ext.gone
-import com.chooongg.ext.visible
+import com.chooongg.ext.*
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.divider.MaterialDivider
 import com.google.android.material.shape.MaterialShapeUtils
@@ -42,6 +41,21 @@ class BoxToolbar @JvmOverloads constructor(
             }
         dividerView.gone()
         addView(dividerView)
+    }
+
+    override fun onWindowFocusChanged(hasWindowFocus: Boolean) {
+        super.onWindowFocusChanged(hasWindowFocus)
+        val location = IntArray(2)
+        getLocationInWindow(location)
+        if (location[1] <= 0) {
+            updatePaddingRelative(top = getStatusBarHeight())
+        }
+    }
+
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        val location = IntArray(2)
+        getLocationInWindow(location)
     }
 
     override fun onFinishInflate() {

@@ -36,7 +36,7 @@ abstract class BoxActivity : AppCompatActivity(), InitAction {
 
     protected open fun initTransitions() = Unit
 
-    open fun initTopAppBar(parent: ViewGroup?, toolbar: Toolbar?) = Unit
+    open fun initTopAppBar(toolbar: Toolbar?) = Unit
 
     override fun initContentByLazy() = Unit
 
@@ -112,30 +112,14 @@ abstract class BoxActivity : AppCompatActivity(), InitAction {
         if (isShowTopAppBar4Annotation()) {
             val parent = contentView.parent
             if (parent is FitWindowsViewGroup && parent is ViewGroup) {
-                val topAppbarGroup =
-                    layoutInflater.inflate(R.layout.box_activity_top_appbar, parent, false)
-                val toolbar = topAppbarGroup.findViewById<BoxToolbar>(R.id.toolbar)
-                parent.addView(topAppbarGroup, if (parent is FitWindowsLinearLayout) 0 else -1)
-                topAppbarGroup.elevation = toolbar.elevation
-                toolbar.elevation = 0f
-                topAppbarGroup.background = toolbar.background
-                toolbar.background = null
-                if (getEdgeToEdge4Annotation()) {
-                    ViewCompat.setOnApplyWindowInsetsListener(topAppbarGroup) { view, insets ->
-                        if (insets.isVisible(WindowInsetsCompat.Type.statusBars())) {
-                            val statusBarInsets =
-                                insets.getInsets(WindowInsetsCompat.Type.statusBars())
-                            view.setPadding(
-                                statusBarInsets.left,
-                                statusBarInsets.top,
-                                statusBarInsets.right,
-                                statusBarInsets.bottom
-                            )
-                        }
-                        insets
-                    }
-                }
-                initTopAppBar(topAppbarGroup as ViewGroup, toolbar)
+                val toolbar =
+                    layoutInflater.inflate(
+                        R.layout.box_activity_top_appbar,
+                        parent,
+                        false
+                    ) as BoxToolbar
+                parent.addView(toolbar, if (parent is FitWindowsLinearLayout) 0 else -1)
+                initTopAppBar(toolbar)
             }
         }
     }
