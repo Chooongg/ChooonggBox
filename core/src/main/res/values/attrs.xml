@@ -19,6 +19,7 @@
     <declare-styleable name="BoxToolbar">
         <attr name="defaultNavigation" />
         <attr name="autoSetActionBar" />
+        <attr name="statusBarEdgePadding" format="boolean" />
     </declare-styleable>
     <declare-styleable name="BoxToolbarLayout">
         <attr name="toolbarMode" format="enum">

@@ -7,7 +7,9 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.updatePaddingRelative
 import com.chooongg.core.R
-import com.chooongg.ext.*
+import com.chooongg.core.annotation.ActivityEdgeToEdge
+import com.chooongg.ext.getActivity
+import com.chooongg.ext.getStatusBarHeight
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.divider.MaterialDivider
 import com.google.android.material.shape.MaterialShapeUtils
@@ -23,7 +25,7 @@ class BoxToolbar @JvmOverloads constructor(
 
     private val autoSetActionBar: Boolean
 
-    private val dividerView: View
+    private var dividerView: View? = null
 
     init {
         val a =
@@ -33,29 +35,13 @@ class BoxToolbar @JvmOverloads constructor(
             setNavigationOnClickListener { context.getActivity()?.onBackPressed() }
         }
         autoSetActionBar = a.getBoolean(R.styleable.BoxToolbar_autoSetActionBar, true)
-        a.recycle()
-        dividerView = MaterialDivider(context)
-        dividerView.layoutParams =
-            LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT).apply {
-                gravity = Gravity.BOTTOM
-            }
-        dividerView.gone()
-        addView(dividerView)
-    }
-
-    override fun onWindowFocusChanged(hasWindowFocus: Boolean) {
-        super.onWindowFocusChanged(hasWindowFocus)
-        val location = IntArray(2)
-        getLocationInWindow(location)
-        if (location[1] <= 0) {
-            updatePaddingRelative(top = getStatusBarHeight())
+        val statusBarPadding = a.getBoolean(R.styleable.BoxToolbar_statusBarEdgePadding, false)
+        val isEdgeToEdge =
+            context.getActivity()?.javaClass?.getAnnotation(ActivityEdgeToEdge::class.java)?.value
+        if (statusBarPadding && isEdgeToEdge == true) {
+            updatePaddingRelative(top = paddingTop + getStatusBarHeight())
         }
-    }
-
-    override fun onAttachedToWindow() {
-        super.onAttachedToWindow()
-        val location = IntArray(2)
-        getLocationInWindow(location)
+        a.recycle()
     }
 
     override fun onFinishInflate() {
@@ -74,11 +60,20 @@ class BoxToolbar @JvmOverloads constructor(
     }
 
     fun showDivider() {
-        dividerView.visible()
+        if (dividerView == null) {
+            dividerView = MaterialDivider(context).apply {
+                layoutParams = LayoutParams(-1, -2).apply {
+                    gravity = Gravity.BOTTOM
+                }
+                addView(this)
+            }
+        }
     }
 
     fun hideDivider() {
-        dividerView.gone()
+        if (dividerView != null) {
+            removeView(dividerView)
+        }
     }
 
     /**

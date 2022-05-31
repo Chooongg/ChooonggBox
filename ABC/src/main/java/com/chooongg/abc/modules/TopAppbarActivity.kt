@@ -8,9 +8,11 @@ import com.chooongg.abc.R
 import com.chooongg.abc.databinding.ActivityTopAppbarBinding
 import com.chooongg.core.activity.BoxBindingActivity
 import com.chooongg.core.annotation.TopAppBar
+import com.chooongg.core.annotation.TopAppBarDefaultNavigation
 import com.chooongg.ext.setNightMode
 
 @TopAppBar
+@TopAppBarDefaultNavigation(false)
 class TopAppbarActivity : BoxBindingActivity<ActivityTopAppbarBinding>() {
     override fun initBinding() = ActivityTopAppbarBinding.inflate(layoutInflater)
 
@@ -20,13 +22,13 @@ class TopAppbarActivity : BoxBindingActivity<ActivityTopAppbarBinding>() {
     override fun initContent(savedInstanceState: Bundle?) {
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.night_mode,menu)
-        return super.onCreateOptionsMenu(menu)
-    }
+//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+//        menuInflater.inflate(R.menu.night_mode, menu)
+//        return super.onCreateOptionsMenu(menu)
+//    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when(item.itemId){
+        return when (item.itemId) {
             R.id.light -> {
                 setNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                 true
