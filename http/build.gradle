@@ -37,6 +37,7 @@ dependencies {
     api project(":utils")
     // JSON解析
     api 'com.google.code.gson:gson:2.9.0'
+    api 'com.github.getActivity:GsonFactory:6.0'
     // 网络请求
     api 'com.squareup.okhttp3:okhttp:5.0.0-alpha.6'
     api 'com.squareup.retrofit2:retrofit:2.9.0'
@@ -49,7 +50,6 @@ dependencies {
     api 'io.coil-kt:coil-svg:2.0.0-rc03'
     api 'io.coil-kt:coil-gif:2.0.0-rc03'
     api 'io.coil-kt:coil-video:2.0.0-rc03'
-
 }
 
 afterEvaluate {
