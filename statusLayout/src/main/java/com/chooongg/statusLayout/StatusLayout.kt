@@ -31,7 +31,8 @@ open class StatusLayout @JvmOverloads constructor(
     // 存在的状态不会包括SuccessStatus
     private val existingStatus = HashMap<KClass<out AbstractStatus>, AbstractStatus>()
 
-    private var currentStatus: KClass<out AbstractStatus> = SuccessStatus::class
+    var currentStatus: KClass<out AbstractStatus> = SuccessStatus::class
+        private set
 
     private var onRetryEventListener: ((KClass<out AbstractStatus>) -> Unit)? = null
 
