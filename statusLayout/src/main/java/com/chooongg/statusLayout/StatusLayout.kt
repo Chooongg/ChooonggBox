@@ -12,7 +12,7 @@ import com.chooongg.statusLayout.status.AbstractStatus
 import com.chooongg.statusLayout.status.SuccessStatus
 import kotlin.reflect.KClass
 
-class StatusLayout @JvmOverloads constructor(
+open class StatusLayout @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0,
@@ -28,7 +28,10 @@ class StatusLayout @JvmOverloads constructor(
     @StatusPageConfig.AnimationType
     var animationType: Int = StatusPage.config.animationType
 
-    private var successView = FrameLayout(context)
+    private var successView = FrameLayout(context).apply {
+        tag = STATUS_ITEM_TAG
+        this@StatusLayout.addView(this)
+    }
 
     // 存在的状态不会包括SuccessStatus
     private val existingStatus = HashMap<KClass<out AbstractStatus>, AbstractStatus>()
@@ -41,8 +44,6 @@ class StatusLayout @JvmOverloads constructor(
     private var onStatusChangeListener: ((KClass<out AbstractStatus>) -> Unit)? = null
 
     init {
-        successView.tag = STATUS_ITEM_TAG
-        addView(successView)
         val a = context.obtainStyledAttributes(attrs, R.styleable.StatusLayout, defStyleAttr, 0)
         initializeSuccess =
             a.getBoolean(R.styleable.StatusLayout_initializeSuccess, initializeSuccess)

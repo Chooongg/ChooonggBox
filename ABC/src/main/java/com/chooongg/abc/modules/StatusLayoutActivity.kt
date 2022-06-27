@@ -17,13 +17,19 @@ open class StatusLayoutActivity : BoxBindingActivity<ActivityStatusLayoutBinding
     override fun initBinding() = ActivityStatusLayoutBinding.inflate(layoutInflater)
 
     override fun initConfig(savedInstanceState: Bundle?) {
-        binding.statusLayout.animationType= StatusPageConfig.ANIMATION_TYPE_SHARED_AXIS_Z
+        binding.statusLayout.animationType = StatusPageConfig.ANIMATION_TYPE_SHARED_AXIS_Z
         binding.btnProgress.doOnClick {
             binding.statusLayout.show(ProgressStatus::class)
         }
     }
 
     override fun initContent(savedInstanceState: Bundle?) {
+        binding.statusLayout.setOnRetryListener {
+
+        }
+        binding.statusLayout.setOnStatusChangeListener {
+
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
