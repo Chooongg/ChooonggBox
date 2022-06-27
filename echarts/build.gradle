@@ -32,7 +32,6 @@ android {
 
 dependencies {
     implementation "androidx.appcompat:appcompat:${appcompatVersion}"
-    //noinspection GradleDependency
     api 'com.google.code.gson:gson:2.9.0'
 }
 

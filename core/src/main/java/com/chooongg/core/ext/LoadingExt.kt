@@ -87,10 +87,10 @@ private fun Activity.hideLoadingForActivity() {
         animate().setInterpolator(AccelerateDecelerateInterpolator())
             .alpha(0f).scaleX(0.9f).scaleY(0.9f)
             .setListener(object : Animator.AnimatorListener {
-                override fun onAnimationStart(animation: Animator?) = Unit
-                override fun onAnimationCancel(animation: Animator?) = Unit
-                override fun onAnimationRepeat(animation: Animator?) = Unit
-                override fun onAnimationEnd(animation: Animator?) {
+                override fun onAnimationStart(animation: Animator) = Unit
+                override fun onAnimationCancel(animation: Animator) = Unit
+                override fun onAnimationRepeat(animation: Animator) = Unit
+                override fun onAnimationEnd(animation: Animator) {
                     decorView.removeView(this@apply)
                 }
             })

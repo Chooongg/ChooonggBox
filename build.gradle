@@ -9,13 +9,13 @@ task clean(type: Delete) {
 }
 
 ext {
-    compileSdk = 31
+    compileSdk = 32
     minSdk = 21
-    targetSdk = 31
+    targetSdk = 32
 
     versionCode = 1
     versionName = '0.0.1'
 
-    appcompatVersion = '1.6.0-alpha03'
-    materialVersion = '1.6.0'
+    appcompatVersion = '1.6.0-alpha05'
+    materialVersion = '1.6.1'
 }

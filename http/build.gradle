@@ -46,10 +46,10 @@ dependencies {
     // 调试工具-拦截器
     implementation 'com.facebook.stetho:stetho-okhttp3:1.6.0'
     // 图片加载
-    api 'io.coil-kt:coil:2.0.0-rc03'
-    api 'io.coil-kt:coil-svg:2.0.0-rc03'
-    api 'io.coil-kt:coil-gif:2.0.0-rc03'
-    api 'io.coil-kt:coil-video:2.0.0-rc03'
+    api 'io.coil-kt:coil:2.1.0'
+    api 'io.coil-kt:coil-svg:2.1.0'
+    api 'io.coil-kt:coil-gif:2.1.0'
+    api 'io.coil-kt:coil-video:2.1.0'
 }
 
 afterEvaluate {

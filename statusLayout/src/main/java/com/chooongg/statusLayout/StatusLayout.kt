@@ -12,7 +12,7 @@ import com.chooongg.statusLayout.status.AbstractStatus
 import com.chooongg.statusLayout.status.SuccessStatus
 import kotlin.reflect.KClass
 
-open class StatusLayout @JvmOverloads constructor(
+class StatusLayout @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0,
@@ -24,9 +24,11 @@ open class StatusLayout @JvmOverloads constructor(
     }
 
     var enableAnimation = StatusPage.config.enableAnimation
-        get() = isAttachedToWindow && StatusPage.config.enableAnimation
 
-    private var successViews: ArrayList<View> = ArrayList()
+    @StatusPageConfig.AnimationType
+    var animationType: Int = StatusPage.config.animationType
+
+    private var successView = FrameLayout(context)
 
     // 存在的状态不会包括SuccessStatus
     private val existingStatus = HashMap<KClass<out AbstractStatus>, AbstractStatus>()
@@ -39,6 +41,8 @@ open class StatusLayout @JvmOverloads constructor(
     private var onStatusChangeListener: ((KClass<out AbstractStatus>) -> Unit)? = null
 
     init {
+        successView.tag = STATUS_ITEM_TAG
+        addView(successView)
         val a = context.obtainStyledAttributes(attrs, R.styleable.StatusLayout, defStyleAttr, 0)
         initializeSuccess =
             a.getBoolean(R.styleable.StatusLayout_initializeSuccess, initializeSuccess)
@@ -62,47 +66,22 @@ open class StatusLayout @JvmOverloads constructor(
         if (currentStatus == statusClass) return
         if (statusClass == SuccessStatus::class) {
             hideAllStatus()
-            successViews.forEach {
-                if (it.alpha == 1f) it.alpha = 0f
-                if (it.translationY == 0f) it.translationY = dp2px(4f).toFloat()
-                it.visible()
-                if (enableAnimation) it.animate().apply {
-                    cancel()
-                    interpolator = FastOutSlowInInterpolator()
-                    duration = resourcesInteger(android.R.integer.config_shortAnimTime).toLong()
-                    alpha(1f).translationY(0f)
-                }
-            }
+            if (successView.alpha == 1f) successView.alpha = 0f
+            if (successView.translationY == 0f) successView.translationY = dp2px(4f).toFloat()
+            successView.visible()
+            if (isAttachedToWindow && enableAnimation) successView.showAnimation()
             currentStatus = SuccessStatus::class
         } else {
             hideAllStatus()
             createAndShowStatus(statusClass, message)
             if (existingStatus[statusClass]?.isShowSuccess() == true) {
-                successViews.forEach {
-                    if (it.alpha == 1f) it.alpha = 0f
-                    if (it.translationY == 0f) it.translationY = dp2px(4f).toFloat()
-                    it.visible()
-                    if (enableAnimation) it.animate().apply {
-                        cancel()
-                        interpolator = FastOutSlowInInterpolator()
-                        duration = resourcesInteger(android.R.integer.config_shortAnimTime).toLong()
-                        alpha(1f).translationY(0f)
-                    }
-                }
+                successView.visible()
+                if (isAttachedToWindow && enableAnimation) successView.showAnimation()
             } else {
-                successViews.forEach {
-                    if (enableAnimation) {
-                        it.animate().apply {
-                            cancel()
-                            interpolator = FastOutSlowInInterpolator()
-                            duration =
-                                resourcesInteger(android.R.integer.config_shortAnimTime).toLong()
-                            alpha(0f).translationY(dp2px(4f).toFloat())
-                            withEndAction { it.gone() }
-                        }
-                    } else {
-                        it.gone()
-                    }
+                if (isAttachedToWindow && enableAnimation) {
+                    successView.hideAnimation(SuccessStatus::class)
+                } else {
+                    successView.gone()
                 }
             }
         }
@@ -117,9 +96,23 @@ open class StatusLayout @JvmOverloads constructor(
             existingStatus[statusClass] =
                 createStatus(statusClass).apply {
                     obtainTargetView(context)
-                    if (enableAnimation) {
-                        targetView.alpha = 0f
-                        targetView.translationY = dp2px(4f).toFloat()
+                    if (isAttachedToWindow && enableAnimation) {
+                        when (animationType) {
+                            StatusPageConfig.ANIMATION_TYPE_SHARED_AXIS_X -> {
+                                targetView.alpha = 0f
+                                targetView.translationX = dp2px(4f).toFloat()
+                            }
+                            StatusPageConfig.ANIMATION_TYPE_SHARED_AXIS_Y -> {
+                                targetView.alpha = 0f
+                                targetView.translationY = dp2px(4f).toFloat()
+                            }
+                            StatusPageConfig.ANIMATION_TYPE_SHARED_AXIS_Z -> {
+                                targetView.alpha = 0f
+                                targetView.scaleX = 0.9f
+                                targetView.scaleY = 0.9f
+                            }
+                            else -> targetView.alpha = 0f
+                        }
                     }
                     onAttach(targetView, message)
                     getReloadEventView(targetView)?.doOnClick {
@@ -132,13 +125,8 @@ open class StatusLayout @JvmOverloads constructor(
             addView(status.targetView, LayoutParams(-2, -2, Gravity.CENTER))
         }
         currentStatus = statusClass
-        if (enableAnimation) {
-            status.targetView.animate().apply {
-                cancel()
-                interpolator = FastOutSlowInInterpolator()
-                duration = resourcesInteger(android.R.integer.config_shortAnimTime).toLong()
-                alpha(1f).translationY(0f)
-            }
+        if (isAttachedToWindow && enableAnimation) {
+            status.targetView.showAnimation()
         }
     }
 
@@ -149,18 +137,8 @@ open class StatusLayout @JvmOverloads constructor(
     private fun hideStatus(statusClass: KClass<out AbstractStatus>) {
         val status = existingStatus[statusClass] ?: return
         status.onDetach(status.targetView)
-        if (enableAnimation) {
-            status.targetView.animate().apply {
-                cancel()
-                interpolator = FastOutSlowInInterpolator()
-                duration =
-                    resourcesInteger(android.R.integer.config_shortAnimTime).toLong()
-                alpha(0f).translationY(dp2px(4f).toFloat())
-                withEndAction {
-                    removeView(status.targetView)
-                    existingStatus.remove(statusClass)
-                }
-            }
+        if (isAttachedToWindow && enableAnimation) {
+            status.targetView.hideAnimation(statusClass)
         } else {
             removeView(status.targetView)
             existingStatus.remove(statusClass)
@@ -171,47 +149,88 @@ open class StatusLayout @JvmOverloads constructor(
         return statusClass.java.newInstance()
     }
 
+    private fun View.showAnimation() {
+        setUpAnimationAttribute()
+        animate().apply {
+            cancel()
+            interpolator = FastOutSlowInInterpolator()
+            duration = resourcesInteger(android.R.integer.config_shortAnimTime).toLong()
+
+            when (animationType) {
+                StatusPageConfig.ANIMATION_TYPE_SHARED_AXIS_X -> {
+                    alpha(1f).translationX(0f)
+                }
+                StatusPageConfig.ANIMATION_TYPE_SHARED_AXIS_Y -> {
+                    alpha(1f).translationY(0f)
+                }
+                StatusPageConfig.ANIMATION_TYPE_SHARED_AXIS_Z -> {
+                    alpha(1f).scaleX(1f).scaleY(1f)
+                }
+                else -> alpha(1f)
+            }
+        }
+    }
+
+    private fun View.hideAnimation(statusClass: KClass<out AbstractStatus>) {
+        animate().apply {
+            cancel()
+            interpolator = FastOutSlowInInterpolator()
+            duration =
+                resourcesInteger(android.R.integer.config_shortAnimTime).toLong()
+            when (animationType) {
+                StatusPageConfig.ANIMATION_TYPE_SHARED_AXIS_X -> {
+                    alpha(0f).translationX(-dp2px(4f).toFloat())
+                }
+                StatusPageConfig.ANIMATION_TYPE_SHARED_AXIS_Y -> {
+                    alpha(0f).translationY(dp2px(4f).toFloat())
+                }
+                StatusPageConfig.ANIMATION_TYPE_SHARED_AXIS_Z -> {
+                    alpha(0f).scaleX(0.9f).scaleY(0.9f)
+                }
+                else -> alpha(0f)
+            }
+            withEndAction {
+                if (statusClass == SuccessStatus::class) {
+                    successView.gone()
+                } else {
+                    val status = existingStatus[statusClass] ?: return@withEndAction
+                    removeView(status.targetView)
+                    existingStatus.remove(statusClass)
+                }
+            }
+        }
+    }
+
+    private fun View.setUpAnimationAttribute() {
+        when (animationType) {
+            StatusPageConfig.ANIMATION_TYPE_SHARED_AXIS_X -> {
+                if (translationX == -dp2px(4f).toFloat()) translationX = dp2px(4f).toFloat()
+            }
+        }
+    }
+
     override fun addView(child: View?, index: Int, params: ViewGroup.LayoutParams?) {
         if (child != null && child.tag != STATUS_ITEM_TAG) {
-            if (currentStatus != SuccessStatus::class) {
-                child.gone()
-            }
-            successViews.add(child)
+            successView.addView(child, params)
+            return
         }
         super.addView(child, index, params)
     }
 
     override fun removeView(view: View?) {
-        successViews.remove(view)
+        if (view == successView) return
+        successView.removeView(view)
         super.removeView(view)
     }
 
-    override fun removeViewAt(index: Int) {
-        successViews.remove(getChildAt(index))
-        super.removeViewAt(index)
-    }
-
     override fun removeAllViewsInLayout() {
-        successViews.clear()
         super.removeAllViewsInLayout()
-    }
-
-    override fun removeViews(start: Int, count: Int) {
-        for (i in start until start + count) {
-            successViews.remove(getChildAt(i))
-        }
-        super.removeViews(start, count)
+        addView(successView)
     }
 
     override fun removeViewInLayout(view: View?) {
-        successViews.remove(view)
+        if (view == successView) return
+        successView.removeViewInLayout(view)
         super.removeViewInLayout(view)
-    }
-
-    override fun removeViewsInLayout(start: Int, count: Int) {
-        for (i in start until start + count) {
-            successViews.remove(getChildAt(i))
-        }
-        super.removeViewsInLayout(start, count)
     }
 }

@@ -8,6 +8,7 @@ import com.chooongg.abc.databinding.ActivityStatusLayoutBinding
 import com.chooongg.core.activity.BoxBindingActivity
 import com.chooongg.core.annotation.TopAppBar
 import com.chooongg.ext.doOnClick
+import com.chooongg.statusLayout.StatusPageConfig
 import com.chooongg.statusLayout.status.ProgressStatus
 
 @TopAppBar
@@ -16,6 +17,7 @@ open class StatusLayoutActivity : BoxBindingActivity<ActivityStatusLayoutBinding
     override fun initBinding() = ActivityStatusLayoutBinding.inflate(layoutInflater)
 
     override fun initConfig(savedInstanceState: Bundle?) {
+        binding.statusLayout.animationType= StatusPageConfig.ANIMATION_TYPE_SHARED_AXIS_Z
         binding.btnProgress.doOnClick {
             binding.statusLayout.show(ProgressStatus::class)
         }

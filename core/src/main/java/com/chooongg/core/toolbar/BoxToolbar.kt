@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.Gravity
 import android.view.View
+import androidx.activity.ComponentActivity
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.updatePaddingRelative
 import com.chooongg.core.R
@@ -32,7 +33,9 @@ class BoxToolbar @JvmOverloads constructor(
             context.obtainStyledAttributes(attrs, R.styleable.BoxToolbar, defStyleAttr, defStyleRes)
         if (a.getBoolean(R.styleable.BoxToolbar_defaultNavigation, false)) {
             setNavigationIcon(R.drawable.ic_app_bar_back)
-            setNavigationOnClickListener { context.getActivity()?.onBackPressed() }
+            setNavigationOnClickListener {
+                (context.getActivity() as? ComponentActivity)?.onBackPressedDispatcher?.onBackPressed()
+            }
         }
         autoSetActionBar = a.getBoolean(R.styleable.BoxToolbar_autoSetActionBar, true)
         val statusBarPadding = a.getBoolean(R.styleable.BoxToolbar_statusBarEdgePadding, false)
