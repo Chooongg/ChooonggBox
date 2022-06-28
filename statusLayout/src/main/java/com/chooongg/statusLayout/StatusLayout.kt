@@ -67,8 +67,6 @@ open class StatusLayout @JvmOverloads constructor(
         if (currentStatus == statusClass) return
         if (statusClass == SuccessStatus::class) {
             hideAllStatus()
-            if (successView.alpha == 1f) successView.alpha = 0f
-            if (successView.translationY == 0f) successView.translationY = dp2px(4f).toFloat()
             successView.visible()
             if (isAttachedToWindow && enableAnimation) successView.showAnimation()
             currentStatus = SuccessStatus::class
@@ -109,8 +107,8 @@ open class StatusLayout @JvmOverloads constructor(
                             }
                             StatusPageConfig.ANIMATION_TYPE_SHARED_AXIS_Z -> {
                                 targetView.alpha = 0f
-                                targetView.scaleX = 0.9f
-                                targetView.scaleY = 0.9f
+                                targetView.scaleX = 0.95f
+                                targetView.scaleY = 0.95f
                             }
                             else -> targetView.alpha = 0f
                         }
@@ -186,7 +184,7 @@ open class StatusLayout @JvmOverloads constructor(
                     alpha(0f).translationY(dp2px(4f).toFloat())
                 }
                 StatusPageConfig.ANIMATION_TYPE_SHARED_AXIS_Z -> {
-                    alpha(0f).scaleX(0.9f).scaleY(0.9f)
+                    alpha(0f).scaleX(0.95f).scaleY(0.95f)
                 }
                 else -> alpha(0f)
             }

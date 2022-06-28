@@ -17,7 +17,7 @@ open class StatusLayoutActivity : BoxBindingActivity<ActivityStatusLayoutBinding
     override fun initBinding() = ActivityStatusLayoutBinding.inflate(layoutInflater)
 
     override fun initConfig(savedInstanceState: Bundle?) {
-        binding.statusLayout.animationType = StatusPageConfig.ANIMATION_TYPE_SHARED_AXIS_Z
+        binding.statusLayout.animationType = StatusPageConfig.ANIMATION_TYPE_SHARED_AXIS_Y
         binding.btnProgress.doOnClick {
             binding.statusLayout.show(ProgressStatus::class)
         }
