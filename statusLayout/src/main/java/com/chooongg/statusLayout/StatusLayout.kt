@@ -65,26 +65,28 @@ open class StatusLayout @JvmOverloads constructor(
 
     fun show(statusClass: KClass<out AbstractStatus>, message: CharSequence? = null) {
         if (currentStatus == statusClass) return
-        if (statusClass == SuccessStatus::class) {
-            hideAllStatus()
-            successView.visible()
-            if (isAttachedToWindow && enableAnimation) successView.showAnimation()
-            currentStatus = SuccessStatus::class
-        } else {
-            hideAllStatus()
-            createAndShowStatus(statusClass, message)
-            if (existingStatus[statusClass]?.isShowSuccess() == true) {
+        post {
+            if (statusClass == SuccessStatus::class) {
+                hideAllStatus()
                 successView.visible()
                 if (isAttachedToWindow && enableAnimation) successView.showAnimation()
+                currentStatus = SuccessStatus::class
             } else {
-                if (isAttachedToWindow && enableAnimation) {
-                    successView.hideAnimation(SuccessStatus::class)
+                hideAllStatus()
+                createAndShowStatus(statusClass, message)
+                if (existingStatus[statusClass]?.isShowSuccess() == true) {
+                    successView.visible()
+                    if (isAttachedToWindow && enableAnimation) successView.showAnimation()
                 } else {
-                    successView.gone()
+                    if (isAttachedToWindow && enableAnimation) {
+                        successView.hideAnimation(SuccessStatus::class)
+                    } else {
+                        successView.gone()
+                    }
                 }
             }
+            onStatusChangeListener?.invoke(statusClass)
         }
-        onStatusChangeListener?.invoke(statusClass)
     }
 
     private fun createAndShowStatus(
