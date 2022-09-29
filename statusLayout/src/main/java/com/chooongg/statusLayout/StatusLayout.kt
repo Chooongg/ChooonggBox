@@ -49,7 +49,7 @@ open class StatusLayout @JvmOverloads constructor(
             a.getBoolean(R.styleable.StatusLayout_initializeSuccess, initializeSuccess)
         a.recycle()
         if (!isInEditMode && !initializeSuccess && StatusPage.config.defaultState != SuccessStatus::class) {
-            createAndShowStatus(StatusPage.config.defaultState, null)
+            show(StatusPage.config.defaultState)
         }
     }
 
@@ -156,7 +156,6 @@ open class StatusLayout @JvmOverloads constructor(
             cancel()
             interpolator = FastOutSlowInInterpolator()
             duration = resourcesInteger(android.R.integer.config_shortAnimTime).toLong()
-
             when (animationType) {
                 StatusPageConfig.ANIMATION_TYPE_SHARED_AXIS_X -> {
                     alpha(1f).translationX(0f)
@@ -176,8 +175,7 @@ open class StatusLayout @JvmOverloads constructor(
         animate().apply {
             cancel()
             interpolator = FastOutSlowInInterpolator()
-            duration =
-                resourcesInteger(android.R.integer.config_shortAnimTime).toLong()
+            duration = resourcesInteger(android.R.integer.config_shortAnimTime).toLong()
             when (animationType) {
                 StatusPageConfig.ANIMATION_TYPE_SHARED_AXIS_X -> {
                     alpha(0f).translationX(-dp2px(4f).toFloat())
