@@ -1,6 +1,6 @@
 plugins {
-    id 'com.android.application' version '7.2.1' apply false
-    id 'com.android.library' version '7.2.1' apply false
+    id 'com.android.application' version '7.3.0' apply false
+    id 'com.android.library' version '7.3.0' apply false
     id 'org.jetbrains.kotlin.android' version '1.6.21' apply false
 }
 
@@ -9,13 +9,13 @@ task clean(type: Delete) {
 }
 
 ext {
-    compileSdk = 32
+    compileSdk = 33
     minSdk = 21
-    targetSdk = 32
+    targetSdk = 33
 
     versionCode = 1
     versionName = '0.0.1'
 
-    appcompatVersion = '1.6.0-alpha05'
-    materialVersion = '1.6.1'
+    appcompatVersion = '1.7.0-alpha01'
+    materialVersion = '1.8.0-alpha01'
 }
