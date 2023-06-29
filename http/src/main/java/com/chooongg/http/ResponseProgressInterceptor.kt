@@ -18,10 +18,10 @@ internal class ResponseProgressInterceptor : Interceptor {
         val responseProgressListener = request.getTag<HttpProgressListener>()
         //获取原始响应
         var response = chain.proceed(request)
-        if (responseProgressListener != null && response.body != null) {
+        if (responseProgressListener != null) {
             //如果有下载进度回调，并且有响应体，则构建新的响应体以监听进度回调
             val progressResponseBody =
-                ProgressResponseBody(response.body!!, responseProgressListener)
+                ProgressResponseBody(response.body, responseProgressListener)
             response = response.newBuilder()
                 .body(progressResponseBody)
                 .build()

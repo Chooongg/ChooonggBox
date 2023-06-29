@@ -10,6 +10,7 @@ import androidx.annotation.CallSuper
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.chooongg.core.R
+import com.chooongg.ext.setTextColorAttr
 
 /**
  * RecyclerView adapter used for displaying popup menu items grouped in sections.
@@ -124,6 +125,8 @@ internal class PopupMenuAdapter(
             }
             if (castedPopupMenuItem.labelColor != 0) {
                 label.setTextColor(castedPopupMenuItem.labelColor)
+            }else{
+                label.setTextColorAttr(com.google.android.material.R.attr.colorOnSurface)
             }
             nestedIcon.visibility =
                 if (castedPopupMenuItem.hasNestedItems) View.VISIBLE else View.GONE
