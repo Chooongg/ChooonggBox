@@ -30,7 +30,7 @@
         android:ellipsize="marquee"
         android:gravity="center_horizontal"
         android:fadingEdge="horizontal"
-        android:singleLine="true"
+        android:maxLines="5"
         android:textAppearance="?attr/textAppearanceListItemSmall" />
 
     <androidx.appcompat.widget.AppCompatImageView
